@@ -1,0 +1,10 @@
+.balancer-settings {
+	margin: 0;
+	position: relative;
+	height: 100vh;
+	font-size: 0.857em;
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	display: none;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width" />
+	<title>Energy Balance Prototype</title>
+
+	<link rel="stylesheet" href="./balancer.css" />
+	<link rel="stylesheet" href="./balancer-graph.css" />
+	<link rel="stylesheet" href="./balancer-diet.css" />
+	<link rel="stylesheet" href="./balancer-settings.css" />
+
+	<body>
+
+		<section id="balancer">
+
+			<figure class="balancer-graph">
+				<div class="balancer-graph-scroll"></div>
+				<figcaption>
+					<span class="balancer-scale-max">8700</span>
+					<span class="balancer-scale-min">-8700</span>
+					<div class="balancer-scale-activity">
+						<b>Activity</b>
+						<span class="balancer-activity-0">Sedentary</span>
+						<span class="balancer-activity-1">Moderate</span>
+						<span class="balancer-activity-2">Strenuous</span>
+					</div>
+					<div class="balancer-projection">-0.N kg/wk</div>
+				</figcaption>
+			</figure>
+
+			<form class="balancer-diet balancer-diet-closed">
+				<button class="balancer-diet-add">Add a meal</button>
+				<div class="balancer-diet-time">
+					<label><span>Time </span><input name="time" type="time"/></label>
+					<label><span>Date </span><input name="date" type="date"/></label>
+				</div>
+				<div class="balancer-diet-description">
+					<b>3PM</b>
+					<label><span>Name </span><input name="name" type="text" value="" placeholder="Description"/></label>
+					<label><span>Energy </span><input name="energy" type="number" value="1000" placeholder="---"/> kJ</label>
+					<label><input name="adjust" type="range" min="0.5" max="1.5" step="0.1" value="1"/></label>
+					<p><button>Add</button></p>
+				</div>
+				<div class="balancer-diet-presets">
+					<span><button class="balancer-diet-presets-a">Preset A</button></span>
+					<span><button class="balancer-diet-presets-b">Preset B</button></span>
+					<span><button class="balancer-diet-presets-c">Preset C</button></span>
+					<span><button class="balancer-diet-presets-d">Preset D</button></span>
+					<span><button class="balancer-diet-presets-e">Preset E</button></span>
+					<span><button class="balancer-diet-presets-f">Preset F</button></span>
+					<span><button class="balancer-diet-presets-g">Preset G</button></span>
+					<span><button class="balancer-diet-presets-h">Preset H</button></span>
+					<span><button class="balancer-diet-presets-a">Preset A</button></span>
+					<span><button class="balancer-diet-presets-b">Preset B</button></span>
+					<span><button class="balancer-diet-presets-c">Preset C</button></span>
+					<span><button class="balancer-diet-presets-d">Preset D</button></span>
+					<span><button class="balancer-diet-presets-e">Preset E</button></span>
+					<span><button class="balancer-diet-presets-f">Preset F</button></span>
+					<span><button class="balancer-diet-presets-g">Preset G</button></span>
+					<span><button class="balancer-diet-presets-h">Preset H</button></span>
+					<span><button class="balancer-diet-presets-a">Preset A</button></span>
+					<span><button class="balancer-diet-presets-b">Preset B</button></span>
+					<span><button class="balancer-diet-presets-c">Preset C</button></span>
+					<span><button class="balancer-diet-presets-d">Preset D</button></span>
+					<span><button class="balancer-diet-presets-e">Preset E</button></span>
+					<span><button class="balancer-diet-presets-f">Preset F</button></span>
+					<span><button class="balancer-diet-presets-g">Preset G</button></span>
+					<span><button class="balancer-diet-presets-h">Preset H</button></span>
+					<span><button class="balancer-diet-presets-a">Preset A</button></span>
+					<span><button class="balancer-diet-presets-b">Preset B</button></span>
+					<span><button class="balancer-diet-presets-c">Preset C</button></span>
+					<span><button class="balancer-diet-presets-d">Preset D</button></span>
+					<span><button class="balancer-diet-presets-e">Preset E</button></span>
+					<span><button class="balancer-diet-presets-f">Preset F</button></span>
+					<span><button class="balancer-diet-presets-g">Preset G</button></span>
+					<span><button class="balancer-diet-presets-h">Preset H</button></span>
+				</div>
+				<div class="balancer-diet-history">
+					<table>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>3PM</th><td>Lorem ipsum</td><td>1000 kJ</td><td><button>Remove</button></td></tr>
+						<tr><th>6PM</th><td>Dolor Sit</td><td>1500 kJ</td><td><button>Remove</button></td></tr>
+					</table>
+				</div>
+			</form>
+
+			<form class="balancer-settings">
+				<fieldset>
+					<legend>Personal</legend>
+					<label><b>Height</b> <input name="height" type="number"/> <i>in centimeters</i></label>
+					<label><b>Age</b> <input name="age" type="number"/> <i>in years</i></label>
+					<label><b>Weight</b> <input name="weight" type="number"/> <i>in kilos</i></label>
+					<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
+				</fieldset>
+				<fieldset>
+					<legend>Menu</legend>
+				</fieldset>
+			</form>
+
+		</section>
+
+		<script src="./balancer.js"></script>
+		<script src="./balancer-graph.js"></script>
+		<script src="./balancer-diet.js"></script>
+		<script src="./balancer-settings.js"></script>
+		<script>
+			// start a new instance of the class
+			var balancer = new Balancer().init({
+				root: document.getElementById("balancer"),
+				density: 37000, // energy density of body fat (kJ/kg)
+				gender: 1, // female or male (index)
+				height: 187, // (cm)
+				weight: 82, // (kg)
+				age: 42, // (years)
+				weightloss: 0, // desired weightloss (kg)
+				timeline: {},
+				scale: 0, // graph scale day/week/month/year
+				start: new Date(new Date().setHours(0)) // reset to start of day
+			});
+		</script>
+	</body>
+
+</html>

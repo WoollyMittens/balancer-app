@@ -1,0 +1,125 @@
+.balancer-graph {
+	margin: 0;
+	position: relative;
+	height: 50vh;
+	font-size: 0.857em;
+	color: #FFF;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.balancer-graph figcaption {}
+
+.balancer-scale-max {
+	position: absolute;
+	left: 1rem;
+	top: 1rem;
+	z-index: 2;
+}
+
+.balancer-scale-min {
+	position: absolute;
+	left: 1rem;
+	bottom: 1rem;
+	z-index: 2;
+}
+
+.balancer-graph-scroll {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.balancer-graph-bar {
+	flex: 1 1 auto;
+	border-color: #000;
+	border-style: solid;
+	border-width: 0 1px 0 0;
+	min-width: 1rem;
+	position: relative;
+	cursor: pointer;
+}
+
+.balancer-graph-bar:hover {
+	opacity: 0.9;
+}
+
+.balancer-graph-bar time {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	z-index: 3;
+}
+
+.balancer-graph-bar b {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	font-weight: normal;
+	transform: translate(-50%, -50%) rotate(90deg);
+	white-space: nowrap;
+	z-index: 3;
+}
+
+.balancer-graph-bar span {
+	background-color: #FFF;
+	position: absolute;
+	top: 25%;
+	right: 0;
+	bottom: 25%;
+	left: 0;
+	z-index: 2;
+	opacity: 0.4;
+}
+
+.balancer-graph-ahead span {
+	opacity: 0.2;
+}
+
+.balancer-projection {
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 2;
+	text-align: right;
+}
+
+.balancer-scale-activity {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	z-index: 2;
+	text-align: right;
+}
+
+.balancer-scale-activity b {
+	display: block;
+}
+
+.balancer-scale-activity span {
+	display: inline-block;
+	border: solid 1px #FFF;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	overflow: hidden;
+	white-space: nowrap;
+	width: 1.2rem;
+	height: 1.2rem;
+	margin: 0.5rem 0.1rem;
+	text-indent: 2rem;
+}
+
+.balancer-activity-0 {
+	background-color: #036;
+}
+
+.balancer-activity-1 {
+	background-color: #194c7f;
+}
+
+.balancer-activity-2 {
+	background-color: #369;
+}

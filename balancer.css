@@ -1,0 +1,22 @@
+html {
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+input, button {
+	font-family: sans-serif;
+	font-size: 0.857rem;
+}
+
+button {
+	cursor: pointer;
+}
+
+#balancer {
+	position: relative;
+}
