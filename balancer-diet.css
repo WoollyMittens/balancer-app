@@ -35,12 +35,19 @@
 	flex: 0 1 auto;
 }
 
-.balancer-diet-closed .balancer-diet-time {
+.balancer-diet-time time,
+.balancer-diet-time date,
+.balancer-diet-time label {
+	flex: 0 1 auto;
+}
+
+.balancer-diet-closed .balancer-diet-time label {
 	display: none;
 }
 
-.balancer-diet-time label {
-	flex: 0 1 auto;
+.balancer-diet-open .balancer-diet-time time,
+.balancer-diet-open .balancer-diet-time date {
+	display: none;
 }
 
 .balancer-diet-time label span {
