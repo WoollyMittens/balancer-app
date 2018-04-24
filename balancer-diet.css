@@ -36,17 +36,16 @@
 }
 
 .balancer-diet-time time,
-.balancer-diet-time date,
 .balancer-diet-time label {
 	flex: 0 1 auto;
+	font-weight: bold;
 }
 
 .balancer-diet-closed .balancer-diet-time label {
 	display: none;
 }
 
-.balancer-diet-open .balancer-diet-time time,
-.balancer-diet-open .balancer-diet-time date {
+.balancer-diet-open .balancer-diet-time time {
 	display: none;
 }
 
@@ -94,7 +93,6 @@
 	display: none;
 }
 
-.balancer-diet-description b,
 .balancer-diet-description label,
 .balancer-diet-description p {
 	flex: 0 1 auto;
@@ -104,18 +102,16 @@
 	align-items: center;
 }
 
-.balancer-diet-description b {}
-
 .balancer-diet-description label {}
 
-.balancer-diet-description label:nth-child(4) {
+.balancer-diet-description label:nth-child(1) {
+	flex: 1 1 auto;
+}
+
+.balancer-diet-description label:nth-child(3) {
 	order: 10;
 	flex: 1 1 auto;
 	min-width: 90%;
-}
-
-.balancer-diet-description b + label {
-	flex: 1 1 auto;
 }
 
 .balancer-diet-description label span {
@@ -152,7 +148,9 @@
 	margin: 0 0.5rem;
 }
 
-.balancer-diet-history tr {}
+.balancer-diet-history tr {
+	vertical-align: top;
+}
 
 .balancer-diet-history th,
 .balancer-diet-history td {
@@ -162,6 +160,7 @@
 
 .balancer-diet-history th+td {
 	width: 100%;
+	white-space: normal;
 }
 
 .balancer-diet-history button {}

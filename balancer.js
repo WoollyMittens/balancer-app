@@ -24,11 +24,19 @@
 			this.diet.update();
 		};
 
+		this.restoreState = function() {
+			// TODO: restore the state of the app
+		};
+
+		this.saveState = function() {
+			// TODO: save the state of the app
+		};
+
 		this.getTimeline = function(date) {
 			// create a key to for the timeline object
 			var key = date.getFullYear() + "_" + (date.getMonth() + 1) + "_"	+ date.getDate() + "_" + date.getHours();
-			// retrieve the key or en empty dummy
-			return model.timeline[key] || {activity: 0, diet: [{label: "", value: 0}]};
+			// retrieve the key or an empty dummy {label: "Lorem ipsum", value: 100}, {label: "Dolor Sit Amet", value: 200}
+			return model.timeline[key] || {activity: 0, diet: []};
 		};
 
 		this.setTimeline = function(date, obj) {

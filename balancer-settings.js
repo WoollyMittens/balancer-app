@@ -27,6 +27,7 @@
 			this.gender.selectedIndex = model.gender;
 		};
 
+		// events
 		this.onValueChanged = function(property, evt) {
 			// retrieve the value from the field
 			var number = parseInt(evt.target.value);
@@ -34,8 +35,7 @@
 			// update the property
 			parent.update();
 		};
-
-		// events
+		
 		this.weight.addEventListener("change", this.onValueChanged.bind(this, "weight"));
 		this.age.addEventListener("change", this.onValueChanged.bind(this, "age"));
 		this.height.addEventListener("change", this.onValueChanged.bind(this, "height"));
