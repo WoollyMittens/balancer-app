@@ -26,17 +26,17 @@
 
 		this.restoreState = function() {
 			// load the previous state from localstorage
-			var state = localStorage.getItem("state");
+			var saved = localStorage.getItem("state");
 			// if it seems intact
-			if (state) {
+			if (saved) {
 				// parse the json
-				state = JSON.parse(state);
+				saved = JSON.parse(saved);
 				// transplant transcient values
-				state.root = model.root;
-				state.start = model.start;
-				state.end = model.end;
+				saved.root = model.root;
+				saved.start = new Date(model.start);
+				saved.end = new Date(model.end);
 				// replace the model with the imported state
-				model = state;
+				model = saved;
 			}
 			// redraw the app
 			this.update();

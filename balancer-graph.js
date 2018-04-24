@@ -29,33 +29,32 @@
 		};
 
 		this.planChart = function() {
+			// extend the dates to the end of the day
+			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
+			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
 			// from the start date to the current date
 			var chartItems = [];
-			var currentDate = new Date(model.start);
-			var currentBalance = 0;
-			var endDate = new Date(model.end);
+			var startBalance = 0;
 			var timelineEntry, energyUse, energyGain, hourMarker, dayMarker, hours;
 			// from the start to the end date
-			console.log('endDate', endDate);
-			while(currentDate < endDate) {
+			while(startDate < endDate) {
 				// retrieve the timeline unit
-				timelineEntry = parent.getTimeline(currentDate);
+				timelineEntry = parent.getTimeline(startDate);
 				// get the energy use for this hour
 				energyUse = this.baseRate() / 24 * (1 + timelineEntry.activity * 3); // (2)
 				// get the energy gain for this hours
 				energyGain = 0;
 				timelineEntry.diet.map(function (entry) {energyGain += entry.value; return energyGain});
 				// carry the energy level and add the hour's balance
-				currentBalance += energyGain - energyUse;
+				startBalance += energyGain - energyUse;
 				// add the chart entry
-				var hours = currentDate.getHours();
 				chartItems.push({
-					value: currentBalance,
+					value: startBalance,
 					activity: timelineEntry.activity,
-					date: new Date(currentDate)
+					date: new Date(startDate)
 				});
 				// increment the hours
-				currentDate.setHours(currentDate.getHours() + 1);
+				startDate.setHours(startDate.getHours() + 1);
 			}
 			// pass back the prepared chart items
 			return chartItems;
@@ -63,7 +62,7 @@
 
 		this.drawChart = function(chartItems) {
 			// limit the length of the chart to a managable size
-			var maxItems = Math.min(chartItems.length, 48);
+			var maxItems = Math.min(chartItems.length, 1000);
 			chartItems = chartItems.slice(chartItems.length - maxItems, chartItems.length);
 			// set the limits of the scale to the maximum value, but never less that the base metabolic rate
 			var graphLimit = 0;

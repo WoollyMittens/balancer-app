@@ -180,7 +180,7 @@
 		this.onCheckValues = function() {
 			// up date the hour value
 			var timeValue = parseInt(this.timeInput.value.split(":")[0]);
-			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date(model.end).setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
+			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date().setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
 			// disable the button, if any of the values is invalid
 			this.addMealButton.disabled = (
 				isNaN(parseInt(this.timeInput.value))
