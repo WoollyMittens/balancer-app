@@ -70,8 +70,8 @@
 			var graphLimit = 0;
 			chartItems.map(function(entry) { var entryValue = Math.abs(entry.value); graphLimit = (entryValue > graphLimit) ? entryValue : graphLimit; });
 			graphLimit = Math.max(graphLimit, this.baseRate());
-			this.scaleMax.innerHTML = Math.round(graphLimit) + 'kJ';
-			this.scaleMin.innerHTML = Math.round(-graphLimit) + 'kJ';
+			this.scaleMax.innerHTML = Math.round(graphLimit) + "kJ";
+			this.scaleMin.innerHTML = Math.round(-graphLimit) + "kJ";
 			// add N elements of the chart to the DOM
 			var graphHour, graphClass, graphLevel, graphStyle, graphBar, curDate = new Date();
 			for (var a = 0, b = chartItems.length; a < b; a += 1) {
@@ -84,7 +84,7 @@
 				graphBar = document.createElement("div");
 				graphBar.setAttribute("class", graphClass);
 				graphBar.innerHTML = "<span style=\"" + graphStyle + "\"></span>";
-				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: 'numeric', hour12: true}).replace(/\s/, "") + "</time>" : "";
+				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
 				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString('en-AU') + "</b>" : "";
 				graphBar.addEventListener('click', this.onCycleActivity.bind(this, chartItems[a].activity, chartItems[a].date));
 				this.scroll.appendChild(graphBar);

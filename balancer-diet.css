@@ -64,17 +64,19 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	list-style-type: none;
+	align-content: flex-start;
 }
 
 .balancer-diet-closed .balancer-diet-presets {
 	display: none;
 }
 
-.balancer-diet-presets span {
+.balancer-diet-presets li {
 	flex: 0 1 auto;
 }
 
-.balancer-diet-presets span button {
+.balancer-diet-presets li button {
 	display: block;
 	width: 4rem;
 	height: 4rem;
@@ -85,14 +87,13 @@
 	display: flex;
 	margin: 0 0.5rem;
 	flex: 0 1 auto;
-	flex-wrap: wrap;
-	min-height: 5rem;
 }
 
 .balancer-diet-closed .balancer-diet-description {
 	display: none;
 }
 
+.balancer-diet-description b,
 .balancer-diet-description label,
 .balancer-diet-description p {
 	flex: 0 1 auto;
@@ -104,14 +105,8 @@
 
 .balancer-diet-description label {}
 
-.balancer-diet-description label:nth-child(1) {
+.balancer-diet-description label:nth-child(2) {
 	flex: 1 1 auto;
-}
-
-.balancer-diet-description label:nth-child(3) {
-	order: 10;
-	flex: 1 1 auto;
-	min-width: 90%;
 }
 
 .balancer-diet-description label span {
@@ -123,10 +118,6 @@
 }
 .balancer-diet-description label input[type=number] {
 	width: 4em;
-}
-
-.balancer-diet-description label input[type=range] {
-	width: 100%;
 }
 
 .balancer-diet-description p {
@@ -164,19 +155,3 @@
 }
 
 .balancer-diet-history button {}
-
-.balancer-diet-presets-a {}
-
-.balancer-diet-presets-b {}
-
-.balancer-diet-presets-c {}
-
-.balancer-diet-presets-d {}
-
-.balancer-diet-presets-e {}
-
-.balancer-diet-presets-f {}
-
-.balancer-diet-presets-g {}
-
-.balancer-diet-presets-h {}

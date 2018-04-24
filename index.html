@@ -40,45 +40,12 @@
 					<label><span>Date </span><input name="date" type="date"/></label>
 				</div>
 				<div class="balancer-diet-description">
+					<b>10am</b>
 					<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
 					<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> kJ</label>
-					<label><input name="adjust" type="range" min="0.5" max="1.5" step="0.1" value="1"/></label>
 					<p><button>Add</button></p>
 				</div>
-				<div class="balancer-diet-presets">
-					<span><button class="balancer-diet-presets-a">Preset A</button></span>
-					<span><button class="balancer-diet-presets-b">Preset B</button></span>
-					<span><button class="balancer-diet-presets-c">Preset C</button></span>
-					<span><button class="balancer-diet-presets-d">Preset D</button></span>
-					<span><button class="balancer-diet-presets-e">Preset E</button></span>
-					<span><button class="balancer-diet-presets-f">Preset F</button></span>
-					<span><button class="balancer-diet-presets-g">Preset G</button></span>
-					<span><button class="balancer-diet-presets-h">Preset H</button></span>
-					<span><button class="balancer-diet-presets-a">Preset A</button></span>
-					<span><button class="balancer-diet-presets-b">Preset B</button></span>
-					<span><button class="balancer-diet-presets-c">Preset C</button></span>
-					<span><button class="balancer-diet-presets-d">Preset D</button></span>
-					<span><button class="balancer-diet-presets-e">Preset E</button></span>
-					<span><button class="balancer-diet-presets-f">Preset F</button></span>
-					<span><button class="balancer-diet-presets-g">Preset G</button></span>
-					<span><button class="balancer-diet-presets-h">Preset H</button></span>
-					<span><button class="balancer-diet-presets-a">Preset A</button></span>
-					<span><button class="balancer-diet-presets-b">Preset B</button></span>
-					<span><button class="balancer-diet-presets-c">Preset C</button></span>
-					<span><button class="balancer-diet-presets-d">Preset D</button></span>
-					<span><button class="balancer-diet-presets-e">Preset E</button></span>
-					<span><button class="balancer-diet-presets-f">Preset F</button></span>
-					<span><button class="balancer-diet-presets-g">Preset G</button></span>
-					<span><button class="balancer-diet-presets-h">Preset H</button></span>
-					<span><button class="balancer-diet-presets-a">Preset A</button></span>
-					<span><button class="balancer-diet-presets-b">Preset B</button></span>
-					<span><button class="balancer-diet-presets-c">Preset C</button></span>
-					<span><button class="balancer-diet-presets-d">Preset D</button></span>
-					<span><button class="balancer-diet-presets-e">Preset E</button></span>
-					<span><button class="balancer-diet-presets-f">Preset F</button></span>
-					<span><button class="balancer-diet-presets-g">Preset G</button></span>
-					<span><button class="balancer-diet-presets-h">Preset H</button></span>
-				</div>
+				<ul class="balancer-diet-presets"></ul>
 				<div class="balancer-diet-history">
 					<table></table>
 				</div>
@@ -113,7 +80,8 @@
 				weight: 82, // (kg)
 				age: 42, // (years)
 				weightloss: 0, // desired weightloss (kg)
-				timeline: {},
+				timeline: {}, // collection of activity and diet events
+				presets: [{icon: "burger_small", description: "Big Mac", value: 2100}, {icon: "burger_large", description: "Whopper", value: 2800}], // collection of preset diet items
 				scale: 0, // graph scale day/week/month/year
 				start: new Date(new Date().setHours(0)) // reset to start of day
 			});
