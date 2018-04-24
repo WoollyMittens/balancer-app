@@ -25,11 +25,25 @@
 		};
 
 		this.restoreState = function() {
-			// TODO: restore the state of the app
+			// load the previous state from localstorage
+			var state = localStorage.getItem("state");
+			// if it seems intact
+			if (state) {
+				// parse the json
+				state = JSON.parse(state);
+				// transplant transcient values
+				state.root = model.root;
+				state.start = model.start;
+				// replace the model with the imported state
+				model = state;
+			}
+			// redraw the app
+			this.update();
 		};
 
 		this.saveState = function() {
-			// TODO: save the state of the app
+			// save the state of the app as json
+			localStorage.setItem("state", JSON.stringify(model));
 		};
 
 		this.getTimeline = function(date) {
@@ -46,6 +60,8 @@
 			model.timeline[key] = Object.assign(this.getTimeline(date), obj);
 			// update the app, since the model has changed
 			this.update();
+			// save the updated model
+			this.saveState();
 		};
 
 		this.resetTimeline = function(date) {
@@ -53,7 +69,8 @@
 		};
 
 		// events
-		this.update();
+		this.restoreState();
+
 	};
 
 })();
