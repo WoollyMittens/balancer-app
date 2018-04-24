@@ -84,7 +84,8 @@
 				timeline: {}, // collection of activity and diet events
 				presets: [{icon: "burger_small", description: "Big Mac", value: 2100}, {icon: "burger_large", description: "Whopper", value: 2800}], // collection of preset diet items
 				scale: 0, // graph scale day/week/month/year
-				start: new Date(new Date().setHours(0)) // reset to start of day
+				start: new Date(new Date().setHours(0)), // start of day
+				end: new Date(new Date().setHours(23)) // end of day
 			});
 		</script>
 	</body>

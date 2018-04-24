@@ -33,11 +33,10 @@
 			var chartItems = [];
 			var currentDate = new Date(model.start);
 			var currentBalance = 0;
-			var endDate = new Date();
+			var endDate = new Date(model.end);
 			var timelineEntry, energyUse, energyGain, hourMarker, dayMarker, hours;
-			// extend the end date to the end of the day
-			endDate.setHours(23);
 			// from the start to the end date
+			console.log('endDate', endDate);
 			while(currentDate < endDate) {
 				// retrieve the timeline unit
 				timelineEntry = parent.getTimeline(currentDate);

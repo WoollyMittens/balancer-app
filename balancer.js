@@ -34,6 +34,7 @@
 				// transplant transcient values
 				state.root = model.root;
 				state.start = model.start;
+				state.end = model.end;
 				// replace the model with the imported state
 				model = state;
 			}

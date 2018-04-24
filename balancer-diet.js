@@ -48,8 +48,8 @@
 		};
 
 		this.redraw = function() {
-			// set the date and time labels TODO: maybe do this every minute asynchronously
-			this.updateTime(new Date());
+			// set the date and time labels
+			this.updateTime();
 			// fill the history with meals
 			this.drawHistory(
 				this.planHistory()
@@ -60,7 +60,11 @@
 			this.onCheckValues();
 		};
 
-		this.updateTime = function(date) {
+		this.updateTime = function() {
+			// wrangle the date and time into the limits
+			var date = new Date(model.end);
+			date = new Date(date.setHours(new Date().getHours()));
+			date = new Date(date.setMinutes(new Date().getMinutes()));
 			// set the label values
 			this.timeLabel.innerHTML = date.toLocaleTimeString([], {hour: "numeric", minute: "numeric", hour12: true}).replace(/\s/g, "");
 			this.dateLabel.innerHTML = date.toLocaleDateString();
@@ -74,7 +78,7 @@
 			var historyItems = [];
 			var currentMeals = [];
 			var currentDate = new Date(model.start);
-			var endDate = new Date();
+			var endDate = new Date(model.end);
 			// extend the end date to the end of the day
 			endDate.setHours(23);
 			// from the start to the end date
@@ -176,7 +180,7 @@
 		this.onCheckValues = function() {
 			// up date the hour value
 			var timeValue = parseInt(this.timeInput.value.split(":")[0]);
-			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date().setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
+			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date(model.end).setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
 			// disable the button, if any of the values is invalid
 			this.addMealButton.disabled = (
 				isNaN(parseInt(this.timeInput.value))
