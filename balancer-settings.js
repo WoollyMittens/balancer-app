@@ -35,11 +35,13 @@
 			// update the property
 			parent.update();
 		};
-		
+
 		this.weight.addEventListener("change", this.onValueChanged.bind(this, "weight"));
 		this.age.addEventListener("change", this.onValueChanged.bind(this, "age"));
 		this.height.addEventListener("change", this.onValueChanged.bind(this, "height"));
 		this.gender.addEventListener("change", this.onValueChanged.bind(this, "gender"));
+
+		// TODO: graph length setting: 1 day, 7 days, Full history
 
 	};
 

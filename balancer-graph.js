@@ -18,6 +18,7 @@
 		this.scroll = this.element.querySelector(".balancer-graph-scroll");
 		this.scaleMax = this.element.querySelector(".balancer-scale-max");
 		this.scaleMin = this.element.querySelector(".balancer-scale-min");
+		this.projection = this.element.querySelector(".balancer-projection");
 		this.graphBars = [];
 
 		// methods
@@ -32,6 +33,7 @@
 			// extend the dates to the end of the day
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
 			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
+			var timeSpan = (endDate - startDate) / (1000 * 60 * 60 * 24);
 			// from the start date to the current date
 			var chartItems = [];
 			var startBalance = 0;
@@ -56,6 +58,9 @@
 				// increment the hours
 				startDate.setHours(startDate.getHours() + 1);
 			}
+			// set the projected weight loss/gain based on the daily balance
+			console.log('timeSpan', timeSpan, startBalance/model.density);
+			this.projection.innerHTML = (startBalance / model.density / timeSpan * 7).toFixed(2) + " kg/wk";
 			// pass back the prepared chart items
 			return chartItems;
 		};

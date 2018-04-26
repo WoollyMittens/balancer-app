@@ -23,6 +23,11 @@
 	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
 }
 
+.balancer-log-show-meal .balancer-log-add-meal,
+.balancer-log-show-activity .balancer-log-add-activity {
+	background-color: #9CF;
+}
+
 .balancer-log-add-meal {
 	transform: translate(-3.5rem, -50%);
 	left: 50%;
