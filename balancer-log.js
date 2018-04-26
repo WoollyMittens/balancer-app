@@ -95,6 +95,14 @@
 						date: new Date(startDate)
 					});
 				});
+				// TODO: add history items with an activity as well
+				if (currentMeals.activity > 0) {
+					historyItems.push({
+						label: "Activity level",
+						activity: currentMeals.activity,
+						date: new Date(startDate)
+					});
+				}
 				// increment the hours
 				startDate.setHours(startDate.getHours() + 1);
 			}
@@ -117,18 +125,19 @@
 				historyLabel = document.createElement("td");
 				historyLabel.innerHTML = historyItems[a].label;
 				historyValue = document.createElement("td");
-				historyValue.innerHTML = historyItems[a].value + " kJ";
+				historyValue.innerHTML = (historyItems[a].value) ? historyItems[a].value + " kJ" : "";
 				historyControls = document.createElement("td");
 				historyButton = document.createElement("button");
 				historyButton.innerHTML = "Remove";
-				historyButton.addEventListener('click', this.onRemoveMeal.bind(this, historyItems[a]));
+				historyButton.onclick = (historyItems[a].value) ? this.onRemoveMeal.bind(this, historyItems[a]) : this.onRemoveActivity.bind(this, historyItems[a]);
+				//historyButton.addEventListener('click', this.onRemoveMeal.bind(this, historyItems[a]));
 				historyRow.appendChild(historyDate);
 				historyRow.appendChild(historyLabel);
 				historyRow.appendChild(historyValue);
 				historyRow.appendChild(historyControls);
 				historyControls.appendChild(historyButton);
 				this.historyTable.appendChild(historyRow);
-				// TODO: show activity in logs
+				// TODO: show activity items, but the button resets the activity level insteadj
 				// remember the list item
 				this.historyRows.push(historyRow);
 			}
@@ -191,6 +200,13 @@
 			// save the updated entry
 			timelineEntry.diet = newDiet;
 			parent.setTimeline(meal.date, timelineEntry);
+		};
+
+		this.onRemoveActivity = function(entry, evt) {
+			// cancel the click
+			evt.preventDefault();
+			// update the activity level for this hour
+			parent.setTimeline(entry.date, {activity: 0});
 		};
 
 		this.onCheckValues = function() {
