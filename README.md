@@ -1,6 +1,6 @@
-# Balancer App
+# Counter Balance
 
-A work in progress concept app for managing balancing diet and exercise.
+A work in progress concept app for counting calories and balancing exercise.
 
 ## License
 

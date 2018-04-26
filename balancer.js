@@ -14,14 +14,14 @@
 		// properties
 		this.settings = new this.Settings(this, model);
 		this.graph = new this.Graph(this, model);
-		this.diet = new this.Diet(this, model);
+		this.log = new this.Log(this, model);
 
 		// methods
 		this.update = function() {
 			// update each sub-class
 			this.settings.update();
 			this.graph.update();
-			this.diet.update();
+			this.log.update();
 		};
 
 		this.restoreState = function() {
@@ -34,6 +34,7 @@
 				// transplant transcient values
 				saved.root = model.root;
 				saved.start = new Date(model.start);
+				saved.focus = null;
 				saved.end = new Date(model.end);
 				// replace the model with the imported state
 				model = saved;

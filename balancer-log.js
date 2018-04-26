@@ -9,22 +9,25 @@
 	window.Balancer = window.Balancer || function() {};
 
 	// add this sub-class to the parent class
-	Balancer.prototype.Diet = function(parent, model) {
+	Balancer.prototype.Log = function(parent, model) {
 
 		// properties
-		this.element = model.root.querySelector(".balancer-diet");
-		this.opener = this.element.querySelector(".balancer-diet-add");
-		this.timeInput = this.element.querySelector(".balancer-diet-time input[name=time]");
-		this.dateInput = this.element.querySelector(".balancer-diet-time input[name=date]");
-		this.timeLabel = this.element.querySelector(".balancer-diet-time time:nth-child(1)");
-		this.dateLabel = this.element.querySelector(".balancer-diet-time time:nth-child(2)");
-		this.historyTable = this.element.querySelector(".balancer-diet-history table");
+		this.element = model.root.querySelector(".balancer-log");
+		this.logMealButton = this.element.querySelector(".balancer-log-add-meal");
+		this.logActivityButton = this.element.querySelector(".balancer-log-add-activity");
+		this.timeInput = this.element.querySelector(".balancer-log-time input[name=time]");
+		this.dateInput = this.element.querySelector(".balancer-log-time input[name=date]");
+		this.timeLabel = this.element.querySelector(".balancer-log-time time:nth-child(1)");
+		this.dateLabel = this.element.querySelector(".balancer-log-time time:nth-child(2)");
+		this.historyTable = this.element.querySelector(".balancer-log-history table");
 		this.historyRows = [];
-		this.hourValue = this.element.querySelector(".balancer-diet-description b");
-		this.labelInput = this.element.querySelector(".balancer-diet-description input[name=label]");
-		this.valueInput = this.element.querySelector(".balancer-diet-description input[name=value]");
-		this.addMealButton = this.element.querySelector(".balancer-diet-description button");
-		this.presetList = this.element.querySelector(".balancer-diet-presets");
+		this.hourValue = this.element.querySelector(".balancer-log-meal b");
+		this.labelInput = this.element.querySelector(".balancer-log-meal input[name=label]");
+		this.valueInput = this.element.querySelector(".balancer-log-meal input[name=value]");
+		this.addMealButton = this.element.querySelector(".balancer-log-meal button");
+		this.activityInput = this.element.querySelector(".balancer-log-activity input[name=activity]");
+		this.addActivityButton = this.element.querySelector(".balancer-log-activity button");
+		this.presetList = this.element.querySelector(".balancer-log-presets");
 		this.presetItems = [];
 
 		// methods
@@ -61,41 +64,39 @@
 		};
 
 		this.updateTime = function() {
-			// wrangle the date and time into the limits
-			var date = new Date(model.end);
-			date = new Date(date.setHours(new Date().getHours()));
-			date = new Date(date.setMinutes(new Date().getMinutes()));
+			// update the time to the current time or use the focussed time
+			var date = model.focus || new Date();
 			// set the label values
 			this.timeLabel.innerHTML = date.toLocaleTimeString([], {hour: "numeric", minute: "numeric", hour12: true}).replace(/\s/g, "");
 			this.dateLabel.innerHTML = date.toLocaleDateString();
 			// set the input elements
+			var year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate();
 			this.timeInput.value = date.toLocaleTimeString([], {hour: "numeric", minute: "numeric", hour12: false});
-			this.dateInput.value = date.toISOString().split('T')[0];
+			this.dateInput.value = year + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2);
 		};
 
 		this.planHistory = function() {
 			// from the start date to the current date
 			var historyItems = [];
 			var currentMeals = [];
-			var currentDate = new Date(model.start);
-			var endDate = new Date(model.end);
-			// extend the end date to the end of the day
-			endDate.setHours(23);
+			// extend the dates to the end of the day
+			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
+			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
 			// from the start to the end date
-			while(currentDate < endDate) {
+			while(startDate < endDate) {
 				// get the current day's diet entries
-				currentMeals = parent.getTimeline(currentDate);
+				currentMeals = parent.getTimeline(startDate);
 				console.log("currentMeals", currentMeals);
 				// add a list entry for each diet entry
 				currentMeals.diet.map(function(entry) {
 					historyItems.push({
 						label: entry.label,
 						value: entry.value,
-						date: new Date(currentDate)
+						date: new Date(startDate)
 					});
 				});
 				// increment the hours
-				currentDate.setHours(currentDate.getHours() + 1);
+				startDate.setHours(startDate.getHours() + 1);
 			}
 			// pass back the prepared hisory items
 			console.log("historyItems", historyItems);
@@ -104,7 +105,7 @@
 
 		this.drawHistory = function(historyItems) {
 			// limit the length of the history to a managable size
-			var maxItems = Math.min(historyItems.length, 48);
+			var maxItems = Math.min(historyItems.length, 1000);
 			historyItems = historyItems.slice(historyItems.length - maxItems, historyItems.length);
 			// add N elements of the chart to the DOM
 			var historyRow, historyDate, historyLabel, historyValue, historyControls, historyButton;
@@ -127,6 +128,7 @@
 				historyRow.appendChild(historyControls);
 				historyControls.appendChild(historyButton);
 				this.historyTable.appendChild(historyRow);
+				// TODO: show activity in logs
 				// remember the list item
 				this.historyRows.push(historyRow);
 			}
@@ -149,12 +151,26 @@
 			}
 		};
 
+		this.getTimeStamp = function() {
+			// figure out the time stamp
+			var inputTime = this.timeInput.value.split(":");
+			var inputDate = this.dateInput.value.split("-");
+			var year = parseInt(inputDate[0]);
+			var month = parseInt(inputDate[1]) - 1;
+			var day = parseInt(inputDate[2]);
+			var hours = inputTime[0];
+			// return it as a date object
+			return new Date(year, month, day, hours);
+		}
+
 		// events
-		this.onOpened = function(evt) {
+		this.onLogOpened = function(mode, evt) {
 			// cancel the click
 			if (evt) evt.preventDefault();
 			// toggle the panel state
-			this.element.className = this.element.className.replace(/-open|-closed/, /-open/.test(this.element.className) ? "-closed" : "-open");
+			var allModes = new RegExp("-show-history|-show-meal|-show-activity");
+			var currentMode = new RegExp("-show-" + mode);
+			this.element.className = this.element.className.replace(allModes, currentMode.test(this.element.className) ? "-show-history" : "-show-" + mode);
 		};
 
 		this.onRemoveMeal = function(meal, evt) {
@@ -178,9 +194,11 @@
 		};
 
 		this.onCheckValues = function() {
-			// up date the hour value
+			// update the hour value
 			var timeValue = parseInt(this.timeInput.value.split(":")[0]);
 			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date().setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
+			// update the activity level
+			this.activityInput.value = parent.getTimeline(this.getTimeStamp()).activity;
 			// disable the button, if any of the values is invalid
 			this.addMealButton.disabled = (
 				isNaN(parseInt(this.timeInput.value))
@@ -190,17 +208,16 @@
 			);
 		};
 
+		this.onAddActivity = function(evt) {
+			// set the activity level for this time
+			parent.setTimeline(this.getTimeStamp(), {activity: evt.target.value});
+		};
+
 		this.onAddMeal = function(evt) {
 			// cancel the click
 			evt.preventDefault();
 			// figure out the time stamp
-			var inputTime = this.timeInput.value.split(":");
-			var inputDate = this.dateInput.value.split("-");
-			var year = parseInt(inputDate[0]);
-			var month = parseInt(inputDate[1]) - 1;
-			var day = parseInt(inputDate[2]);
-			var hours = inputTime[0];
-			var date = new Date(year, month, day, hours);
+			var date = this.getTimeStamp();
 			// retrieve the timeline entry
 			var timelineEntry = parent.getTimeline(date);
 			// add this meal at the given time
@@ -211,7 +228,7 @@
 			// store the timeline entry
 			parent.setTimeline(date, timelineEntry);
 			// return to the history list
-			this.onOpened();
+			this.onLogOpened("history");
 		};
 
 		this.onFillPreset = function(preset, evt) {
@@ -224,8 +241,30 @@
 			this.onCheckValues();
 		};
 
+		this.onFocusTime = function(evt) {
+			// set the time input as the focussed time
+			var time = this.timeInput.value.split(":");
+			var date = this.dateInput.value.split("-");
+			var years = parseInt(date[0]);
+			var months = parseInt(date[1]) - 1;
+			var days = parseInt(date[2]);
+			var hours = parseInt(time[0]);
+			var minutes = parseInt(time[1]);
+			var focusDate = new Date(years, months, days, hours, minutes);
+			model.focus = (isNaN(focusDate.getTime())) ? null : focusDate;
+			// reset the fields if the input gets mangled
+			if (!model.focus) {
+				var resetDate = new Date();
+				this.timeInput.value = ("0" + resetDate.getHours()).slice(-2) + ":" + ("0" + resetDate.getMinutes()).slice(-2);
+				this.dateInput.value = resetDate.getFullYear() + "-" + ("0" + (resetDate.getMonth() + 1)).slice(-2) + "-" + ("0" + resetDate.getDay()).slice(-2);
+			}
+		};
+
 		this.element.addEventListener('submit', function (evt) { evt.preventDefault(); });
-		this.opener.addEventListener('click', this.onOpened.bind(this));
+		this.logMealButton.addEventListener('click', this.onLogOpened.bind(this, "meal"));
+		this.logActivityButton.addEventListener('click', this.onLogOpened.bind(this, "activity"));
+		this.timeInput.addEventListener('change', this.onFocusTime.bind(this));
+		this.dateInput.addEventListener('change', this.onFocusTime.bind(this));
 		this.timeInput.addEventListener('change', this.onCheckValues.bind(this));
 		this.dateInput.addEventListener('change', this.onCheckValues.bind(this));
 		this.labelInput.addEventListener('change', this.onCheckValues.bind(this));
@@ -233,6 +272,7 @@
 		this.valueInput.addEventListener('change', this.onCheckValues.bind(this));
 		this.valueInput.addEventListener('keypress', this.onCheckValues.bind(this));
 		this.addMealButton.addEventListener('click', this.onAddMeal.bind(this));
+		this.activityInput.addEventListener('change', this.onAddActivity.bind(this));
 
 	};
 

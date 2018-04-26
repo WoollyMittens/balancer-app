@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="./balancer.css" />
 	<link rel="stylesheet" href="./balancer-graph.css" />
-	<link rel="stylesheet" href="./balancer-diet.css" />
+	<link rel="stylesheet" href="./balancer-log.css" />
 	<link rel="stylesheet" href="./balancer-settings.css" />
 
 	<body>
@@ -31,22 +31,26 @@
 				</figcaption>
 			</figure>
 
-			<form class="balancer-diet balancer-diet-closed">
-				<button class="balancer-diet-add">Add a meal</button>
-				<div class="balancer-diet-time">
-					<time>10:05am</time>
-					<time>3 Jan 2018</time>
+			<form class="balancer-log balancer-log-show-history">
+				<button class="balancer-log-add-meal">Food</button>
+				<button class="balancer-log-add-activity">Sport</button>
+				<div class="balancer-log-time">
+					<time></time>
+					<time></time>
 					<label><span>Time </span><input name="time" type="time"/></label>
 					<label><span>Date </span><input name="date" type="date"/></label>
 				</div>
-				<div class="balancer-diet-description">
+				<div class="balancer-log-activity">
+					<label><span>Sedentary</span><span>Moderate</span><span>Intense</span><input name="activity" type="range" value="0" min="0" max="2" step="1"/></label>
+				</div>
+				<div class="balancer-log-meal">
 					<b>10am</b>
 					<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
 					<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> kJ</label>
 					<p><button>Add</button></p>
 				</div>
-				<ul class="balancer-diet-presets"></ul>
-				<div class="balancer-diet-history">
+				<ul class="balancer-log-presets"></ul>
+				<div class="balancer-log-history">
 					<table></table>
 				</div>
 			</form>
@@ -69,7 +73,7 @@
 
 		<script src="./balancer.js"></script>
 		<script src="./balancer-graph.js"></script>
-		<script src="./balancer-diet.js"></script>
+		<script src="./balancer-log.js"></script>
 		<script src="./balancer-settings.js"></script>
 		<script>
 			// start a new instance of the class
@@ -85,6 +89,7 @@
 				presets: [{icon: "burger-small", description: "Big Mac", value: 2100}, {icon: "burger-large", description: "Whopper", value: 2800}], // collection of preset diet items
 				scale: 0, // graph scale day/week/month/year
 				start: new Date(), // start day
+				focus: null, // focussed day
 				end: new Date() // end day
 			});
 		</script>
