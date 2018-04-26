@@ -97,8 +97,14 @@
 				});
 				// TODO: add history items with an activity as well
 				if (currentMeals.activity > 0) {
+					var activityName;
+					switch(currentMeals.activity){
+						case 1: activityName = "Moderate activity"; break;
+						case 2: activityName = "Strenuous activity"; break;
+						default : activityName = "Sedentary activity";
+					}
 					historyItems.push({
-						label: "Activity level",
+						label: activityName,
 						activity: currentMeals.activity,
 						date: new Date(startDate)
 					});
