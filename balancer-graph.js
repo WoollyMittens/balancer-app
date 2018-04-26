@@ -59,7 +59,6 @@
 				startDate.setHours(startDate.getHours() + 1);
 			}
 			// set the projected weight loss/gain based on the daily balance
-			console.log('timeSpan', timeSpan, startBalance/model.density);
 			this.projection.innerHTML = (startBalance / model.density / timeSpan * 7).toFixed(2) + " kg/wk";
 			// pass back the prepared chart items
 			return chartItems;

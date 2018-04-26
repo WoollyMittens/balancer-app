@@ -86,7 +86,6 @@
 			while(startDate < endDate) {
 				// get the current day's diet entries
 				currentMeals = parent.getTimeline(startDate);
-				console.log("currentMeals", currentMeals);
 				// add a list entry for each diet entry
 				currentMeals.diet.map(function(entry) {
 					historyItems.push({
@@ -113,7 +112,6 @@
 				startDate.setHours(startDate.getHours() + 1);
 			}
 			// pass back the prepared hisory items
-			console.log("historyItems", historyItems);
 			return historyItems;
 		};
 
@@ -136,21 +134,19 @@
 				historyButton = document.createElement("button");
 				historyButton.innerHTML = "Remove";
 				historyButton.onclick = (historyItems[a].value) ? this.onRemoveMeal.bind(this, historyItems[a]) : this.onRemoveActivity.bind(this, historyItems[a]);
-				//historyButton.addEventListener('click', this.onRemoveMeal.bind(this, historyItems[a]));
 				historyRow.appendChild(historyDate);
 				historyRow.appendChild(historyLabel);
 				historyRow.appendChild(historyValue);
 				historyRow.appendChild(historyControls);
 				historyControls.appendChild(historyButton);
 				this.historyTable.appendChild(historyRow);
-				// TODO: show activity items, but the button resets the activity level insteadj
 				// remember the list item
 				this.historyRows.push(historyRow);
 			}
 		};
 
 		this.drawPresets = function() {
-			// add the presets to the list <li><button class="balancer-diet-presets-a">Preset A</button></li>
+			// add the presets to the list
 			var presetItem, presetButton;
 			for (var a = 0, b = model.presets.length; a < b; a += 1) {
 				// construct the preset item
@@ -232,7 +228,7 @@
 
 		this.onAddActivity = function(evt) {
 			// set the activity level for this time
-			parent.setTimeline(this.getTimeStamp(), {activity: evt.target.value});
+			parent.setTimeline(this.getTimeStamp(), {activity: parseInt(evt.target.value)});
 		};
 
 		this.onAddMeal = function(evt) {
