@@ -51,8 +51,8 @@
 		this.getTimeline = function(date) {
 			// create a key to for the timeline object
 			var key = date.getFullYear() + "_" + (date.getMonth() + 1) + "_"	+ date.getDate() + "_" + date.getHours();
-			// retrieve the key or an empty dummy {label: "Lorem ipsum", value: 100}, {label: "Dolor Sit Amet", value: 200}
-			return model.timeline[key] || {activity: 0, diet: []};
+			// retrieve the key or an empty dummy
+			return model.timeline[key] || {activity: 1, diet: []};
 		};
 
 		this.setTimeline = function(date, obj) {

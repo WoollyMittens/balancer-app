@@ -43,7 +43,7 @@
 				// retrieve the timeline unit
 				timelineEntry = parent.getTimeline(startDate);
 				// get the energy use for this hour
-				energyUse = this.baseRate() / 24 * (1 + timelineEntry.activity * 3); // (2)
+				energyUse = this.baseRate() / 24 * timelineEntry.activity; // (2)
 				// get the energy gain for this hours
 				energyGain = 0;
 				timelineEntry.diet.map(function (entry) {energyGain += entry.value; return energyGain});
@@ -53,7 +53,8 @@
 				chartItems.push({
 					value: startBalance,
 					activity: timelineEntry.activity,
-					date: new Date(startDate)
+					date: new Date(startDate),
+					use: energyUse
 				});
 				// increment the hours
 				startDate.setHours(startDate.getHours() + 1);
@@ -75,17 +76,18 @@
 			this.scaleMax.innerHTML = Math.round(graphLimit) + "kJ";
 			this.scaleMin.innerHTML = Math.round(-graphLimit) + "kJ";
 			// add N elements of the chart to the DOM
-			var graphHour, graphClass, graphLevel, graphStyle, graphBar, curDate = new Date();
+			var graphHour, graphClass, graphLevel, graphColour, graphSize, graphBar, curDate = new Date();
 			for (var a = 0, b = chartItems.length; a < b; a += 1) {
 				// construct the bar chart
 				graphHour = chartItems[a].date.getHours();
-				graphClass = "balancer-graph-bar balancer-activity-" + chartItems[a].activity;
+				graphClass = "balancer-graph-bar";
 				graphClass += (chartItems[a].date > curDate) ? " balancer-graph-ahead" : "";
 				graphLevel = Math.min(Math.max(50 - Math.abs(50 * chartItems[a].value / graphLimit), 0), 50);
-				graphStyle = (chartItems[a].value < 0) ? "top:50%;bottom:" + graphLevel + "%;" : "top:" + graphLevel + "%;bottom:50%;";
+				graphSize = (chartItems[a].value < 0) ? "top:50%;bottom:" + graphLevel + "%;" : "top:" + graphLevel + "%;bottom:50%;";
 				graphBar = document.createElement("div");
+				graphBar.style.backgroundColor = "rgba(51,102,153," + (chartItems[a].activity / (model.maxActivity - model.minActivity)) + ")";
 				graphBar.setAttribute("class", graphClass);
-				graphBar.innerHTML = "<span style=\"" + graphStyle + "\"></span>";
+				graphBar.innerHTML = "<span style=\"" + graphSize + "\" title=\"" + chartItems[a].use + " kJ\"></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
 				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString('en-AU') + "</b>" : "";
 				graphBar.addEventListener('click', this.onCycleActivity.bind(this, chartItems[a].activity, chartItems[a].date));

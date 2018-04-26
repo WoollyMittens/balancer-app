@@ -71,7 +71,8 @@
 
 .balancer-log-time label input[type=date] {}
 
-.balancer-log-presets {
+.balancer-log-meals,
+.balancer-log-activities {
 	padding: 0 0.5rem;
 	flex: 1 1 auto;
 	overflow-y: auto;
@@ -82,16 +83,23 @@
 	align-content: flex-start;
 }
 
-.balancer-log-show-activity .balancer-log-presets,
-.balancer-log-show-history .balancer-log-presets {
+.balancer-log-show-activity .balancer-log-meals,
+.balancer-log-show-history .balancer-log-meals {
 	display: none;
 }
 
-.balancer-log-presets li {
+.balancer-log-show-meal .balancer-log-activities,
+.balancer-log-show-history .balancer-log-activities {
+	display: none;
+}
+
+.balancer-log-meals li,
+.balancer-log-activities li {
 	flex: 0 1 auto;
 }
 
-.balancer-log-presets li button {
+.balancer-log-meals li button,
+.balancer-log-activities li button {
 	display: block;
 	width: 4rem;
 	height: 4rem;

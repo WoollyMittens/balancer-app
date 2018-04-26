@@ -20,15 +20,15 @@
 		this.timeLabel = this.element.querySelector(".balancer-log-time time:nth-child(1)");
 		this.dateLabel = this.element.querySelector(".balancer-log-time time:nth-child(2)");
 		this.historyTable = this.element.querySelector(".balancer-log-history table");
-		this.historyRows = [];
 		this.hourValue = this.element.querySelector(".balancer-log-meal b");
 		this.labelInput = this.element.querySelector(".balancer-log-meal input[name=label]");
 		this.valueInput = this.element.querySelector(".balancer-log-meal input[name=value]");
 		this.addMealButton = this.element.querySelector(".balancer-log-meal button");
+		// TODO: set the min and max interval programatically
 		this.activityInput = this.element.querySelector(".balancer-log-activity input[name=activity]");
 		this.addActivityButton = this.element.querySelector(".balancer-log-activity button");
-		this.presetList = this.element.querySelector(".balancer-log-presets");
-		this.presetItems = [];
+		this.presetMeals = this.element.querySelector(".balancer-log-meals");
+		this.presetActivities = this.element.querySelector(".balancer-log-activities");
 
 		// methods
 		this.update = function() {
@@ -38,16 +38,12 @@
 		};
 
 		this.reset = function() {
-			// clear the presets list
-			for (var a = 0, b = this.presetItems.length; a < b; a += 1) {
-				this.presetItems[a].parentNode.removeChild(this.presetItems[a]);
-			}
-			this.presetItems = [];
+			// clear the activities presets
+			this.presetActivities.innerHTML = "";
+			// clear the meals presets
+			this.presetMeals.innerHTML = "";
 			// clear the history list
-			for (a = 0, b = this.historyRows.length; a < b; a += 1) {
-				this.historyRows[a].parentNode.removeChild(this.historyRows[a]);
-			}
-			this.historyRows = [];
+			this.historyTable.innerHTML = "";
 		};
 
 		this.redraw = function() {
@@ -58,7 +54,8 @@
 				this.planHistory()
 			);
 			// fill the presets with options
-			this.drawPresets();
+			this.drawPresetMeals();
+			this.drawPresetActivities();
 			// check the input fields
 			this.onCheckValues();
 		};
@@ -94,9 +91,10 @@
 						date: new Date(startDate)
 					});
 				});
-				// TODO: add history items with an activity as well
-				if (currentMeals.activity > 0) {
+				// add history items with an sufficiant activity as well
+				if (currentMeals.activity > 1) {
 					var activityName;
+					// TODO: this is now a float pick intervals differently
 					switch(currentMeals.activity){
 						case 1: activityName = "Moderate activity"; break;
 						case 2: activityName = "Strenuous activity"; break;
@@ -140,25 +138,36 @@
 				historyRow.appendChild(historyControls);
 				historyControls.appendChild(historyButton);
 				this.historyTable.appendChild(historyRow);
-				// remember the list item
-				this.historyRows.push(historyRow);
 			}
 		};
 
-		this.drawPresets = function() {
+		this.drawPresetMeals = function() {
 			// add the presets to the list
 			var presetItem, presetButton;
-			for (var a = 0, b = model.presets.length; a < b; a += 1) {
+			for (var a = 0, b = model.meals.length; a < b; a += 1) {
 				// construct the preset item
 				presetItem = document.createElement("li");
 				presetButton = document.createElement("button");
-				presetButton.innerHTML = model.presets[a].description;
-				presetButton.className = "balancer-diet-preset" + model.presets[a].icon;
-				presetButton.addEventListener("click", this.onFillPreset.bind(this, model.presets[a]));
+				presetButton.innerHTML = model.meals[a].description;
+				presetButton.className = "balancer-preset-" + model.meals[a].icon;
+				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.meals[a]));
 				presetItem.appendChild(presetButton);
-				this.presetList.appendChild(presetItem);
-				// remember the list item
-				this.presetItems.push(presetItem);
+				this.presetMeals.appendChild(presetItem);
+			}
+		};
+
+		this.drawPresetActivities = function() {
+			// add the presets to the list
+			var presetItem, presetButton;
+			for (var a = 0, b = model.activities.length; a < b; a += 1) {
+				// construct the preset item
+				presetItem = document.createElement("li");
+				presetButton = document.createElement("button");
+				presetButton.innerHTML = model.activities[a].description;
+				presetButton.className = "balancer-preset-" + model.activities[a].icon;
+				presetButton.addEventListener("click", this.onFillPresetActivity.bind(this, model.activities[a]));
+				presetItem.appendChild(presetButton);
+				this.presetActivities.appendChild(presetItem);
 			}
 		};
 
@@ -216,6 +225,8 @@
 			var timeValue = parseInt(this.timeInput.value.split(":")[0]);
 			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date().setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
 			// update the activity level
+			this.activityInput.min = model.minActivity;
+			this.activityInput.max = model.maxActivity;
 			this.activityInput.value = parent.getTimeline(this.getTimeStamp()).activity;
 			// disable the button, if any of the values is invalid
 			this.addMealButton.disabled = (
@@ -228,7 +239,16 @@
 
 		this.onAddActivity = function(evt) {
 			// set the activity level for this time
-			parent.setTimeline(this.getTimeStamp(), {activity: parseInt(evt.target.value)});
+			parent.setTimeline(this.getTimeStamp(), {activity: parseInt(this.activityInput.value)});
+		};
+
+		this.onFillPresetActivity = function(preset, evt) {
+			// cancel the click
+			evt.preventDefault();
+			// implement the values of the preset
+			this.activityInput.value = preset.activity;
+			// check the input fields
+			this.onAddActivity();
 		};
 
 		this.onAddMeal = function(evt) {
@@ -249,7 +269,7 @@
 			this.onLogOpened("history");
 		};
 
-		this.onFillPreset = function(preset, evt) {
+		this.onFillPresetMeal = function(preset, evt) {
 			// cancel the click
 			evt.preventDefault();
 			// implement the values of the preset
