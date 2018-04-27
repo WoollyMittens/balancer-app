@@ -20,6 +20,7 @@
 			this.settings.update();
 			this.graph.update();
 			this.log.update();
+			this.nav.update();
 		};
 
 		this.restoreState = function() {
@@ -72,6 +73,7 @@
 		this.settings = new this.Settings(this, model);
 		this.graph = new this.Graph(this, model);
 		this.log = new this.Log(this, model);
+		this.nav = new this.Nav(this, model);
 
 		// events
 		this.restoreState();

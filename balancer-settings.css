@@ -1,10 +1,18 @@
 .balancer-settings {
+	flex: 1 1 auto;
 	margin: 0;
+	padding: 1rem;
 	position: relative;
-	height: 100vh;
 	font-size: 0.857em;
-	position: absolute;
-	top: 0;
-	z-index: 10;
+	position: relative;
 	display: none;
+	flex-direction: column;
+}
+
+.balancer-show-settings .balancer-settings {
+	display: flex;
+}
+
+.balancer-settings label {
+	display: block;
 }

@@ -1,7 +1,11 @@
 .balancer-graph {
+	flex: 1 1 auto;
+	min-height: 50vh;
+	max-height: 50vh;
+	display: flex;
+	flex-direction: column;
 	margin: 0;
 	position: relative;
-	height: 50vh;
 	font-size: 0.857em;
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
@@ -25,6 +29,7 @@
 }
 
 .balancer-graph-scroll {
+	flex: 1 1 auto;
 	height: 100%;
 	width: 100%;
 	display: flex;

@@ -1,10 +1,14 @@
 .balancer-log {
+	flex: 1 1 auto;
 	margin: 0;
 	position: relative;
-	height: 50vh;
 	font-size: 0.857em;
-	display: flex;
+	display: none;
 	flex-direction: column;
+}
+
+.balancer-show-log .balancer-log {
+	display: flex;
 }
 
 .balancer-log-add-meal,

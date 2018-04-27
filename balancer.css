@@ -19,4 +19,14 @@ button {
 
 #balancer {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+}
+
+#balancer *,
+#balancer *:after,
+#balancer *:before {
+	box-sizing: border-box;
 }
