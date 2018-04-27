@@ -122,15 +122,16 @@
 			this.redraw();
 		};
 
-		// events
 		this.onCycleActivity = function(value, date, evt) {
 			// cancel the click
 			evt.preventDefault();
 			// update the activity level for this hour
 			var value = parent.getTimeline(date).activity + 1;
-			value = (value > 2) ? 0 : value;
+			value = (value > model.maxActivity) ? model.minActivity : value;
 			parent.setTimeline(date, {activity: value});
 		};
+
+		// events
 
 	};
 

@@ -1,0 +1,32 @@
+.balancer-log-history {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	flex: 1 1 auto;
+}
+
+.balancer-log-show-activity .balancer-log-history,
+.balancer-log-show-meal .balancer-log-history {
+	display: none;
+}
+
+.balancer-log-history table {
+	display: block;
+	margin: 0 0.5rem;
+}
+
+.balancer-log-history tr {
+	vertical-align: top;
+}
+
+.balancer-log-history th,
+.balancer-log-history td {
+	padding: 0.5rem;
+	white-space: nowrap;
+}
+
+.balancer-log-history th+td {
+	width: 100%;
+	white-space: normal;
+}
+
+.balancer-log-history button {}

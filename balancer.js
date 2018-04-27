@@ -12,9 +12,7 @@
 	Balancer.prototype.init = function(model) {
 
 		// properties
-		this.settings = new this.Settings(this, model);
-		this.graph = new this.Graph(this, model);
-		this.log = new this.Log(this, model);
+		this.model = model;
 
 		// methods
 		this.update = function() {
@@ -69,6 +67,11 @@
 		this.resetTimeline = function(date) {
 			// TODO: remove anything older than the date from the timeline
 		};
+
+		// classes
+		this.settings = new this.Settings(this, model);
+		this.graph = new this.Graph(this, model);
+		this.log = new this.Log(this, model);
 
 		// events
 		this.restoreState();
