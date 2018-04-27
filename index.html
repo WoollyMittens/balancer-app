@@ -95,12 +95,12 @@
 				timeline: {}, // collection of activity and diet events
 				meals: [{icon: "burger-small", description: "Big Mac", value: 2100}, {icon: "burger-large", description: "Whopper", value: 2800}], // collection of preset diet items
 				activities: [{icon: "sitting", description: "Sitting", activity: 1}, {icon: "walking", description: "Walking", activity: 4}, {icon: "running", description: "Running", activity: 8}], // collection of preset exercise items
+				minActivity: 1, // minimum metabolic multiplier
+				maxActivity: 8 // maximum metabolic multiplier
 				scale: 0, // graph scale day/week/month/year
 				start: new Date(), // start day
 				focus: null, // focussed day
-				end: new Date(), // end day
-				minActivity: 1, // minimum metabolic multiplier
-				maxActivity: 8 // maximum metabolic multiplier
+				end: new Date() // end day
 			});
 		</script>
 	</body>

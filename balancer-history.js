@@ -56,12 +56,9 @@
 				// add history items with an sufficiant activity as well
 				if (currentMeals.activity > 1) {
 					var activityName;
-					// TODO: this is now a float pick intervals differently
-					switch(currentMeals.activity){
-						case 1: activityName = "Moderate activity"; break;
-						case 2: activityName = "Strenuous activity"; break;
-						default : activityName = "Sedentary activity";
-					}
+					if (currentMeals.activity > 4) { activityName = "Strenuous activity"; }
+					else if (currentMeals.activity > 1) { activityName = "Moderate activity"; }
+					else { activityName = "Sedentary activity"; }
 					historyItems.push({
 						label: activityName,
 						activity: currentMeals.activity,
