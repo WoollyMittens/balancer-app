@@ -14,7 +14,9 @@
 		// properties
 		this.element = model.root.querySelector(".balancer-nav");
 		this.logNav = model.root.querySelector(".balancer-nav-log");
+		this.presetsNav = model.root.querySelector(".balancer-nav-presets");
 		this.settingsNav = model.root.querySelector(".balancer-nav-settings");
+		this.aboutNav = model.root.querySelector(".balancer-nav-about");
 
 		// methods
 		this.update = function() {
@@ -31,7 +33,9 @@
 		// events
 
 		this.logNav.addEventListener("click", this.onChangeView.bind(this, "log"));
+		this.presetsNav.addEventListener("click", this.onChangeView.bind(this, "presets"));
 		this.settingsNav.addEventListener("click", this.onChangeView.bind(this, "settings"));
+		this.aboutNav.addEventListener("click", this.onChangeView.bind(this, "about"));
 
 	};
 

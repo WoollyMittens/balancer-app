@@ -20,6 +20,8 @@
 			this.settings.update();
 			this.graph.update();
 			this.log.update();
+			this.presets.update();
+			this.about.update();
 			this.nav.update();
 		};
 
@@ -73,6 +75,8 @@
 		this.settings = new this.Settings(this, model);
 		this.graph = new this.Graph(this, model);
 		this.log = new this.Log(this, model);
+		this.presets = new this.Presets(this, model);
+		this.about = new this.About(this, model);
 		this.nav = new this.Nav(this, model);
 
 		// events

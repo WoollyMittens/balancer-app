@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="./balancer-activities.css" />
 	<link rel="stylesheet" href="./balancer-meals.css" />
 	<link rel="stylesheet" href="./balancer-settings.css" />
+	<link rel="stylesheet" href="./balancer-presets.css" />
+	<link rel="stylesheet" href="./balancer-about.css" />
 	<link rel="stylesheet" href="./balancer-nav.css" />
 
 	<body>
@@ -60,6 +62,17 @@
 				</div>
 			</form>
 
+			<form class="balancer-presets">
+				<fieldset>
+					<legend>Foods</legend>
+					<p>TODO: Meals presets editor</p>
+				</fieldset>
+				<fieldset>
+					<legend>Sports</legend>
+					<p>TODO: Activities presets editor</p>
+				</fieldset>
+			</form>
+
 			<form class="balancer-settings">
 				<fieldset>
 					<legend>Personal</legend>
@@ -72,21 +85,19 @@
 					<legend>Graph</legend>
 					<p>TODO: Graph limits editor (day/week/month/full)</p>
 				</fieldset>
-				<fieldset>
-					<legend>Foods</legend>
-					<p>TODO: Meals presets editor</p>
-				</fieldset>
-				<fieldset>
-					<legend>Sports</legend>
-					<p>TODO: Activities presets editor</p>
-				</fieldset>
 			</form>
+
+			<article class="balancer-about">
+				<div class="balancer-about-scroll">
+					<p>TODO: about this app and disclaimers</p>
+				</div>
+			</article>
 
 			<nav class="balancer-nav">
 				<button class="balancer-nav-log">Log</button>
-				<button class="balancer-nav-diet">Foods</button>
-				<button class="balancer-nav-activities">Sports</button>
+				<button class="balancer-nav-presets">Presets</button>
 				<button class="balancer-nav-settings">Settings</button>
+				<button class="balancer-nav-about">About</button>
 			</nav>
 
 		</section>
@@ -98,6 +109,8 @@
 		<script src="./balancer-activities.js"></script>
 		<script src="./balancer-meals.js"></script>
 		<script src="./balancer-settings.js"></script>
+		<script src="./balancer-presets.js"></script>
+		<script src="./balancer-about.js"></script>
 		<script src="./balancer-nav.js"></script>
 		<script>
 			// start a new instance of the class

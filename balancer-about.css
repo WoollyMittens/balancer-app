@@ -1,0 +1,14 @@
+.balancer-about {
+	flex: 1 1 auto;
+	margin: 0;
+	padding: 1rem;
+	position: relative;
+	font-size: 0.857em;
+	position: relative;
+	display: none;
+	flex-direction: column;
+}
+
+.balancer-show-about .balancer-about {
+	display: flex;
+}
