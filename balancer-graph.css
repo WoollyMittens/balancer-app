@@ -86,6 +86,10 @@
 	opacity: 0.2;
 }
 
+.balancer-graph-current span {
+	opacity: 0.6;
+}
+
 .balancer-projection {
 	position: absolute;
 	right: 1rem;

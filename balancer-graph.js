@@ -76,12 +76,13 @@
 			this.scaleMax.innerHTML = Math.round(graphLimit) + "kJ";
 			this.scaleMin.innerHTML = Math.round(-graphLimit) + "kJ";
 			// add N elements of the chart to the DOM
-			var graphHour, graphClass, graphLevel, graphColour, graphSize, graphBar, curDate = new Date();
+			var graphHour, graphClass, graphLevel, graphColour, graphSize, graphBar, curDate = new Date(), focusDate = model.focus || curDate;
 			for (var a = 0, b = chartItems.length; a < b; a += 1) {
 				// construct the bar chart
 				graphHour = chartItems[a].date.getHours();
 				graphClass = "balancer-graph-bar";
 				graphClass += (chartItems[a].date > curDate) ? " balancer-graph-ahead" : "";
+				graphClass += (chartItems[a].date.getHours() === focusDate.getHours()) ? " balancer-graph-current" : "";
 				graphLevel = Math.min(Math.max(50 - Math.abs(50 * chartItems[a].value / graphLimit), 0), 50);
 				graphSize = (chartItems[a].value < 0) ? "top:50%;bottom:" + graphLevel + "%;" : "top:" + graphLevel + "%;bottom:50%;";
 				graphBar = document.createElement("div");
@@ -90,7 +91,7 @@
 				graphBar.innerHTML = "<span style=\"" + graphSize + "\" title=\"" + chartItems[a].use + " kJ\"></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
 				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString('en-AU') + "</b>" : "";
-				graphBar.addEventListener('click', this.onCycleActivity.bind(this, chartItems[a].activity, chartItems[a].date));
+				graphBar.addEventListener('click', this.onFocusHour.bind(this, chartItems[a].activity, chartItems[a].date));
 				this.scroll.appendChild(graphBar);
 				// remember the chart item
 				this.graphBars.push(graphBar);
@@ -129,6 +130,14 @@
 			var value = parent.getTimeline(date).activity + 1;
 			value = (value > model.maxActivity) ? model.minActivity : value;
 			parent.setTimeline(date, {activity: value});
+		};
+
+		this.onFocusHour = function(value, date, evt) {
+			// cancel the click
+			evt.preventDefault();
+			// update the focussed hour
+			model.focus = new Date(date);
+			parent.update();
 		};
 
 		// events
