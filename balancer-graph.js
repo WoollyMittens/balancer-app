@@ -24,12 +24,14 @@
 		// methods
 		this.redraw = function() {
 			// draw the chart
-			this.drawChart(
-				this.planChart()
+			this.drawHourlyChart(
+				this.planHourlyChart()
 			);
 		};
 
-		this.planChart = function() {
+		// TODO: add daily chart as well as hourly chart
+
+		this.planHourlyChart = function() {
 			// extend the dates to the end of the day
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
 			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
@@ -65,7 +67,7 @@
 			return chartItems;
 		};
 
-		this.drawChart = function(chartItems) {
+		this.drawHourlyChart = function(chartItems) {
 			// limit the length of the chart to a managable size
 			var maxItems = Math.min(chartItems.length, 1000);
 			chartItems = chartItems.slice(chartItems.length - maxItems, chartItems.length);
