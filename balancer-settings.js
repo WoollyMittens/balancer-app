@@ -17,6 +17,7 @@
 		this.age = this.element.querySelector("input[name=age]");
 		this.height = this.element.querySelector("input[name=height]");
 		this.gender = this.element.querySelector("select[name=gender]");
+		this.timespan = this.element.querySelector("select[name=timespan]");
 
 		// methods
 		this.update = function() {
@@ -24,7 +25,8 @@
 			this.weight.value = model.weight;
 			this.age.value = model.age;
 			this.height.value = model.height;
-			this.gender.selectedIndex = model.gender;
+			this.gender.value = model.gender;
+			this.timespan.value = model.timespan;
 		};
 
 		this.onValueChanged = function(property, evt) {
@@ -40,6 +42,7 @@
 		this.age.addEventListener("change", this.onValueChanged.bind(this, "age"));
 		this.height.addEventListener("change", this.onValueChanged.bind(this, "height"));
 		this.gender.addEventListener("change", this.onValueChanged.bind(this, "gender"));
+		this.timespan.addEventListener("change", this.onValueChanged.bind(this, "timespan"));
 
 		// TODO: graph length setting: 1 day, 7 days, Full history
 

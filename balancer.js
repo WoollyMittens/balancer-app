@@ -16,6 +16,8 @@
 
 		// methods
 		this.update = function() {
+			// update the timespan
+			this.resetTimespan();
 			// update each sub-class
 			this.settings.update();
 			this.graph.update();
@@ -32,13 +34,15 @@
 			if (saved) {
 				// parse the json
 				saved = JSON.parse(saved);
-				// transplant transcient values
+				// override the transcient values
 				saved.root = model.root;
 				saved.start = new Date(model.start);
 				saved.focus = null;
 				saved.end = new Date(model.end);
-				// replace the model with the imported state
-				model = saved;
+				// update the model with the imported state
+				Object.keys(saved).map(function(key) {
+					model[key] = saved[key];
+				});
 			}
 			// redraw the app
 			this.update();
@@ -67,17 +71,38 @@
 			this.saveState();
 		};
 
+		this.getEarliest = function() {
+			// find the earliest history key
+			var fragments, current, earliest = new Date();
+			Object.keys(model.timeline).map(function(key) {
+				fragments = key.split("_");
+				current = new Date(parseInt(fragments[0]), parseInt(fragments[1]) - 1, parseInt(fragments[2]));
+				earliest = (current < earliest) ? current : earliest;
+			});
+			return earliest;
+		};
+
+		this.resetTimespan = function() {
+			// calculate the new start date
+			var start = new Date(model.end.getTime() - (parseInt(model.timespan) * 1000 * 60 * 60 * 24));
+			// limit the start date to recorded history
+			var earliest = this.getEarliest();
+			start = Math.max(start, earliest);
+			// update the start date
+			model.start = start;
+		};
+
 		this.resetTimeline = function(date) {
 			// TODO: remove anything older than the date from the timeline
 		};
 
 		// classes
-		this.settings = new this.Settings(this, model);
-		this.graph = new this.Graph(this, model);
-		this.log = new this.Log(this, model);
-		this.presets = new this.Presets(this, model);
-		this.about = new this.About(this, model);
-		this.nav = new this.Nav(this, model);
+		this.settings = new this.Settings(this, this.model);
+		this.graph = new this.Graph(this, this.model);
+		this.log = new this.Log(this, this.model);
+		this.presets = new this.Presets(this, this.model);
+		this.about = new this.About(this, this.model);
+		this.nav = new this.Nav(this, this.model);
 
 		// events
 		this.restoreState();

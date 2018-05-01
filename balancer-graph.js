@@ -22,6 +22,21 @@
 		this.graphBars = [];
 
 		// methods
+		this.update = function() {
+			// redraw the graph
+			this.reset();
+			this.redraw();
+		};
+
+		this.reset = function() {
+			// clear the previous graph
+			for (var a = 0, b = this.graphBars.length; a < b; a += 1) {
+				this.graphBars[a].parentNode.removeChild(this.graphBars[a]);
+			}
+			// reset the container
+			this.graphBars = [];
+		};
+
 		this.redraw = function() {
 			// draw the chart
 			this.drawHourlyChart(
@@ -33,6 +48,7 @@
 
 		this.planHourlyChart = function() {
 			// extend the dates to the end of the day
+			console.log("model.start", new Date(model.start));
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
 			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
 			var timeSpan = (endDate - startDate) / (1000 * 60 * 60 * 24);
@@ -108,21 +124,6 @@
 			var genderOffset = (model.gender === 0) ? -161 : 5;
 			// calculate the base metabolic rate (kJ/day)
 			return 4.184 * (model.weight * 10 + model.height * 6.25 + model.age * 5 + genderOffset); // (1)
-		};
-
-		this.reset = function() {
-			// clear the previous graph
-			for (var a = 0, b = this.graphBars.length; a < b; a += 1) {
-				this.graphBars[a].parentNode.removeChild(this.graphBars[a]);
-			}
-			// reset the container
-			this.graphBars = [];
-		};
-
-		this.update = function() {
-			// redraw the graph
-			this.reset();
-			this.redraw();
 		};
 
 		this.onCycleActivity = function(value, date, evt) {

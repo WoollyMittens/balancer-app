@@ -83,7 +83,7 @@
 				</fieldset>
 				<fieldset>
 					<legend>Graph</legend>
-					<p>TODO: Graph limits editor (day/week/month/full)</p>
+					<label><b>Show</b> <select name="timespan"><option value="0">Daily</option><option value="7">Weekly</option><option value="31">Monthly</option><option value="999">Everything</option></select></label>
 				</fieldset>
 			</form>
 
@@ -128,6 +128,7 @@
 				minActivity: 1, // minimum metabolic multiplier
 				maxActivity: 7, // maximum metabolic multiplier
 				scale: 0, // graph scale day/week/month/year
+				timespan: 0, // max graph length in days
 				start: new Date(), // start day
 				focus: null, // focussed day
 				end: new Date() // end day
