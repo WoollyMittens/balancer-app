@@ -41,13 +41,13 @@
 		this.drawPresetMeals = function() {
 			// add the presets to the list
 			var presetItem, presetButton;
-			for (var a = 0, b = model.meals.length; a < b; a += 1) {
+			for (var a = 0, b = model.presets.length; a < b; a += 1) {
 				// construct the preset item
 				presetItem = document.createElement("li");
 				presetButton = document.createElement("button");
-				presetButton.innerHTML = model.meals[a].description;
-				presetButton.className = "balancer-preset-" + model.meals[a].icon;
-				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.meals[a]));
+				presetButton.innerHTML = model.presets[a].description;
+				presetButton.className = "balancer-preset-" + model.presets[a].icon;
+				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.presets[a]));
 				presetItem.appendChild(presetButton);
 				this.presetMeals.appendChild(presetItem);
 			}

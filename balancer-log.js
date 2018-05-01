@@ -80,7 +80,7 @@
 			var hours = parseInt(time[0]);
 			var minutes = parseInt(time[1]);
 			var focusDate = new Date(years, months, days, hours, minutes);
-			model.focus = (isNaN(focusDate.getTime())) ? null : focusDate;
+			model.focus = isNaN(focusDate.getTime()) ? null : focusDate;
 			// reset the fields if the input gets mangled
 			if (!model.focus) {
 				var resetDate = new Date();

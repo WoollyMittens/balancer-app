@@ -47,9 +47,9 @@
 					<label><span>Date </span><input name="date" type="date"/></label>
 				</div>
 				<div class="balancer-log-activity">
-					<label><input name="activity" type="range" value="1" min="1" max="8"/><span>Sedentary</span><span>Moderate</span><span>Intense</span></label>
+					<input name="name" type="hidden"/>
+					<label><input name="activity" type="range" value="1" min="1" max="7"/><span>Sedentary</span><span>Moderate</span><span>Intense</span></label>
 				</div>
-				<ul class="balancer-log-activities">TODO: add presets for activities</ul>
 				<div class="balancer-log-meal">
 					<b>10am</b>
 					<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
@@ -63,14 +63,22 @@
 			</form>
 
 			<form class="balancer-presets">
-				<fieldset>
-					<legend>Foods</legend>
-					<p>TODO: Meals presets editor</p>
-				</fieldset>
-				<fieldset>
-					<legend>Sports</legend>
-					<p>TODO: Activities presets editor</p>
-				</fieldset>
+				<div class="balancer-preset-meal">
+					<button name="icon">Icon</button>
+					<label><span>Description</span><input type="text" placeholder="Description"/></label>
+					<label><span>Value</span><input type="number" placeholder="---"/> kJ</label>
+					<button name="add">Add</button>
+				</div>
+				<div class="balancer-presets-scroll">
+					<table class="balancer-presets-meals">
+						<tr>
+							<td><span class="balancer-preset-burger-small"></span></td>
+							<td>Lorem ipsum dolor</td>
+							<td>2000 kJ</td>
+							<td><button name="remove">Remove</button></td>
+						</tr>
+					</table>
+				</div>
 			</form>
 
 			<form class="balancer-settings">
@@ -124,8 +132,7 @@
 				age: 42, // (years)
 				weightloss: 0, // desired weightloss (kg)
 				timeline: {}, // collection of activity and diet events
-				meals: [{icon: "burger-small", description: "Big Mac", value: 2100}, {icon: "burger-large", description: "Whopper", value: 2800}], // collection of preset diet items
-				activities: [{icon: "sitting", description: "Sitting", activity: 1}, {icon: "walking", description: "Walking", activity: 4}, {icon: "running", description: "Running", activity: 8}], // collection of preset exercise items
+				presets: [{icon: "burger-small", description: "Big Mac", value: 2100}, {icon: "burger-large", description: "Whopper", value: 2800}], // collection of preset diet items
 				minActivity: 1, // minimum metabolic multiplier
 				maxActivity: 7, // maximum metabolic multiplier
 				scale: 0, // graph scale day/week/month/year
