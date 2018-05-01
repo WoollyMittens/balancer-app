@@ -63,16 +63,20 @@
 			</form>
 
 			<form class="balancer-presets">
-				<div class="balancer-preset-meal">
-					<button name="icon">Icon</button>
-					<label><span>Description</span><input type="text" placeholder="Description"/></label>
-					<label><span>Value</span><input type="number" placeholder="---"/> kJ</label>
-					<button name="add">Add</button>
+				<div class="balancer-presets-meal">
+					<p><button name="icon">Icon</button></p>
+					<label><span>Description</span><input name="description" type="text" placeholder="Description"/></label>
+					<label><span>Value</span><input name="value" type="number" placeholder="---"/> kJ</label>
+					<p><button name="add">Add</button></p>
 				</div>
+				<ul class="balancer-presets-picker">
+					<li><button class="balancer-preset-burger-small">Small burger</button></li>
+					<li><button class="balancer-preset-burger-large">Large burger</button></li>
+				</ul>
 				<div class="balancer-presets-scroll">
 					<table class="balancer-presets-meals">
 						<tr>
-							<td><span class="balancer-preset-burger-small"></span></td>
+							<th><span class="balancer-preset-burger-small"></span></th>
 							<td>Lorem ipsum dolor</td>
 							<td>2000 kJ</td>
 							<td><button name="remove">Remove</button></td>
@@ -98,7 +102,7 @@
 
 			<article class="balancer-about">
 				<div class="balancer-about-scroll">
-					<p>TODO: about this app and disclaimers</p>
+					<p>TODO: sources, attributions, and disclaimers</p>
 				</div>
 			</article>
 

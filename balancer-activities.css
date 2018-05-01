@@ -18,9 +18,13 @@
 
 .balancer-log-activity label span {
 	flex: 0 1 auto;
+	width: 4rem;
+	height: 4rem;
+	border: solid 1px red;
 }
 
 .balancer-log-activity label input[type=range] {
 	width: 100%;
 	flex: 1 1 auto;
+	margin-bottom: 2rem;
 }

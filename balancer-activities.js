@@ -14,6 +14,7 @@
 		// properties
 		this.element = model.root.querySelector(".balancer-log");
 		this.activityInput = this.element.querySelector(".balancer-log-activity input[name=activity]");
+		this.activityLabels = this.element.querySelectorAll(".balancer-log-activity span");
 
 		// methods
 		this.update = function() {
@@ -33,8 +34,18 @@
 			parent.setTimeline(parent.getTimeStamp(), {activity: parseInt(this.activityInput.value)});
 		};
 
+		this.onPresetActivity = function(value) {
+			// preset the value
+			this.activityInput.value = value;
+			// trigger the change
+			this.onChangeActivity();
+		};
+
 		// events
-		this.activityInput.addEventListener('change', this.onChangeActivity.bind(this));
+		this.activityInput.addEventListener("change", this.onChangeActivity.bind(this));
+		this.activityLabels[0].addEventListener("click", this.onPresetActivity.bind(this, model.minActivity));
+		this.activityLabels[1].addEventListener("click", this.onPresetActivity.bind(this, (model.maxActivity - model.minActivity) / 2 + model.minActivity));
+		this.activityLabels[2].addEventListener("click", this.onPresetActivity.bind(this, model.maxActivity));
 
 	};
 

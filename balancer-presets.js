@@ -13,6 +13,12 @@
 
 		// properties
 		this.element = model.root.querySelector(".balancer-presets");
+		this.iconButton = this.element.querySelector(".balancer-presets-meal button[name=icon]");
+		this.descriptionInput = this.element.querySelector(".balancer-presets-meal input[name=description]");
+		this.valueInput = this.element.querySelector(".balancer-presets-meal input[name=value]");
+		this.addButton = this.element.querySelector(".balancer-presets-meal button[name=add]");
+		this.iconPicker = this.element.querySelector(".balancer-presets-picker");
+		this.presetsList = this.element.querySelector(".balancer-presets-meals");
 
 		// methods
 		this.update = function() {
