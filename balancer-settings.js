@@ -35,6 +35,8 @@
 			model[property] = isNaN(number) ? evt.target.value : number;
 			// update the property
 			parent.update();
+			// save the state
+			parent.saveState();
 		};
 
 		// events

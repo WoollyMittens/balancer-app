@@ -48,7 +48,6 @@
 
 		this.planHourlyChart = function() {
 			// extend the dates to the end of the day
-			console.log("model.start", new Date(model.start));
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
 			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
 			var timeSpan = (endDate - startDate) / (1000 * 60 * 60 * 24);
