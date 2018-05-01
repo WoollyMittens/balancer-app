@@ -99,7 +99,7 @@
 				graphHour = chartItems[a].date.getHours();
 				graphClass = "balancer-graph-bar";
 				graphClass += (chartItems[a].date > curDate) ? " balancer-graph-ahead" : "";
-				graphClass += (chartItems[a].date.getHours() === focusDate.getHours()) ? " balancer-graph-current" : "";
+				graphClass += (this.isWithinHour(chartItems[a].date, focusDate)) ? " balancer-graph-current" : "";
 				graphLevel = Math.min(Math.max(50 - Math.abs(50 * chartItems[a].value / graphLimit), 0), 50);
 				graphSize = (chartItems[a].value < 0) ? "top:50%;bottom:" + graphLevel + "%;" : "top:" + graphLevel + "%;bottom:50%;";
 				graphBar = document.createElement("div");
@@ -116,6 +116,15 @@
 			// slide the chart to the right
 			var _this = this;
 			setTimeout(function() {_this.scroll.scrollLeft += 10000;}, 0);
+		};
+
+		this.isWithinHour = function(dateA, dateB) {
+			return (
+				dateA.getHours() === dateB.getHours()
+				&& dateA.getDate() === dateB.getDate()
+				&& dateA.getMonth() === dateB.getMonth()
+				&& dateA.getYear() === dateB.getYear()
+			);
 		};
 
 		this.baseRate = function() {
