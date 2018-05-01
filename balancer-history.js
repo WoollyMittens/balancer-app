@@ -77,12 +77,15 @@
 			var maxItems = Math.min(historyItems.length, 1000);
 			historyItems = historyItems.slice(historyItems.length - maxItems, historyItems.length);
 			// add N elements of the chart to the DOM
-			var historyRow, historyDate, historyLabel, historyValue, historyControls, historyButton;
+			var historyRow, historyDate, historyLabel, historyValue, historyControls, historyButton, dateLabel, timeLabel;
 			for (var a = 0, b = historyItems.length; a < b; a += 1) {
+				// write the time label
+				dateLabel = (model.timespan > 0) ? " (" + historyItems[a].date.toLocaleDateString("en-AU", { day: "numeric", month: "short" }).replace(/\./g, "") + ")" : "";
+				timeLabel = historyItems[a].date.toLocaleTimeString([], {hour: "numeric", hour12: true}).replace(/\s/g, "");
 				// construct the history item
 				historyRow = document.createElement("tr");
 				historyDate = document.createElement("th");
-				historyDate.innerHTML = historyItems[a].date.toLocaleTimeString([], {hour: "numeric", hour12: true}).replace(/\s/g, "");
+				historyDate.innerHTML = timeLabel + dateLabel;
 				historyLabel = document.createElement("td");
 				historyLabel.innerHTML = historyItems[a].label;
 				historyValue = document.createElement("td");

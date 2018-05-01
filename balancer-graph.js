@@ -107,7 +107,7 @@
 				graphBar.setAttribute("class", graphClass);
 				graphBar.innerHTML = "<span style=\"" + graphSize + "\" title=\"" + chartItems[a].use + " kJ\"></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
-				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString('en-AU') + "</b>" : "";
+				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString("en-AU") + "</b>" : "";
 				graphBar.addEventListener('click', this.onFocusHour.bind(this, chartItems[a].activity, chartItems[a].date));
 				this.scroll.appendChild(graphBar);
 				// remember the chart item
