@@ -120,7 +120,9 @@
 
 		this.isWithinHour = function(dateA, dateB) {
 			return (
-				dateA.getHours() === dateB.getHours()
+				dateA
+				&& dateB
+				&& dateA.getHours() === dateB.getHours()
 				&& dateA.getDate() === dateB.getDate()
 				&& dateA.getMonth() === dateB.getMonth()
 				&& dateA.getYear() === dateB.getYear()
@@ -146,8 +148,8 @@
 		this.onFocusHour = function(value, date, evt) {
 			// cancel the click
 			evt.preventDefault();
-			// update the focussed hour
-			model.focus = new Date(date);
+			// toggle the focussed hour
+			model.focus = this.isWithinHour(model.focus, date) ? null : new Date(date);
 			parent.update();
 		};
 

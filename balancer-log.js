@@ -26,6 +26,8 @@
 		this.update = function() {
 			// redraw the components
 			this.redraw();
+			// reset the logging mode
+			this.onLogOpened(model.log);
 			// update the child components
 			this.history.update();
 			this.meals.update();
@@ -64,10 +66,13 @@
 		this.onLogOpened = function(mode, evt) {
 			// cancel the click
 			if (evt) evt.preventDefault();
+			// store the requested mode
+			model.log = mode;
 			// toggle the panel state
-			var allModes = new RegExp("-show-history|-show-meal|-show-activity");
-			var currentMode = new RegExp("-show-" + mode);
-			this.element.className = this.element.className.replace(allModes, currentMode.test(this.element.className) ? "-show-history" : "-show-" + mode);
+			this.element.className = this.element.className.replace(
+				new RegExp("-show-history|-show-meal|-show-activity"),
+				new RegExp("-show-" + model.log).test(this.element.className) ? "-show-history" : "-show-" + model.log
+			);
 		};
 
 		this.onFocusTime = function(evt) {

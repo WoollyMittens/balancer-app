@@ -19,13 +19,16 @@
 		this.aboutNav = model.root.querySelector(".balancer-nav-about");
 
 		// methods
-		this.update = function() {
-
-		};
+		this.update = function() {};
 
 		this.onChangeView = function(name, evt) {
 			// change the view
 			model.root.className = model.root.className.replace(/balancer-show-.*$/g, "balancer-show-" + name);
+			// reset the log view
+			if (name === "log") {
+				model.focus = null;
+				model.log = "history";
+			}
 			// update the property
 			parent.update();
 		};
