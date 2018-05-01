@@ -43,7 +43,7 @@
 				presetDescription = document.createElement("td");
 				presetDescription.innerHTML = preset.description;
 				presetValue = document.createElement("td");
-				presetValue.innerHTML = preset.value + "kJ";
+				presetValue.innerHTML = preset.value + " kJ";
 				presetRemove = document.createElement("td");
 				presetButton = document.createElement("button");
 				presetButton.innerHTML = "Remove";
@@ -72,7 +72,39 @@
 			parent.update();
 		};
 
+		this.addPreset = function(evt) {
+			// cancel the click
+			evt.preventDefault();
+			// add the preset to the list
+			model.presets.push({
+				icon: this.iconButton.className.replace(/balancer-preset-/g, ""),
+				description: this.descriptionInput.value,
+				value: parseInt(this.valueInput.value)
+			});
+			// reset the input fields
+			console.log("addPreset", model.presets);
+			// redraw the view
+			parent.saveState();
+			parent.update();
+		};
+
+		this.checkValues = function(evt) {
+			// disable the button until enough has been filled in
+			this.addButton.disabled = (this.descriptionInput.value === "" || isNaN(parseInt(this.valueInput.value)));
+		};
+
+		this.cancelSubmit = function(evt) {
+			// cancel the submit
+			evt.preventDefault();
+		};
+
 		// events
+		this.element.addEventListener("submit", this.cancelSubmit.bind(this));
+		this.descriptionInput.addEventListener("change", this.checkValues.bind(this));
+		this.descriptionInput.addEventListener("keypress", this.checkValues.bind(this));
+		this.valueInput.addEventListener("change", this.checkValues.bind(this));
+		this.valueInput.addEventListener("keypress", this.checkValues.bind(this));
+		this.addButton.addEventListener("click", this.addPreset.bind(this));
 
 	};
 
