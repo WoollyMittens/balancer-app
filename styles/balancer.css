@@ -94,36 +94,35 @@ a {
 #balancer input[type=text],
 #balancer input[type=number],
 #balancer input[type=date],
-#balancer input[type=time] {
+#balancer input[type=time],
+#balancer select {
+	border-radius: 0;
 	border: none;
 	border-bottom: solid 1px #CCCCCC;
-	padding: 0.666666666666667rem 0;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	background-position: right 1.2rem;
+	background-size: auto 50%;
+	margin: 0;
+	padding: 0.666666666666667rem 0 0;
+	height: 3rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 #balancer input[type=text]:focus,
 #balancer input[type=number]:focus,
 #balancer input[type=date]:focus,
-#balancer input[type=time]:focus {
-	border: none;
-	padding: 0.666666666666667rem 0;
+#balancer input[type=time]:focus,
+#balancer select:focus {
 	border-bottom: solid 2px #1976D2;
-	margin-bottom: -1px;
+	transform: translateY(1px);
+
 }
 
 #balancer select {
-	border: solid 1px #333;
-	border-radius: 4px;
-	width: 100%;
-	height: 2rem;
-	margin: 0.666666666666667rem 0;
-	padding: 0 0.5rem;
-	background-repeat: no-repeat;
-	background-position: right center;
-	background-size: contain;
 	background-image: url("../icons/button_backward_2.svg");
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 }
 
 #balancer button[disabled] {
@@ -138,7 +137,7 @@ a {
 	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
 	border: none;
 	padding: 0 1.333333333333333rem;
-	margin: 0.666666666666667rem 0.666666666666667rem 0 0;
+	margin: 0.666666666666667rem 0 0;
 	font-size: 1.166666666666667rem;
 	text-transform: uppercase;
 	color: #fff;

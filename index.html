@@ -248,18 +248,16 @@
 			</form>
 
 			<form class="balancer-settings">
-				<fieldset>
-					<legend>Personal</legend>
-					<label><b>Height</b> <input name="height" type="number"/> <i>in centimeters</i></label>
-					<label><b>Age</b> <input name="age" type="number"/> <i>in years</i></label>
-					<label><b>Weight</b> <input name="weight" type="number"/> <i>in kilos</i></label>
-					<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
-				</fieldset>
-				<fieldset>
-					<legend>Graph</legend>
-					<label><b>Show</b> <select name="timespan"><option value="0">Today</option><option value="7">Up to a week</option><option value="31">Up to a month</option><option value="999">Everything</option></select></label>
-					<label><b>History</b> <button name="reset">Reset</button> <button name="confirm" disabled>Confirm</button></label>
-				</fieldset>
+				<label><b>Height</b> <input name="height" type="number"/> <i>in centimeters</i></label>
+				<label><b>Age</b> <input name="age" type="number"/> <i>in years</i></label>
+				<label><b>Weight</b> <input name="weight" type="number"/> <i>in kilos</i></label>
+				<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
+				<label><b>Show</b> <select name="timespan"><option value="0">Today</option><option value="7">Up to a week</option><option value="31">Up to a month</option><option value="999">Everything</option></select></label>
+				<footer class="balancer-reset">
+					<b>History</b>
+					<div><button name="reset">Reset</button></div>
+					<div><button name="confirm" disabled>Confirm</button></div>
+				</footer>
 			</form>
 
 			<article class="balancer-about">
