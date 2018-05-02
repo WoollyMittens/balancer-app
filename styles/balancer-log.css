@@ -39,7 +39,7 @@
 .balancer-log-add-history {
 	transform: translate(-5rem, -50%);
 	left: 50%;
-	background-image: url("../icons/base.svg");
+	background-image: url("../icons/chart_2.svg");
 }
 
 .balancer-log-add-meal {
@@ -61,7 +61,7 @@
 .balancer-log-time {
 	display: flex;
 	justify-content: space-between;
-	padding: 1rem;
+	padding: 2rem 1rem 1rem;
 	flex: 0 1 auto;
 }
 

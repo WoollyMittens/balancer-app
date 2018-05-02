@@ -16,6 +16,10 @@ body {
 	width: 100%;
 }
 
+#balancer *:focus {
+    outline: none;
+}
+
 #balancer *,
 #balancer *:after,
 #balancer *:before {

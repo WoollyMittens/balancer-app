@@ -69,7 +69,7 @@
 	z-index: 9;
 	display: flex;
 	list-style: none;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	flex-wrap: wrap;
 	transform: translate(0%, 100%);
 	transition: transform ease 500ms;
