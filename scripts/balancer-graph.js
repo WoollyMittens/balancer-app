@@ -44,8 +44,6 @@
 			);
 		};
 
-		// TODO: add daily chart as well as hourly chart
-
 		this.planHourlyChart = function() {
 			// extend the dates to the end of the day
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));

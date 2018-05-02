@@ -20,8 +20,6 @@
 		this.iconPicker = this.element.querySelector(".balancer-presets-picker");
 		this.presetsTable = this.element.querySelector(".balancer-presets-meals");
 
-		// TODO: make icon picker work
-
 		// methods
 		this.update = function() {
 			// redraw the components

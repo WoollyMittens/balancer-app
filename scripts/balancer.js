@@ -92,10 +92,6 @@
 			model.start = start;
 		};
 
-		this.resetTimeline = function(date) {
-			// TODO: remove anything older than the date from the timeline
-		};
-
 		// classes
 		this.settings = new this.Settings(this, this.model);
 		this.graph = new this.Graph(this, this.model);

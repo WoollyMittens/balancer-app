@@ -25,6 +25,10 @@
 	text-align: center;
 }
 
+/*
+	TODO: animated transform transtions between views
+*/
+
 .balancer-show-log .balancer-nav-log,
 .balancer-show-presets .balancer-nav-presets,
 .balancer-show-settings .balancer-nav-settings,

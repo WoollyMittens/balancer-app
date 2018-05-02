@@ -34,9 +34,6 @@
 		};
 
 		// events
-
-		// TODO: clicking the log button should reset to current time and history list
-
 		this.logNav.addEventListener("click", this.onChangeView.bind(this, "log"));
 		this.presetsNav.addEventListener("click", this.onChangeView.bind(this, "presets"));
 		this.settingsNav.addEventListener("click", this.onChangeView.bind(this, "settings"));
