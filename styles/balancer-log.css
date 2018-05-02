@@ -1,0 +1,88 @@
+.balancer-log {
+	flex: 1 1 auto;
+	margin: 0;
+	position: relative;
+	font-size: 0.857em;
+	display: none;
+	flex-direction: column;
+}
+
+.balancer-show-log .balancer-log {
+	display: flex;
+}
+
+.balancer-log-add-history,
+.balancer-log-add-meal,
+.balancer-log-add-activity {
+	position: absolute;
+	top: 0;
+	width: 3rem;
+	height: 3rem;
+	border: none;
+	border-radius: 50%;
+	background-color: #69C;
+	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
+	background-size: 65%;
+	background-position: center;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	text-indent: 4rem;
+	overflow: hidden;
+}
+
+.balancer-log-show-history .balancer-log-add-history,
+.balancer-log-show-meal .balancer-log-add-meal,
+.balancer-log-show-activity .balancer-log-add-activity {
+	background-color: #9CF;
+}
+
+.balancer-log-add-history {
+	transform: translate(-5rem, -50%);
+	left: 50%;
+	background-image: url("../icons/base.svg");
+}
+
+.balancer-log-add-meal {
+	transform: translate(-50%, -50%);
+	left: 50%;
+	background-image: url("../icons/fork_1.svg");
+}
+
+.balancer-log-add-activity {
+	transform: translate(5rem, -50%);
+	right: 50%;
+	background-image: url("../icons/favorite.svg");
+}
+
+.balancer-log > div {
+	border: none;
+}
+
+.balancer-log-time {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	flex: 0 1 auto;
+}
+
+.balancer-log-time time,
+.balancer-log-time label {
+	flex: 0 1 auto;
+	font-weight: bold;
+}
+
+.balancer-log-show-history .balancer-log-time label {
+	display: none;
+}
+.balancer-log-show-activity .balancer-log-time time,
+.balancer-log-show-meal .balancer-log-time time {
+	display: none;
+}
+
+.balancer-log-time label span {
+	display: none;
+}
+
+.balancer-log-time label input[type=time] {}
+
+.balancer-log-time label input[type=date] {}

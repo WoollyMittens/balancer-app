@@ -1,0 +1,77 @@
+html {
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+#balancer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+}
+
+#balancer *,
+#balancer *:after,
+#balancer *:before {
+	box-sizing: border-box;
+}
+
+#balancer input,
+#balancer button {
+	font-family: sans-serif;
+	font-size: 0.857rem;
+}
+
+#balancer button {
+	cursor: pointer;
+}
+
+#balancer .balancer-preset,
+#balancer button[name=icon] {
+	border: none;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 3rem;
+	height: 3rem;
+	margin: 0.5rem;
+	border: none;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 4rem;
+}
+
+#balancer button[disabled] {
+	cursor: default;
+	opacity: 0.5;
+}
+
+#balancer button[name=remove],
+#balancer button[name=add] {
+	border: none;
+	background-color: Transparent;
+	padding: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 1.5rem;
+	height: 1.5rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 3rem;
+}
+
+#balancer button[name=remove] {
+	background-image: url("../icons/button_delete_2.svg");
+}
+
+#balancer button[name=add] {
+	background-image: url("../icons/button_new_2.svg");
+}

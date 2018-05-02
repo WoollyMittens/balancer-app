@@ -7,16 +7,16 @@
 	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width" />
 	<title>Energy Balance Prototype</title>
 
-	<link rel="stylesheet" href="./balancer.css" />
-	<link rel="stylesheet" href="./balancer-graph.css" />
-	<link rel="stylesheet" href="./balancer-log.css" />
-	<link rel="stylesheet" href="./balancer-history.css" />
-	<link rel="stylesheet" href="./balancer-activities.css" />
-	<link rel="stylesheet" href="./balancer-meals.css" />
-	<link rel="stylesheet" href="./balancer-settings.css" />
-	<link rel="stylesheet" href="./balancer-presets.css" />
-	<link rel="stylesheet" href="./balancer-about.css" />
-	<link rel="stylesheet" href="./balancer-nav.css" />
+	<link rel="stylesheet" href="styles/balancer.css" />
+	<link rel="stylesheet" href="styles/balancer-graph.css" />
+	<link rel="stylesheet" href="styles/balancer-log.css" />
+	<link rel="stylesheet" href="styles/balancer-history.css" />
+	<link rel="stylesheet" href="styles/balancer-activities.css" />
+	<link rel="stylesheet" href="styles/balancer-meals.css" />
+	<link rel="stylesheet" href="styles/balancer-settings.css" />
+	<link rel="stylesheet" href="styles/balancer-presets.css" />
+	<link rel="stylesheet" href="styles/balancer-about.css" />
+	<link rel="stylesheet" href="styles/balancer-nav.css" />
 
 	<body>
 
@@ -38,6 +38,7 @@
 			</figure>
 
 			<form class="balancer-log balancer-log-show-history">
+				<button class="balancer-log-add-history">Log</button>
 				<button class="balancer-log-add-meal">Food</button>
 				<button class="balancer-log-add-activity">Sport</button>
 				<div class="balancer-log-time">
@@ -48,13 +49,18 @@
 				</div>
 				<div class="balancer-log-activity">
 					<input name="name" type="hidden"/>
-					<label><input name="activity" type="range" value="1" min="1" max="7"/><span>Sedentary</span><span>Moderate</span><span>Intense</span></label>
+					<label>
+						<input name="activity" type="range" value="1" min="1" max="7"/>
+						<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
+						<span class="balancer-preset balancer-preset-moderate">Moderate</span>
+						<span class="balancer-preset balancer-preset-intense">Intense</span>
+					</label>
 				</div>
 				<div class="balancer-log-meal">
 					<b>10am</b>
 					<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
 					<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> kJ</label>
-					<p><button>Add</button></p>
+					<p><button name="add">Add</button></p>
 				</div>
 				<ul class="balancer-log-meals"></ul>
 				<div class="balancer-log-history">
@@ -64,24 +70,180 @@
 
 			<form class="balancer-presets">
 				<div class="balancer-presets-meal">
-					<p><button class="balancer-preset-misc" name="icon">Icon</button></p>
+					<p><button class="balancer-preset-plate_1" name="icon">Icon</button></p>
 					<label><span>Description</span><input name="description" type="text" placeholder="Description"/></label>
 					<label><span>Value</span><input name="value" type="number" placeholder="---"/> kJ</label>
 					<p><button name="add" disabled>Add</button></p>
 				</div>
 				<ul class="balancer-presets-picker">
-					<li><button class="balancer-preset-burger-small">Small burger</button></li>
-					<li><button class="balancer-preset-burger-large">Large burger</button></li>
+					<li><button name="icon" class="balancer-preset-apple_1"></button></li>
+					<li><button name="icon" class="balancer-preset-apple_2"></button></li>
+					<li><button name="icon" class="balancer-preset-asparagus"></button></li>
+					<li><button name="icon" class="balancer-preset-banana"></button></li>
+					<li><button name="icon" class="balancer-preset-barbecue"></button></li>
+					<li><button name="icon" class="balancer-preset-beans"></button></li>
+					<li><button name="icon" class="balancer-preset-beer"></button></li>
+					<li><button name="icon" class="balancer-preset-bone"></button></li>
+					<li><button name="icon" class="balancer-preset-bottle_1"></button></li>
+					<li><button name="icon" class="balancer-preset-bottle_2"></button></li>
+					<li><button name="icon" class="balancer-preset-bottle_3"></button></li>
+					<li><button name="icon" class="balancer-preset-bottle_plastic"></button></li>
+					<li><button name="icon" class="balancer-preset-bread_1"></button></li>
+					<li><button name="icon" class="balancer-preset-bread_2"></button></li>
+					<li><button name="icon" class="balancer-preset-bread_baguette"></button></li>
+					<li><button name="icon" class="balancer-preset-burger_1"></button></li>
+					<li><button name="icon" class="balancer-preset-burger_2"></button></li>
+					<li><button name="icon" class="balancer-preset-cabbage"></button></li>
+					<li><button name="icon" class="balancer-preset-cake_1"></button></li>
+					<li><button name="icon" class="balancer-preset-cake_2"></button></li>
+					<li><button name="icon" class="balancer-preset-cake_wedding"></button></li>
+					<li><button name="icon" class="balancer-preset-candy_1"></button></li>
+					<li><button name="icon" class="balancer-preset-candy_2"></button></li>
+					<li><button name="icon" class="balancer-preset-candy_3"></button></li>
+					<li><button name="icon" class="balancer-preset-candy_lolipop"></button></li>
+					<li><button name="icon" class="balancer-preset-carrot"></button></li>
+					<li><button name="icon" class="balancer-preset-cauliflower"></button></li>
+					<li><button name="icon" class="balancer-preset-champagne"></button></li>
+					<li><button name="icon" class="balancer-preset-cheese_1"></button></li>
+					<li><button name="icon" class="balancer-preset-cheese_2"></button></li>
+					<li><button name="icon" class="balancer-preset-cherry"></button></li>
+					<li><button name="icon" class="balancer-preset-chicken"></button></li>
+					<li><button name="icon" class="balancer-preset-chicken_leg"></button></li>
+					<li><button name="icon" class="balancer-preset-chips"></button></li>
+					<li><button name="icon" class="balancer-preset-chocolate_1"></button></li>
+					<li><button name="icon" class="balancer-preset-chocolate_2"></button></li>
+					<li><button name="icon" class="balancer-preset-citrus"></button></li>
+					<li><button name="icon" class="balancer-preset-coffee_bean"></button></li>
+					<li><button name="icon" class="balancer-preset-cola_1"></button></li>
+					<li><button name="icon" class="balancer-preset-cola_2"></button></li>
+					<li><button name="icon" class="balancer-preset-condensed_milk"></button></li>
+					<li><button name="icon" class="balancer-preset-cookies"></button></li>
+					<li><button name="icon" class="balancer-preset-corn"></button></li>
+					<li><button name="icon" class="balancer-preset-croissant"></button></li>
+					<li><button name="icon" class="balancer-preset-cucumber"></button></li>
+					<li><button name="icon" class="balancer-preset-cucumbers"></button></li>
+					<li><button name="icon" class="balancer-preset-cup_1"></button></li>
+					<li><button name="icon" class="balancer-preset-cup_2"></button></li>
+					<li><button name="icon" class="balancer-preset-cup_3"></button></li>
+					<li><button name="icon" class="balancer-preset-cup_hot"></button></li>
+					<li><button name="icon" class="balancer-preset-donut_1"></button></li>
+					<li><button name="icon" class="balancer-preset-donut_2"></button></li>
+					<li><button name="icon" class="balancer-preset-egg"></button></li>
+					<li><button name="icon" class="balancer-preset-eggplant"></button></li>
+					<li><button name="icon" class="balancer-preset-fish"></button></li>
+					<li><button name="icon" class="balancer-preset-fishbone"></button></li>
+					<li><button name="icon" class="balancer-preset-fork_2"></button></li>
+					<li><button name="icon" class="balancer-preset-french_fries"></button></li>
+					<li><button name="icon" class="balancer-preset-garlic"></button></li>
+					<li><button name="icon" class="balancer-preset-glass"></button></li>
+					<li><button name="icon" class="balancer-preset-glass_water"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_1"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_2"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_3"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_4"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_5"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_6"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_7"></button></li>
+					<li><button name="icon" class="balancer-preset-goblet_wineglass"></button></li>
+					<li><button name="icon" class="balancer-preset-grain"></button></li>
+					<li><button name="icon" class="balancer-preset-grapes"></button></li>
+					<li><button name="icon" class="balancer-preset-grass"></button></li>
+					<li><button name="icon" class="balancer-preset-ham"></button></li>
+					<li><button name="icon" class="balancer-preset-honey"></button></li>
+					<li><button name="icon" class="balancer-preset-hot_dog"></button></li>
+					<li><button name="icon" class="balancer-preset-ice_cream_1"></button></li>
+					<li><button name="icon" class="balancer-preset-ice_cream_2"></button></li>
+					<li><button name="icon" class="balancer-preset-jam_1"></button></li>
+					<li><button name="icon" class="balancer-preset-jam_2"></button></li>
+					<li><button name="icon" class="balancer-preset-leaves"></button></li>
+					<li><button name="icon" class="balancer-preset-lemon_1"></button></li>
+					<li><button name="icon" class="balancer-preset-lemon_2"></button></li>
+					<li><button name="icon" class="balancer-preset-lemon_slice_1"></button></li>
+					<li><button name="icon" class="balancer-preset-lemon_slice_2"></button></li>
+					<li><button name="icon" class="balancer-preset-mandarine"></button></li>
+					<li><button name="icon" class="balancer-preset-melon_1"></button></li>
+					<li><button name="icon" class="balancer-preset-melon_2"></button></li>
+					<li><button name="icon" class="balancer-preset-milk"></button></li>
+					<li><button name="icon" class="balancer-preset-mushroom_1"></button></li>
+					<li><button name="icon" class="balancer-preset-mushroom_2"></button></li>
+					<li><button name="icon" class="balancer-preset-mushrooms"></button></li>
+					<li><button name="icon" class="balancer-preset-nut"></button></li>
+					<li><button name="icon" class="balancer-preset-olive_1"></button></li>
+					<li><button name="icon" class="balancer-preset-olive_2"></button></li>
+					<li><button name="icon" class="balancer-preset-omelette"></button></li>
+					<li><button name="icon" class="balancer-preset-onion"></button></li>
+					<li><button name="icon" class="balancer-preset-orange"></button></li>
+					<li><button name="icon" class="balancer-preset-package"></button></li>
+					<li><button name="icon" class="balancer-preset-pan_1"></button></li>
+					<li><button name="icon" class="balancer-preset-pan_2"></button></li>
+					<li><button name="icon" class="balancer-preset-pan_3"></button></li>
+					<li><button name="icon" class="balancer-preset-pan_4"></button></li>
+					<li><button name="icon" class="balancer-preset-pasta_1"></button></li>
+					<li><button name="icon" class="balancer-preset-pasta_2"></button></li>
+					<li><button name="icon" class="balancer-preset-pasta_3"></button></li>
+					<li><button name="icon" class="balancer-preset-pattinson"></button></li>
+					<li><button name="icon" class="balancer-preset-peach"></button></li>
+					<li><button name="icon" class="balancer-preset-pear"></button></li>
+					<li><button name="icon" class="balancer-preset-peas_1"></button></li>
+					<li><button name="icon" class="balancer-preset-peas_2"></button></li>
+					<li><button name="icon" class="balancer-preset-pepper"></button></li>
+					<li><button name="icon" class="balancer-preset-pepper_chili"></button></li>
+					<li><button name="icon" class="balancer-preset-persimmon"></button></li>
+					<li><button name="icon" class="balancer-preset-pineapple"></button></li>
+					<li><button name="icon" class="balancer-preset-pizza"></button></li>
+					<li><button name="icon" class="balancer-preset-plate_1"></button></li>
+					<li><button name="icon" class="balancer-preset-plate_2"></button></li>
+					<li><button name="icon" class="balancer-preset-plum"></button></li>
+					<li><button name="icon" class="balancer-preset-pomegranate_1"></button></li>
+					<li><button name="icon" class="balancer-preset-pomegranate_2"></button></li>
+					<li><button name="icon" class="balancer-preset-pomelo"></button></li>
+					<li><button name="icon" class="balancer-preset-potato"></button></li>
+					<li><button name="icon" class="balancer-preset-potato_slices"></button></li>
+					<li><button name="icon" class="balancer-preset-preserves_1"></button></li>
+					<li><button name="icon" class="balancer-preset-preserves_2"></button></li>
+					<li><button name="icon" class="balancer-preset-preserves_3"></button></li>
+					<li><button name="icon" class="balancer-preset-pretzel"></button></li>
+					<li><button name="icon" class="balancer-preset-pumpkin_1"></button></li>
+					<li><button name="icon" class="balancer-preset-pumpkin_2"></button></li>
+					<li><button name="icon" class="balancer-preset-radish"></button></li>
+					<li><button name="icon" class="balancer-preset-raspberry"></button></li>
+					<li><button name="icon" class="balancer-preset-rice"></button></li>
+					<li><button name="icon" class="balancer-preset-roll"></button></li>
+					<li><button name="icon" class="balancer-preset-rolls_1"></button></li>
+					<li><button name="icon" class="balancer-preset-rolls_2"></button></li>
+					<li><button name="icon" class="balancer-preset-rolls_3"></button></li>
+					<li><button name="icon" class="balancer-preset-salad"></button></li>
+					<li><button name="icon" class="balancer-preset-salt"></button></li>
+					<li><button name="icon" class="balancer-preset-sausage_1"></button></li>
+					<li><button name="icon" class="balancer-preset-sausage_2"></button></li>
+					<li><button name="icon" class="balancer-preset-sausage_3"></button></li>
+					<li><button name="icon" class="balancer-preset-sausage_4"></button></li>
+					<li><button name="icon" class="balancer-preset-sausage_5"></button></li>
+					<li><button name="icon" class="balancer-preset-steak"></button></li>
+					<li><button name="icon" class="balancer-preset-steak_t-bone"></button></li>
+					<li><button name="icon" class="balancer-preset-strawberry"></button></li>
+					<li><button name="icon" class="balancer-preset-sushi_1"></button></li>
+					<li><button name="icon" class="balancer-preset-sushi_2"></button></li>
+					<li><button name="icon" class="balancer-preset-take-out_coffee"></button></li>
+					<li><button name="icon" class="balancer-preset-tea"></button></li>
+					<li><button name="icon" class="balancer-preset-tea_bag_1"></button></li>
+					<li><button name="icon" class="balancer-preset-tea_bag_2"></button></li>
+					<li><button name="icon" class="balancer-preset-teapot"></button></li>
+					<li><button name="icon" class="balancer-preset-tomato_1"></button></li>
+					<li><button name="icon" class="balancer-preset-tomato_2"></button></li>
+					<li><button name="icon" class="balancer-preset-truffle"></button></li>
+					<li><button name="icon" class="balancer-preset-wafer_1"></button></li>
+					<li><button name="icon" class="balancer-preset-wafer_2"></button></li>
+					<li><button name="icon" class="balancer-preset-wafer_3"></button></li>
+					<li><button name="icon" class="balancer-preset-waffle_horn"></button></li>
+					<li><button name="icon" class="balancer-preset-watermelon_1"></button></li>
+					<li><button name="icon" class="balancer-preset-watermelon_2"></button></li>
+					<li><button name="icon" class="balancer-preset-wheat"></button></li>
+					<li><button name="icon" class="balancer-preset-wine_1"></button></li>
+					<li><button name="icon" class="balancer-preset-wine_2"></button></li>
 				</ul>
 				<div class="balancer-presets-scroll">
-					<table class="balancer-presets-meals">
-						<tr>
-							<th><span class="balancer-preset-burger-small"></span></th>
-							<td>Lorem ipsum dolor</td>
-							<td>2000 kJ</td>
-							<td><button name="remove">Remove</button></td>
-						</tr>
-					</table>
+					<table class="balancer-presets-meals"></table>
 				</div>
 			</form>
 
@@ -115,16 +277,16 @@
 
 		</section>
 
-		<script src="./balancer.js"></script>
-		<script src="./balancer-graph.js"></script>
-		<script src="./balancer-log.js"></script>
-		<script src="./balancer-history.js"></script>
-		<script src="./balancer-activities.js"></script>
-		<script src="./balancer-meals.js"></script>
-		<script src="./balancer-settings.js"></script>
-		<script src="./balancer-presets.js"></script>
-		<script src="./balancer-about.js"></script>
-		<script src="./balancer-nav.js"></script>
+		<script src="scripts/balancer.js"></script>
+		<script src="scripts/balancer-graph.js"></script>
+		<script src="scripts/balancer-log.js"></script>
+		<script src="scripts/balancer-history.js"></script>
+		<script src="scripts/balancer-activities.js"></script>
+		<script src="scripts/balancer-meals.js"></script>
+		<script src="scripts/balancer-settings.js"></script>
+		<script src="scripts/balancer-presets.js"></script>
+		<script src="scripts/balancer-about.js"></script>
+		<script src="scripts/balancer-nav.js"></script>
 		<script>
 			// start a new instance of the class
 			var balancer = new Balancer().init({
@@ -136,7 +298,7 @@
 				age: 42, // (years)
 				weightloss: 0, // desired weightloss (kg)
 				timeline: {}, // collection of activity and diet events
-				presets: [{icon: "burger-small", description: "Big Mac", value: 2100}, {icon: "burger-large", description: "Whopper", value: 2800}], // collection of preset diet items
+				presets: [{icon: "burger_1", description: "Big Mac", value: 2100}, {icon: "burger_2", description: "Whopper", value: 2800}], // collection of preset diet items
 				minActivity: 1, // minimum metabolic multiplier
 				maxActivity: 7, // maximum metabolic multiplier
 				scale: 0, // graph scale day/week/month/year
