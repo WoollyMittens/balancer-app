@@ -5,6 +5,7 @@
 	display: none;
 	flex-direction: column;
 	font-size: 0.857em;
+	z-index: 2;
 }
 
 .balancer-show-log .balancer-log {
