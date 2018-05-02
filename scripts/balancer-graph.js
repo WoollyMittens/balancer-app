@@ -77,7 +77,7 @@
 				startDate.setHours(startDate.getHours() + 1);
 			}
 			// set the projected weight loss/gain based on the daily balance
-			this.projection.innerHTML = (startBalance / model.density / timeSpan * 7).toFixed(2) + " kg/wk";
+			this.projection.innerHTML = (startBalance / model.density).toFixed(2) + " kg";
 			// pass back the prepared chart items
 			return chartItems;
 		};
@@ -103,7 +103,7 @@
 				graphLevel = Math.min(Math.max(50 - Math.abs(50 * chartItems[a].value / graphLimit), 0), 50);
 				graphSize = (chartItems[a].value < 0) ? "top:50%;bottom:" + graphLevel + "%;" : "top:" + graphLevel + "%;bottom:50%;";
 				graphBar = document.createElement("div");
-				graphBar.style.backgroundColor = "rgba(51,102,153," + (chartItems[a].activity / (model.maxActivity - model.minActivity)) + ")";
+				graphBar.style.backgroundColor = "rgba(25,118,210," + (chartItems[a].activity / (model.maxActivity - model.minActivity)) + ")";
 				graphBar.setAttribute("class", graphClass);
 				graphBar.innerHTML = "<span style=\"" + graphSize + "\" title=\"" + chartItems[a].use + " kJ\"></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";

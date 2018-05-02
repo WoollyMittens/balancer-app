@@ -70,6 +70,7 @@
 			// store the requested mode
 			console.log("onLogOpened", mode);
 			model.log = mode;
+			parent.saveState();
 			// toggle the panel state
 			this.element.className = this.element.className.replace(/-show-history|-show-meal|-show-activity/, "-show-" + model.log);
 		};

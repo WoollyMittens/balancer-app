@@ -3,9 +3,10 @@
 	margin: 0;
 	padding: 1rem;
 	position: relative;
-	font-size: 0.857em;
 	display: none;
 	flex-direction: column;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .balancer-show-settings .balancer-settings {
@@ -15,3 +16,34 @@
 .balancer-settings label {
 	display: block;
 }
+
+.balancer-settings fieldset {
+	border: none;
+	padding: 0;
+	margin: 0 0 2rem 0;
+}
+
+.balancer-settings fieldset legend {
+	margin-bottom: 0;
+}
+.balancer-settings fieldset label {
+	padding: 1.333333333333333rem 0 0;
+}
+.balancer-settings fieldset label b {
+	display: block;
+	font-weight: normal;
+}
+.balancer-settings fieldset label select,
+.balancer-settings fieldset label input {
+	font-size: 1rem;
+	width: 100%;
+}
+
+.balancer-settings fieldset label i {
+	display: block;
+	font-size: 0.857em;
+	padding: 0.666666666666667rem 0 0;
+	font-style: normal;
+}
+
+.balancer-settings fieldset label button {}
