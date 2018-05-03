@@ -108,6 +108,7 @@
 
 .balancer-scale-activity b {
 	display: block;
+	font-weight: normal;
 }
 
 .balancer-scale-activity span {

@@ -12,7 +12,7 @@ html {
 
 body {
 	overflow: hidden;
-	font-size: 1.166666666666667rem;
+	font-size: 1.167rem;
 	margin: 0;
 	overflow: hidden;
 }
@@ -24,13 +24,13 @@ h1 {
 }
 
 h2 {
-	font-size: 1.666666666666667rem;
+	font-size: 1.667rem;
 	margin: 0 0 2rem 0;
 	font-weight: bold;
 }
 
 h3, legend {
-	font-size: 1.333333333333333rem;
+	font-size: 1.333rem;
 	margin: 0 0 2rem 0;
 	font-weight: normal;
 }
@@ -53,7 +53,7 @@ a {
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
-	font-size: 1.166666666666667rem;
+	font-size: 1.167rem;
 }
 
 #balancer *:focus {
@@ -101,11 +101,11 @@ a {
 	border-bottom: solid 1px #CCCCCC;
 	background-color: Transparent;
 	background-repeat: no-repeat;
-	background-position: right 1.2rem;
-	background-size: auto 50%;
-	margin: 0;
-	padding: 0.666666666666667rem 0 0;
-	height: 3rem;
+	background-position: right center;
+	background-size: auto 70%;
+	margin: 0.667rem 0 0;
+	padding: 0;
+	height: 2.333rem;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -136,9 +136,9 @@ a {
 	background-color: #1976D2;
 	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
 	border: none;
-	padding: 0 1.333333333333333rem;
-	margin: 0.666666666666667rem 0 0;
-	font-size: 1.166666666666667rem;
+	padding: 0 1.333rem;
+	margin: 0.667rem 0 0;
+	font-size: 1.167rem;
 	text-transform: uppercase;
 	color: #fff;
 }

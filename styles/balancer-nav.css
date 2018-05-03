@@ -6,7 +6,7 @@
 	max-height: 4.666666666666667rem;
 	margin: 0;
 	position: relative;
-	padding: 0.666666666666667rem 1rem;
+	padding: 0.667rem 1rem;
 	z-index: 10;
 	background-color: #fff;
 	border-top: solid 1px #eee;
@@ -22,7 +22,7 @@
 	color: #9e9e9e;
 	filter: grayscale(1);
 	text-align: center;
-	font-size: 1.166666666666667rem;
+	font-size: 1.167rem;
 }
 
 /*

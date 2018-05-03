@@ -18,7 +18,7 @@
 }
 
 .balancer-settings label {
-	padding: 1.333333333333333rem 0 0;
+	padding: 1.333rem 0 0;
 }
 .balancer-settings label b {
 	display: block;
@@ -33,14 +33,14 @@
 .balancer-settings label i {
 	display: block;
 	font-size: 0.857em;
-	padding: 0.666666666666667rem 0 0;
+	padding: 0.667rem 0 0;
 	font-style: normal;
 }
 
 .balancer-reset {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 1.333333333333333rem 0 0;
+	padding: 1.333rem 0 0;
 	justify-content: space-between;
 	min-height: 6.5rem;
 }
