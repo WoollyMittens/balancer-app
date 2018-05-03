@@ -18,10 +18,9 @@
 		this.logHistoryButton = this.element.querySelector(".balancer-log-add-history");
 		this.logMealButton = this.element.querySelector(".balancer-log-add-meal");
 		this.logActivityButton = this.element.querySelector(".balancer-log-add-activity");
+		this.timeForm = this.element.querySelector(".balancer-log-time");
 		this.timeInput = this.element.querySelector(".balancer-log-time input[name=time]");
 		this.dateInput = this.element.querySelector(".balancer-log-time input[name=date]");
-		this.timeLabel = this.element.querySelector(".balancer-log-time time:nth-child(1)");
-		this.dateLabel = this.element.querySelector(".balancer-log-time time:nth-child(2)");
 
 		// methods
 		this.update = function() {
@@ -43,9 +42,6 @@
 		this.updateTime = function() {
 			// update the time to the current time or use the focussed time
 			var date = model.focus || new Date();
-			// set the label values
-			this.timeLabel.innerHTML = date.toLocaleTimeString([], {hour: "numeric", minute: "numeric", hour12: true}).replace(/\s/g, "");
-			this.dateLabel.innerHTML = date.toLocaleDateString();
 			// set the input elements
 			var year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate();
 			this.timeInput.value = date.toLocaleTimeString([], {hour: "numeric", minute: "numeric", hour12: false});
@@ -101,12 +97,12 @@
 		this.activities = new parent.Activities(this, model);
 
 		// events
-		this.element.addEventListener('submit', function (evt) { evt.preventDefault(); });
 		this.logHistoryButton.addEventListener('click', this.onLogOpened.bind(this, "history"));
 		this.logMealButton.addEventListener('click', this.onLogOpened.bind(this, "meal"));
 		this.logActivityButton.addEventListener('click', this.onLogOpened.bind(this, "activity"));
 		this.timeInput.addEventListener('change', this.onFocusTime.bind(this));
 		this.dateInput.addEventListener('change', this.onFocusTime.bind(this));
+		this.timeForm.addEventListener('submit', this.onFocusTime.bind(this));
 
 	};
 

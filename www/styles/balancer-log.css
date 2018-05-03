@@ -23,8 +23,8 @@
 .balancer-log-add-activity {
 	position: absolute;
 	top: 0;
-	width: 3rem;
-	height: 3rem;
+	width: 4rem;
+	height: 4rem;
 	border: none;
 	border-radius: 50%;
 	background-color: #1976D2;
@@ -44,51 +44,47 @@
 }
 
 .balancer-log-add-history {
-	transform: translate(-5rem, -50%);
+	transform: translate(-7rem, -75%);
 	left: 50%;
-	background-image: url("../icons/chart_2.svg");
+	background-image: url("../icons/time.svg");
 }
 
 .balancer-log-add-meal {
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -75%);
 	left: 50%;
 	background-image: url("../icons/fork_1.svg");
 }
 
 .balancer-log-add-activity {
-	transform: translate(5rem, -50%);
+	transform: translate(7rem, -75%);
 	right: 50%;
-	background-image: url("../icons/favorite.svg");
+	background-image: url("../icons/run_exit_2 inv.svg");
 }
 
 .balancer-log-time {
 	display: flex;
 	justify-content: space-between;
-	padding: 1.25rem;
 	flex: 0 1 auto;
+	align-items: center;
+	padding: 0 0.5rem;
 	border-bottom: solid 1px #eee;
 	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
 	min-height: 5.333333333333333rem;
 }
 
-.balancer-log-time time {
-	line-height: 2.333;
-	display: inline-block;
-	padding: 0;
+.balancer-log-show-activity .balancer-log-time,
+.balancer-log-show-meal .balancer-log-time {
+	display: none;
 }
 
-.balancer-log-time time,
 .balancer-log-time label {
 	flex: 0 1 auto;
+	padding: 0 0.5rem;
 	font-weight: bold;
 }
 
-.balancer-log-show-history .balancer-log-time label {
-	display: none;
-}
-.balancer-log-show-activity .balancer-log-time time,
-.balancer-log-show-meal .balancer-log-time time {
-	display: none;
+.balancer-log-time label {
+	padding-top: 0.333rem;
 }
 
 .balancer-log-time label span {

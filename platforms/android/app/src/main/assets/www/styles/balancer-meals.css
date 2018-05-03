@@ -1,0 +1,82 @@
+.balancer-log-meal {
+	display: flex;
+	margin: 0 0.5rem;
+	flex: 0 1 auto;
+	min-height: 4rem;
+}
+
+.balancer-log-show-activity .balancer-log-meal,
+.balancer-log-show-history .balancer-log-meal {
+	display: none;
+}
+
+.balancer-log-meal b,
+.balancer-log-meal label,
+.balancer-log-meal p {
+	flex: 0 1 auto;
+	padding: 0 0.5rem;
+	margin: 0;
+	white-space: nowrap;
+	align-items: center;
+	line-height: 1.5;
+}
+
+.balancer-log-meal b,
+.balancer-log-meal p {
+	padding: 0.9rem 0.5rem;
+}
+
+.balancer-log-meal label {
+	padding-top: 0.667rem;
+}
+
+.balancer-log-meal label:nth-child(2) {
+	flex: 1 1 auto;
+}
+
+.balancer-log-meal label span {
+	display: none;
+}
+
+.balancer-log-meal label input {
+	font-size: 1rem;
+}
+
+.balancer-log-meal label input[type=text] {
+	width: 100%;
+}
+.balancer-log-meal label input[type=number] {
+	width: 4em;
+}
+
+.balancer-log-meal p {
+	margin: 0;
+}
+
+.balancer-log-meal p button {}
+
+.balancer-log-meals {
+	margin: 0;
+	padding: 0 0.5rem;
+	flex: 1 1 auto;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	list-style-type: none;
+	align-content: flex-start;
+}
+
+.balancer-log-show-activity .balancer-log-meals,
+.balancer-log-show-history .balancer-log-meals {
+	display: none;
+}
+
+.balancer-log-meals li{
+	flex: 0 1 auto;
+}
+
+.balancer-log-meals li button {
+	display: block;
+}

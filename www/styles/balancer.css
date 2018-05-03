@@ -52,6 +52,7 @@ a {
 	height: 100vh;
 	width: 100%;
 	font-size: 1.167rem;
+	overflow: hidden;
 }
 
 #balancer *:focus {
@@ -171,4 +172,6 @@ a {
 
 #balancer button[name=add] {
 	background-image: url("../icons/button_new_2.svg");
+	width: 3rem;
+	height: 3rem;
 }
