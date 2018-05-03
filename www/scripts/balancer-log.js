@@ -68,7 +68,6 @@
 			// cancel the click
 			if (evt) evt.preventDefault();
 			// store the requested mode
-			console.log("onLogOpened", mode);
 			model.log = mode;
 			parent.saveState();
 			// toggle the panel state
