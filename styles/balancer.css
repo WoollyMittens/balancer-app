@@ -91,6 +91,10 @@ a {
 	text-indent: 4rem;
 }
 
+#balancer label:hover b {
+	color: #1976D2;
+}
+
 #balancer input[type=text],
 #balancer input[type=number],
 #balancer input[type=date],
@@ -121,7 +125,8 @@ a {
 }
 
 #balancer input[type=date]:focus,
-#balancer input[type=time]:focus {
+#balancer input[type=time]:focus,
+#balancer select:focus {
 	transform: translateY(1px);
 }
 
