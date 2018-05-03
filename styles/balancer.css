@@ -106,6 +106,7 @@ a {
 	margin: 0.667rem 0 0;
 	padding: 0;
 	height: 2.333rem;
+	font-size: 1.167rem;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -117,8 +118,11 @@ a {
 #balancer input[type=time]:focus,
 #balancer select:focus {
 	border-bottom: solid 2px #1976D2;
-	transform: translateY(1px);
+}
 
+#balancer input[type=date]:focus,
+#balancer input[type=time]:focus {
+	transform: translateY(1px);
 }
 
 #balancer select {

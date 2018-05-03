@@ -50,6 +50,7 @@
 
 		this.saveState = function() {
 			// save the state of the app as json
+			console.log("saveState", JSON.stringify(model));
 			localStorage.setItem("state", JSON.stringify(model));
 		};
 
