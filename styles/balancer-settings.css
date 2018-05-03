@@ -15,6 +15,7 @@
 
 .balancer-settings label {
 	display: block;
+	position: relative;
 }
 
 .balancer-settings label {
@@ -23,6 +24,7 @@
 .balancer-settings label b {
 	display: block;
 	font-weight: normal;
+	font-size: 0.857em;
 }
 .balancer-settings label select,
 .balancer-settings label input {
@@ -35,6 +37,7 @@
 	font-size: 0.857em;
 	padding: 0.667rem 0 0;
 	font-style: normal;
+	color: #999;
 }
 
 .balancer-reset {
