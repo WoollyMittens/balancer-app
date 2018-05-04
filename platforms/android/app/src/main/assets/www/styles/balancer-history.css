@@ -4,11 +4,6 @@
 	flex: 1 1 auto;
 }
 
-.balancer-log-show-activity .balancer-log-history,
-.balancer-log-show-meal .balancer-log-history {
-	display: none;
-}
-
 .balancer-log-history table {
 	display: block;
 	margin: 0;

@@ -52,6 +52,7 @@ a {
 	height: 100vh;
 	width: 100%;
 	font-size: 1.167rem;
+	overflow: hidden;
 }
 
 #balancer *:focus {
@@ -83,6 +84,7 @@ a {
 	width: 3rem;
 	height: 3rem;
 	margin: 0.5rem;
+	padding: 0;
 	border: none;
 	overflow: hidden;
 	white-space: nowrap;
@@ -171,4 +173,26 @@ a {
 
 #balancer button[name=add] {
 	background-image: url("../icons/button_new_2.svg");
+	width: 3rem;
+	height: 3rem;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(-50%, -125%);
+  }
+
+  100% {
+    transform: translate(-50%, -110%);
+  }
+}
+
+@keyframes throb {
+  0% {
+    transform: scale(1.1, 1.1);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
 }

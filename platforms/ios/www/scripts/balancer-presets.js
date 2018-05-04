@@ -13,6 +13,7 @@
 
 		// properties
 		this.element = model.root.querySelector(".balancer-presets");
+		this.presetsForm = this.element.querySelector(".balancer-presets-meal");
 		this.iconButton = this.element.querySelector(".balancer-presets-meal button[name=icon]");
 		this.descriptionInput = this.element.querySelector(".balancer-presets-meal input[name=description]");
 		this.valueInput = this.element.querySelector(".balancer-presets-meal input[name=value]");
@@ -78,26 +79,33 @@
 		this.addPreset = function(evt) {
 			// cancel the click
 			evt.preventDefault();
-			// add the preset to the front of the list
-			model.presets.reverse();
-			model.presets.push({
-				icon: this.iconButton.className.replace(/balancer-preset-/g, ""),
-				description: this.descriptionInput.value,
-				value: parseInt(this.valueInput.value)
-			});
-			model.presets.reverse();
-			// reset the input fields
-			this.iconButton.className = "balancer-preset-plate_1";
-			this.descriptionInput.value = "";
-			this.valueInput.value = "";
-			// redraw the view
-			parent.saveState();
-			parent.update();
+			// if the values seem okay
+			if (this.checkValues()) {
+				// add the preset to the front of the list
+				model.presets.reverse();
+				model.presets.push({
+					icon: this.iconButton.className.replace(/balancer-preset-/g, ""),
+					description: this.descriptionInput.value,
+					value: parseInt(this.valueInput.value)
+				});
+				model.presets.reverse();
+				// reset the input fields
+				this.iconButton.className = "balancer-preset-plate_1";
+				this.descriptionInput.value = "";
+				this.valueInput.value = "";
+				// redraw the view
+				parent.saveState();
+				parent.update();
+			}
 		};
 
 		this.checkValues = function(evt) {
+			// check the values
+			var hasFailed = (this.descriptionInput.value === "" || isNaN(parseInt(this.valueInput.value)));
 			// disable the button until enough has been filled in
-			this.addButton.disabled = (this.descriptionInput.value === "" || isNaN(parseInt(this.valueInput.value)));
+			this.addButton.disabled = hasFailed;
+			// return the result
+			return !hasFailed;
 		};
 
 		this.cancelSubmit = function(evt) {
@@ -129,14 +137,14 @@
 		};
 
 		// events
-		this.element.addEventListener("submit", this.cancelSubmit.bind(this));
 		this.iconButton.addEventListener("click", this.openIconPicker.bind(this));
 		this.descriptionInput.addEventListener("change", this.checkValues.bind(this));
 		this.descriptionInput.addEventListener("keypress", this.checkValues.bind(this));
 		this.valueInput.addEventListener("change", this.checkValues.bind(this));
 		this.valueInput.addEventListener("keypress", this.checkValues.bind(this));
-		this.addButton.addEventListener("click", this.addPreset.bind(this));
 		this.iconPicker.addEventListener("click", this.pickIcon.bind(this));
+		this.addButton.addEventListener("click", this.addPreset.bind(this));
+		this.presetsForm.addEventListener("submit", this.addPreset.bind(this));
 
 	};
 

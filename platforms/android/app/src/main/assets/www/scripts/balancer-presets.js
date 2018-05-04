@@ -142,8 +142,8 @@
 		this.descriptionInput.addEventListener("keypress", this.checkValues.bind(this));
 		this.valueInput.addEventListener("change", this.checkValues.bind(this));
 		this.valueInput.addEventListener("keypress", this.checkValues.bind(this));
-		this.addButton.addEventListener("click", this.addPreset.bind(this));
 		this.iconPicker.addEventListener("click", this.pickIcon.bind(this));
+		this.addButton.addEventListener("click", this.addPreset.bind(this));
 		this.presetsForm.addEventListener("submit", this.addPreset.bind(this));
 
 	};

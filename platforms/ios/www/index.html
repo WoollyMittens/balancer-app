@@ -42,44 +42,40 @@
 			</figcaption>
 		</figure>
 
-		<form class="balancer-log balancer-log-show-history">
+		<section class="balancer-log balancer-log-show-history">
 			<button class="balancer-log-add-history">Log</button>
 			<button class="balancer-log-add-meal">Food</button>
 			<button class="balancer-log-add-activity">Sport</button>
-			<div class="balancer-log-time">
-				<time></time>
-				<time></time>
+			<form class="balancer-log-time">
 				<label><span>Time </span><input name="time" type="time"/></label>
 				<label><span>Date </span><input name="date" type="date"/></label>
-			</div>
-			<div class="balancer-log-activity">
-				<input name="name" type="hidden" />
+			</form>
+			<form class="balancer-log-activity">
 				<label>
-						<input name="activity" type="range" value="1" min="1" max="7"/>
 						<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
-						<span class="balancer-preset balancer-preset-moderate">Moderate</span>
+						<span class="balancer-range"><input name="activity" type="range" value="1" min="1" max="7"/></span>
 						<span class="balancer-preset balancer-preset-intense">Intense</span>
 					</label>
-			</div>
-			<div class="balancer-log-meal">
-				<b>10am</b>
+			</form>
+			<form class="balancer-log-meal">
+				<p><button class="balancer-preset-plate_1" name="icon">Icon</button></p>
 				<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
 				<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> kJ</label>
 				<p><button name="add">Add</button></p>
-			</div>
+			</form>
 			<ul class="balancer-log-meals"></ul>
 			<div class="balancer-log-history">
 				<table></table>
 			</div>
-		</form>
+		</section>
 
-		<form class="balancer-presets">
-			<div class="balancer-presets-meal">
+		<section class="balancer-presets">
+			<form class="balancer-presets-meal">
 				<p><button class="balancer-preset-plate_1" name="icon">Icon</button></p>
 				<label><span>Description</span><input name="description" type="text" placeholder="Description"/></label>
 				<label><span>Value</span><input name="value" type="number" placeholder="---"/> kJ</label>
 				<p><button name="add" disabled>Add</button></p>
-			</div>
+			</form>
 			<ul class="balancer-presets-picker">
 				<li><button name="icon" class="balancer-preset-apple_1"></button></li>
 				<li><button name="icon" class="balancer-preset-apple_2"></button></li>
@@ -250,7 +246,7 @@
 			<div class="balancer-presets-scroll">
 				<table class="balancer-presets-meals"></table>
 			</div>
-		</form>
+		</section>
 
 		<form class="balancer-settings">
 			<label><b>Height</b> <input name="height" type="number"/> <i>in centimeters</i></label>
@@ -350,7 +346,7 @@
 				// end day
 				end: new Date(),
 				// logging mode
-				log: "history"
+				log: "meal"
 			});
 		}, false);
 	</script>

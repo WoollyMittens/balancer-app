@@ -27,7 +27,7 @@
 			// reset the log view
 			if (name === "log") {
 				model.focus = null;
-				model.log = "history";
+				model.log = "meal";
 			}
 			// update the property
 			parent.update();

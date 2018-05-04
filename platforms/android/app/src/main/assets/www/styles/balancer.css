@@ -84,6 +84,7 @@ a {
 	width: 3rem;
 	height: 3rem;
 	margin: 0.5rem;
+	padding: 0;
 	border: none;
 	overflow: hidden;
 	white-space: nowrap;
@@ -172,4 +173,6 @@ a {
 
 #balancer button[name=add] {
 	background-image: url("../icons/button_new_2.svg");
+	width: 3rem;
+	height: 3rem;
 }

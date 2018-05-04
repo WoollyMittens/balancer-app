@@ -14,10 +14,10 @@
 		// properties
 		this.element = model.root.querySelector(".balancer-log");
 		this.addMealForm = this.element.querySelector(".balancer-log-meal");
-		this.hourValue = this.element.querySelector(".balancer-log-meal b");
+		this.pickMealButton = this.element.querySelector(".balancer-log-meal button[name=icon]");
 		this.labelInput = this.element.querySelector(".balancer-log-meal input[name=label]");
 		this.valueInput = this.element.querySelector(".balancer-log-meal input[name=value]");
-		this.addMealButton = this.element.querySelector(".balancer-log-meal button");
+		this.addMealButton = this.element.querySelector(".balancer-log-meal button[name=add]");
 		this.presetMeals = this.element.querySelector(".balancer-log-meals");
 
 		// methods
@@ -30,6 +30,10 @@
 		this.reset = function() {
 			// clear the meals presets
 			this.presetMeals.innerHTML = "";
+			// reset the input fields
+//			this.pickMealButton.className = "balancer-preset-plate_1";
+//			this.labelInput.value = "";
+//			this.valueInput.value = "";
 		};
 
 		this.redraw = function() {
@@ -47,7 +51,7 @@
 				presetItem = document.createElement("li");
 				presetButton = document.createElement("button");
 				presetButton.name = "icon";
-				presetButton.innerHTML = model.presets[a].description;
+				presetButton.innerHTML = "<span>" + model.presets[a].description + "</span>";
 				presetButton.className = "balancer-preset-" + model.presets[a].icon;
 				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.presets[a]));
 				presetItem.appendChild(presetButton);
@@ -56,9 +60,6 @@
 		};
 
 		this.onCheckValues = function() {
-			// update the hour value
-			var timeValue = parseInt(parent.timeInput.value.split(":")[0]);
-			this.hourValue.innerHTML = !isNaN(timeValue) ? new Date(new Date().setHours(timeValue)).toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/g, "") : "";
 			// check the values
 			var hasFailed = (
 				isNaN(parseInt(parent.timeInput.value))
@@ -70,6 +71,20 @@
 			this.addMealButton.disabled = hasFailed;
 			// return the value
 			return !hasFailed;
+		};
+
+		this.onOpenPicker = function(evt) {
+			// cancel the submit
+			if (evt) evt.preventDefault();
+			// show the list of icons
+			this.presetMeals.className += " balancer-log-meals-open";
+		};
+
+		this.onClosePicker = function(evt) {
+			// cancel the submit
+			if (evt) evt.preventDefault();
+			// hide the list of icons
+			this.presetMeals.className = this.presetMeals.className.replace(/ balancer-log-meals-open/g, "");
 		};
 
 		this.onAddMeal = function(evt) {
@@ -88,8 +103,6 @@
 				});
 				// store the timeline entry
 				parent.setTimeline(date, timelineEntry);
-				// return to the history list
-				parent.onLogOpened("history");
 			}
 		};
 
@@ -99,6 +112,10 @@
 			// implement the values of the preset
 			this.labelInput.value = preset.description;
 			this.valueInput.value = preset.value;
+			// set the icon
+			this.pickMealButton.className = "balancer-preset-" + preset.icon;
+			// close the picker
+			this.onClosePicker();
 			// check the input fields
 			this.onCheckValues();
 		};
@@ -108,6 +125,7 @@
 		this.labelInput.addEventListener('keypress', this.onCheckValues.bind(this));
 		this.valueInput.addEventListener('change', this.onCheckValues.bind(this));
 		this.valueInput.addEventListener('keypress', this.onCheckValues.bind(this));
+		this.pickMealButton.addEventListener("click", this.onOpenPicker.bind(this));
 		this.addMealButton.addEventListener('click', this.onAddMeal.bind(this));
 		this.addMealForm.addEventListener("submit", this.onAddMeal.bind(this));
 

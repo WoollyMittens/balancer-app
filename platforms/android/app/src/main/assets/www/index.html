@@ -47,22 +47,18 @@
 			<button class="balancer-log-add-meal">Food</button>
 			<button class="balancer-log-add-activity">Sport</button>
 			<form class="balancer-log-time">
-				<time></time>
-				<time></time>
 				<label><span>Time </span><input name="time" type="time"/></label>
 				<label><span>Date </span><input name="date" type="date"/></label>
 			</form>
 			<form class="balancer-log-activity">
-				<input name="name" type="hidden" />
 				<label>
-						<input name="activity" type="range" value="1" min="1" max="7"/>
 						<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
-						<span class="balancer-preset balancer-preset-moderate">Moderate</span>
+						<span class="balancer-range"><input name="activity" type="range" value="1" min="1" max="7"/></span>
 						<span class="balancer-preset balancer-preset-intense">Intense</span>
 					</label>
 			</form>
 			<form class="balancer-log-meal">
-				<b>10am</b>
+				<p><button class="balancer-preset-plate_1" name="icon">Icon</button></p>
 				<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
 				<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> kJ</label>
 				<p><button name="add">Add</button></p>
@@ -350,7 +346,7 @@
 				// end day
 				end: new Date(),
 				// logging mode
-				log: "history"
+				log: "meal"
 			});
 		}, false);
 	</script>

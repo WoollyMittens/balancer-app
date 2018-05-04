@@ -31,9 +31,9 @@
 			// clear the meals presets
 			this.presetMeals.innerHTML = "";
 			// reset the input fields
-			this.pickMealButton.className = "balancer-preset-plate_1";
-			this.labelInput.value = "";
-			this.valueInput.value = "";
+//			this.pickMealButton.className = "balancer-preset-plate_1";
+//			this.labelInput.value = "";
+//			this.valueInput.value = "";
 		};
 
 		this.redraw = function() {
@@ -51,7 +51,7 @@
 				presetItem = document.createElement("li");
 				presetButton = document.createElement("button");
 				presetButton.name = "icon";
-				presetButton.innerHTML = model.presets[a].description;
+				presetButton.innerHTML = "<span>" + model.presets[a].description + "</span>";
 				presetButton.className = "balancer-preset-" + model.presets[a].icon;
 				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.presets[a]));
 				presetItem.appendChild(presetButton);
