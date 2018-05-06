@@ -145,6 +145,7 @@
 
 .balancer-presets-meals td button {}
 
+.balancer-preset-menu { background-image: url("../icons/menu.svg"); }
 .balancer-preset-sedentary { background-image: url("../icons/man.svg"); }
 .balancer-preset-moderate { background-image: url("../icons/run_exit_2.svg"); }
 .balancer-preset-intense { background-image: url("../icons/run_evacuation.svg"); }
