@@ -16,6 +16,8 @@
 
 		// methods
 		this.update = function() {
+			// update the clock
+			this.updateTimespan();
 			// update the timespan
 			this.resetTimespan();
 			// update each sub-class
@@ -83,6 +85,13 @@
 			return earliest;
 		};
 
+		this.updateTimespan = function() {
+			// keep the current day active unless the focus is elsewhere
+			if (!model.focus && model.end.getDate() !== new Date().getDate()) {
+				model.end = new Date();
+			}
+		};
+
 		this.resetTimespan = function() {
 			// calculate the new start date
 			var start = new Date(model.end.getTime() - (parseInt(model.timespan) * 1000 * 60 * 60 * 24));
@@ -102,6 +111,7 @@
 		this.nav = new this.Nav(this, this.model);
 
 		// events
+		this.refreshCycle = setInterval(this.updateTimespan.bind(this), 1000 * 60);
 		this.restoreState();
 
 	};

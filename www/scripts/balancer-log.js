@@ -24,19 +24,14 @@
 
 		// methods
 		this.update = function() {
-			// redraw the components
-			this.redraw();
+			// set the date and time labels
+			this.updateTime();
 			// reset the logging mode
 			this.onLogOpened(model.log);
 			// update the child components
 			this.history.update();
 			this.meals.update();
 			this.activities.update();
-		};
-
-		this.redraw = function() {
-			// set the date and time labels
-			this.updateTime();
 		};
 
 		this.updateTime = function() {
@@ -81,6 +76,9 @@
 			var minutes = parseInt(time[1]);
 			var focusDate = new Date(years, months, days, hours, minutes);
 			model.focus = isNaN(focusDate.getTime()) ? null : focusDate;
+			// if the focus is not on today, update the dates
+			model.start = new Date(new Date(new Date(new Date(model.start).setYear(years)).setMonth(months)).setDate(days));
+			model.end = new Date(new Date(new Date(new Date(model.end).setYear(years)).setMonth(months)).setDate(days));
 			// reset the fields if the input gets mangled
 			if (!model.focus) {
 				var resetDate = new Date();
@@ -88,7 +86,7 @@
 				this.dateInput.value = resetDate.getFullYear() + "-" + ("0" + (resetDate.getMonth() + 1)).slice(-2) + "-" + ("0" + resetDate.getDay()).slice(-2);
 			}
 			// update the app
-			this.update();
+			parent.update();
 		};
 
 		// classes
