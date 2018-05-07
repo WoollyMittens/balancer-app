@@ -29,9 +29,9 @@
 			this.nav.update();
 		};
 
-		this.restoreState = function() {
+		this.restoreState = function(backup) {
 			// load the previous state from localstorage
-			var saved = localStorage.getItem("state");
+			var saved = backup || localStorage.getItem("state");
 			// if it seems intact
 			if (saved) {
 				// parse the json

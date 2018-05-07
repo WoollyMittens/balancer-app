@@ -99,6 +99,7 @@ a {
 #balancer input[type=number],
 #balancer input[type=date],
 #balancer input[type=time],
+#balancer textarea,
 #balancer select {
 	border-radius: 0;
 	border: none;
@@ -120,6 +121,7 @@ a {
 #balancer input[type=number]:focus,
 #balancer input[type=date]:focus,
 #balancer input[type=time]:focus,
+#balancer textarea:focus,
 #balancer select:focus {
 	border-bottom: solid 2px #1976D2;
 }
@@ -128,6 +130,10 @@ a {
 #balancer input[type=time]:focus,
 #balancer select:focus {
 	transform: translateY(1px);
+}
+
+#balancer textarea {
+	height: 6rem;
 }
 
 #balancer select {

@@ -18,6 +18,7 @@
 		this.height = this.element.querySelector("input[name=height]");
 		this.gender = this.element.querySelector("select[name=gender]");
 		this.timespan = this.element.querySelector("select[name=timespan]");
+		this.backup = this.element.querySelector("textarea[name=backup]");
 		this.reset = this.element.querySelector("button[name=reset]");
 		this.confirm = this.element.querySelector("button[name=confirm]");
 
@@ -29,6 +30,8 @@
 			this.height.value = model.height;
 			this.gender.value = model.gender;
 			this.timespan.value = model.timespan;
+			// update the backup
+			this.backup.value = JSON.stringify(model);
 		};
 
 		this.onValueChanged = function(property, evt) {
@@ -39,6 +42,15 @@
 			parent.update();
 			// save the state
 			parent.saveState();
+		};
+
+		this.onRestoreBackup = function() {
+			try {
+				var backup = JSON.parse(this.backup.value);
+				parent.restoreState(this.backup.value);
+			} catch (e) {
+				console.log("onRestoreBackup", e);
+			}
 		};
 
 		this.onResetHistory = function(evt) {
@@ -67,6 +79,7 @@
 		this.height.addEventListener("change", this.onValueChanged.bind(this, "height"));
 		this.gender.addEventListener("change", this.onValueChanged.bind(this, "gender"));
 		this.timespan.addEventListener("change", this.onValueChanged.bind(this, "timespan"));
+		this.backup.addEventListener("change", this.onRestoreBackup.bind(this, "backup"));
 		this.reset.addEventListener("click", this.onResetHistory.bind(this));
 		this.confirm.addEventListener("click", this.onConfirmReset.bind(this));
 
