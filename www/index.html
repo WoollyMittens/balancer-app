@@ -294,9 +294,9 @@
 		// polyfill cordova
 		if (!window.cordova) {
 			var onDeviceReady = new Event("deviceready");
-			setTimeout(function() {
+			window.requestAnimationFrame(function() {
 				document.dispatchEvent(onDeviceReady);
-			}, 0);
+			});
 		};
 
 		// wait for the device to become ready
