@@ -82,7 +82,7 @@
 	z-index: 9;
 	display: flex;
 	list-style: none;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-content: flex-start;
 	flex-wrap: wrap;
 	transform: translate(0%, 100%);
