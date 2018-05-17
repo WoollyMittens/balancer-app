@@ -103,7 +103,7 @@
 				graphBar = document.createElement("div");
 				graphBar.style.backgroundColor = "rgba(25,118,210," + (chartItems[a].activity / (model.maxActivity - model.minActivity)) + ")";
 				graphBar.setAttribute("class", graphClass);
-				graphBar.innerHTML = "<span style=\"" + graphSize + "\" title=\"" + chartItems[a].use + " kJ\"></span>";
+				graphBar.innerHTML = "<span style=\"" + graphSize + "\"><em>" + Math.round(chartItems[a].value) + "kJ</em></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
 				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString("en-AU") + "</b>" : "";
 				graphBar.addEventListener('click', this.onFocusHour.bind(this, chartItems[a].activity, chartItems[a].date));
