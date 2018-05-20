@@ -111,9 +111,8 @@
 				// remember the chart item
 				this.graphBars.push(graphBar);
 			}
-			// slide the chart to the right
-			var _this = this;
-			setTimeout(function() {_this.scroll.scrollLeft += 10000;}, 0);
+			// centre the focussed day if it is outside the view
+			setTimeout(this.onCentreFocus.bind(this), 0);
 		};
 
 		this.isWithinHour = function(dateA, dateB) {
@@ -149,6 +148,13 @@
 			// toggle the focussed hour
 			model.focus = this.isWithinHour(model.focus, date) ? null : new Date(date);
 			parent.update();
+		};
+
+		this.onCentreFocus = function() {
+			var focus = document.querySelector(".balancer-graph-current");
+			if (focus.offsetLeft < this.scroll.scrollLeft || focus.offsetLeft > this.scroll.scrollLeft + this.scroll.offsetWidth) {
+				this.scroll.scrollLeft = document.querySelector(".balancer-graph-current").offsetLeft - this.scroll.offsetWidth / 2;
+			}
 		};
 
 		// events
