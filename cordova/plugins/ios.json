@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.woollmittens.counterbalancer"
+    },
+    "cordova-plugin-headercolor": {
+      "PACKAGE_NAME": "com.woollmittens.counterbalancer"
     }
   },
   "dependent_plugins": {}
