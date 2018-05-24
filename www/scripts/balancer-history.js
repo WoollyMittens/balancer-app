@@ -73,6 +73,9 @@
 		};
 
 		this.drawHistory = function(historyItems) {
+			// update the units
+			var energyUnit = (model.energyUnits === 0) ? " kJ" : " kCal";
+			var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
 			// limit the length of the history to a managable size
 			var maxItems = Math.min(historyItems.length, 1000);
 			historyItems = historyItems.slice(historyItems.length - maxItems, historyItems.length);
@@ -89,7 +92,7 @@
 				historyLabel = document.createElement("td");
 				historyLabel.innerHTML = historyItems[a].label;
 				historyValue = document.createElement("td");
-				historyValue.innerHTML = (historyItems[a].value) ? historyItems[a].value + " kJ" : "";
+				historyValue.innerHTML = (historyItems[a].value) ? (historyItems[a].value / energyConversion).toFixed(0) + energyUnit : "";
 				historyControls = document.createElement("td");
 				historyButton = document.createElement("button");
 				historyButton.name = "remove";

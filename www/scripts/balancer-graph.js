@@ -81,6 +81,9 @@
 		};
 
 		this.drawHourlyChart = function(chartItems) {
+			// update the units
+			var energyUnit = (model.energyUnits === 0) ? "kJ" : "kCal";
+			var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
 			// limit the length of the chart to a managable size
 			var maxItems = Math.min(chartItems.length, 1000);
 			chartItems = chartItems.slice(chartItems.length - maxItems, chartItems.length);
@@ -88,8 +91,8 @@
 			var graphLimit = 0;
 			chartItems.map(function(entry) { var entryValue = Math.abs(entry.value); graphLimit = (entryValue > graphLimit) ? entryValue : graphLimit; });
 			graphLimit = Math.max(graphLimit, this.baseRate());
-			this.scaleMax.innerHTML = Math.round(graphLimit) + "kJ";
-			this.scaleMin.innerHTML = Math.round(-graphLimit) + "kJ";
+			this.scaleMax.innerHTML = (graphLimit / energyConversion).toFixed(0) + energyUnit;
+			this.scaleMin.innerHTML = (-graphLimit / energyConversion).toFixed(0) + energyUnit;
 			// add N elements of the chart to the DOM
 			var graphHour, graphClass, graphLevel, graphColour, graphSize, graphBar, curDate = new Date(), focusDate = model.focus || curDate;
 			for (var a = 0, b = chartItems.length; a < b; a += 1) {
@@ -103,7 +106,7 @@
 				graphBar = document.createElement("div");
 				graphBar.style.backgroundColor = "rgba(25,118,210," + (chartItems[a].activity / (model.maxActivity - model.minActivity)) + ")";
 				graphBar.setAttribute("class", graphClass);
-				graphBar.innerHTML = "<span style=\"" + graphSize + "\"><em>" + Math.round(chartItems[a].value) + "kJ</em></span>";
+				graphBar.innerHTML = "<span style=\"" + graphSize + "\"><em>" + (chartItems[a].value / energyConversion).toFixed(0) + energyUnit + "</em></span>";
 				graphBar.innerHTML += (graphHour % 3 === 0 && graphHour > 0) ? "<time>" + chartItems[a].date.toLocaleString([], {hour: "numeric", hour12: true}).replace(/\s/, "") + "</time>" : "";
 				graphBar.innerHTML +=	(graphHour === 23) ? "<b>" + chartItems[a].date.toLocaleDateString("en-AU") + "</b>" : "";
 				graphBar.addEventListener('click', this.onFocusHour.bind(this, chartItems[a].activity, chartItems[a].date));

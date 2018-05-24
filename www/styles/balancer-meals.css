@@ -49,6 +49,10 @@
 	width: 4em;
 }
 
+.balancer-log-meal label em {
+	font-style: normal;
+}
+
 .balancer-log-meal p {
 	margin: 0;
 }

@@ -58,6 +58,10 @@
 	width: 4em;
 }
 
+.balancer-presets-meal label em {
+	font-style: normal;
+}
+
 .balancer-presets-meal p {}
 
 .balancer-presets-meal p button {}

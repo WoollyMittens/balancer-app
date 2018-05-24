@@ -105,7 +105,8 @@
 			model.heightUnits = this.heightUnits.selectedIndex;
 			model.weightUnits = this.weightUnits.selectedIndex;
 			model.energyUnits = this.energyUnits.selectedIndex;
-			// TODO: maybe save state + update
+			// save the state
+			parent.saveState();
 		};
 
 		this.onRestoreBackup = function() {

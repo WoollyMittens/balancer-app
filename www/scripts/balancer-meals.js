@@ -19,6 +19,7 @@
 		this.valueInput = this.element.querySelector(".balancer-log-meal input[name=value]");
 		this.addMealButton = this.element.querySelector(".balancer-log-meal button[name=add]");
 		this.presetMeals = this.element.querySelector(".balancer-log-meals");
+		this.logUnit = this.element.querySelector(".balancer-log-unit");
 
 		// methods
 		this.update = function() {
@@ -31,16 +32,24 @@
 			// clear the meals presets
 			this.presetMeals.innerHTML = "";
 			// reset the input fields
+			// NOTE: disabled, because someone might want to add chicken nuggests individually
 //			this.pickMealButton.className = "balancer-preset-plate_1";
 //			this.labelInput.value = "";
 //			this.valueInput.value = "";
 		};
 
 		this.redraw = function() {
+			// update the units
+			this.drawLogUnits();
 			// fill the presets with options
 			this.drawPresetMeals();
 			// check the input fields
 			this.onCheckValues();
+		};
+
+		this.drawLogUnits = function() {
+			// update the units
+			this.logUnit.innerHTML = (model.energyUnits === 0) ? " kJ" : " kCal";
 		};
 
 		this.drawPresetMeals = function() {
@@ -92,6 +101,8 @@
 			evt.preventDefault();
 			// if the vlaues seem okay
 			if (this.onCheckValues()) {
+				// get the energy conversion
+				var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
 				// figure out the time stamp
 				var date = parent.getTimeStamp();
 				// retrieve the timeline entry
@@ -99,7 +110,7 @@
 				// add this meal at the given time
 				timelineEntry.diet.push({
 					label: this.labelInput.value,
-					value: parseInt(this.valueInput.value)
+					value: parseInt(this.valueInput.value) * energyConversion
 				});
 				// store the timeline entry
 				parent.setTimeline(date, timelineEntry);
@@ -109,9 +120,11 @@
 		this.onFillPresetMeal = function(preset, evt) {
 			// cancel the click
 			evt.preventDefault();
+			// get the energy conversion
+			var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
 			// implement the values of the preset
 			this.labelInput.value = preset.description;
-			this.valueInput.value = preset.value;
+			this.valueInput.value = (preset.value / energyConversion).toFixed(0);
 			// set the icon
 			this.pickMealButton.className = "balancer-preset-" + preset.icon;
 			// close the picker

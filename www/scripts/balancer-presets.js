@@ -20,6 +20,7 @@
 		this.addButton = this.element.querySelector(".balancer-presets-meal button[name=add]");
 		this.iconPicker = this.element.querySelector(".balancer-presets-picker");
 		this.presetsTable = this.element.querySelector(".balancer-presets-meals");
+		this.presetsUnit = this.element.querySelector(".balancer-presets-unit");
 
 		// methods
 		this.update = function() {
@@ -36,6 +37,10 @@
 		};
 
 		this.redraw = function() {
+			// update the units
+			var energyUnit = (model.energyUnits === 0) ? " kJ" : " kCal";
+			var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
+			this.presetsUnit.innerHTML = energyUnit;
 			// fill the list with presets
 			var _this = this, presetRow, presetIcon, presetDescription, presetValue, presetRemove, presetButton;
 			model.presets.map(function(preset) {
@@ -46,7 +51,7 @@
 				presetDescription = document.createElement("td");
 				presetDescription.innerHTML = preset.description;
 				presetValue = document.createElement("td");
-				presetValue.innerHTML = preset.value + " kJ";
+				presetValue.innerHTML = (preset.value / energyConversion).toFixed(0) + energyUnit;
 				presetRemove = document.createElement("td");
 				presetButton = document.createElement("button");
 				presetButton.name = "remove";
@@ -81,12 +86,14 @@
 			evt.preventDefault();
 			// if the values seem okay
 			if (this.checkValues()) {
+				// get the energy conversion
+				var energyConversion = (model.energyUnits === 0) ? 1 : 4.184;
 				// add the preset to the front of the list
 				model.presets.reverse();
 				model.presets.push({
 					icon: this.iconButton.className.replace(/balancer-preset-/g, ""),
 					description: this.descriptionInput.value,
-					value: parseInt(this.valueInput.value)
+					value: parseInt(this.valueInput.value) * energyConversion
 				});
 				model.presets.reverse();
 				// reset the input fields
