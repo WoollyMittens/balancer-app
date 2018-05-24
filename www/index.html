@@ -250,10 +250,23 @@
 		</section>
 
 		<form class="balancer-settings">
-			<label><b>Height</b> <input name="height" type="number"/> <i>in centimeters</i></label>
-			<label><b>Age</b> <input name="age" type="number"/> <i>in years</i></label>
-			<label><b>Weight</b> <input name="weight" type="number"/> <i>in kilos</i></label>
-			<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
+			<div class="balancer-settings-row">
+				<label class="balancer-settings-centimeters"><b>Height</b> <input name="height" type="number"/> <i>centimeters</i></label>
+				<label class="balancer-settings-feet"><b>Height</b> <input name="heightFeet" type="number"/> <i>feet</i></label>
+				<label class="balancer-settings-inches"><b>Height</b> <input name="heightInches" type="number"/> <i>inches</i></label>
+				<label class="balancer-settings-units"><b>Units</b> <select name="heightUnits"><option value="balancer-settings-height-centimeters">Centimeters</option><option value="balancer-settings-height-feet,balancer-settings-height-inches">Feet/inches</option></select></label>
+			</div>
+			<div class="balancer-settings-row">
+				<label class="balancer-settings-kilos"><b>Weight</b> <input name="weight" type="number"/> <i>kilos</i></label>
+				<label class="balancer-settings-pounds"><b>Weight</b> <input name="weightPounds" type="number"/> <i>pounds</i></label>
+				<label class="balancer-settings-stone"><b>Weight</b> <input name="weightStone" type="number"/> <i>stone</i></label>
+				<label class="balancer-settings-units"><b>Units</b> <select name="weightUnits"><option value="balancer-settings-weight-kilos">Kilos</option><option value="balancer-settings-weight-pounds">Pounds</option><option value="balancer-settings-weight-stone">Stone</option></select></label>
+			</div>
+			<div class="balancer-settings-row">
+				<label><b>Age</b> <input name="age" type="number"/> <i>years</i></label>
+				<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
+			</div>
+			<label><b>Energy units</b> <select name="energyUnits"><option value="0">kilojoules</option><option value="1">kilocalories</option></select></label>
 			<label><b>Show</b> <select name="timespan"><option value="0">Today</option><option value="7">Up to a week</option><option value="31">Up to a month</option><option value="999">Everything</option></select></label>
 			<label><b>Backup</b> <textarea name="backup"></textarea></label>
 			<footer class="balancer-reset">
@@ -320,8 +333,10 @@
 				weight: 82,
 				// (years)
 				age: 42,
-				// desired weightloss (kg)
-				weightloss: 0,
+				// units
+				heightUnits: 0,
+				weightUnits: 0,
+				energyUnits: 0,
 				// collection of activity and diet events
 				timeline: {},
 				// collection of preset diet items

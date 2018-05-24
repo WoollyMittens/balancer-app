@@ -39,12 +39,31 @@
 	width: 100%;
 }
 
+.balancer-settings label select {
+	min-width: 10.5rem;
+}
+
 .balancer-settings label i {
 	display: block;
 	font-size: 0.857em;
 	padding: 0.667rem 0 0;
 	font-style: normal;
 	color: #999;
+}
+
+.balancer-settings-row {
+	border: none;
+	padding: 0;
+	display: flex;
+	min-height: 7rem;
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
+}
+
+.balancer-settings-row label {
+	display: block;
+	flex: 1 1 auto;
+	padding: 1.333rem 0.5rem 0;
 }
 
 .balancer-reset {
