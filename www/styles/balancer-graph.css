@@ -6,11 +6,18 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	height: 50%;
+	bottom: 50%;
 	left: 0;
 	font-size: 0.857em;
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+@media (orientation: landscape) {
+	.balancer-graph {
+		bottom: 4.666666666666667rem;
+		right: 50%;
+	}
 }
 
 .balancer-graph figcaption {}

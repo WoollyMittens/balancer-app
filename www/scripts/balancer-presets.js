@@ -43,7 +43,7 @@
 			this.presetsUnit.innerHTML = energyUnit;
 			// fill the list with presets
 			var _this = this, presetRow, presetIcon, presetDescription, presetValue, presetRemove, presetButton;
-			model.presets.map(function(preset) {
+			model.presets.sort(function (a, b) { return (a.description < b.description) ? -1 : 1; }).map(function(preset) {
 				// construct a row for this preset
 				presetRow = document.createElement("tr");
 				presetIcon = document.createElement("th");

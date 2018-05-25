@@ -13,6 +13,13 @@
 	display: none;
 }
 
+@media (orientation: landscape) {
+	.balancer-log-activity {
+		padding-bottom: 2.667rem;
+    min-height: 8rem;
+	}
+}
+
 .balancer-log-activity label {
 	padding: 0;
 	margin: 0;

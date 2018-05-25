@@ -13,6 +13,13 @@
 	display: none;
 }
 
+@media (orientation: landscape) {
+	.balancer-log-meal {
+		padding-bottom: 2.667rem;
+    min-height: 8rem;
+	}
+}
+
 .balancer-log-meal label,
 .balancer-log-meal p {
 	flex: 0 1 auto;
@@ -95,6 +102,12 @@
 
 .balancer-log-meals-open {
 	transform: translate(0%, 0%);
+}
+
+@media (orientation: landscape) {
+	.balancer-log-meals {
+		top: 0;
+	}
 }
 
 .balancer-log-meals li {

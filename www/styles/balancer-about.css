@@ -16,6 +16,13 @@
 	display: flex;
 }
 
+@media (orientation: landscape) {
+	.balancer-about {
+		top: 0;
+		left: 50%;
+	}
+}
+
 .balancer-show-about .balancer-about {
 	transform: translate(0%, 0%);
 }

@@ -53,16 +53,18 @@
 		};
 
 		this.drawPresetMeals = function() {
+			// sort the presets
+			var presets = model.presets.sort(function (a, b) { return (a.description < b.description) ? -1 : 1; });
 			// add the presets to the list
 			var presetItem, presetButton;
-			for (var a = 0, b = model.presets.length; a < b; a += 1) {
+			for (var a = 0, b = presets.length; a < b; a += 1) {
 				// construct the preset item
 				presetItem = document.createElement("li");
 				presetButton = document.createElement("button");
 				presetButton.name = "icon";
-				presetButton.innerHTML = "<span>" + model.presets[a].description + "</span>";
-				presetButton.className = "balancer-preset-" + model.presets[a].icon;
-				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, model.presets[a]));
+				presetButton.innerHTML = "<span>" + presets[a].description + "</span>";
+				presetButton.className = "balancer-preset-" + presets[a].icon;
+				presetButton.addEventListener("click", this.onFillPresetMeal.bind(this, presets[a]));
 				presetItem.appendChild(presetButton);
 				this.presetMeals.appendChild(presetItem);
 			}

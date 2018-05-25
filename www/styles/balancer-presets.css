@@ -12,6 +12,13 @@
 	display: flex;
 }
 
+@media (orientation: landscape) {
+	.balancer-presets {
+		top: 0;
+		left: 50%;
+	}
+}
+
 .balancer-show-presets .balancer-presets {
 	transform: translate(0%, 0%);
 }

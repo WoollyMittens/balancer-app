@@ -3,6 +3,12 @@ html {
 	font-family: sans-serif;
 }
 
+@media (min-width:768px) {
+	html {
+		font-size: 18px;
+	}
+}
+
 body {
 	overflow: hidden;
 	font-size: 1.167rem;

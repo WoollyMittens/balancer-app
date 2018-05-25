@@ -11,7 +11,7 @@
 
 	<title>Energy Balance Prototype</title>
 
-	<link rel="icon" href="./icons/favicon.ico"/>
+	<link rel="icon" href="./icons/favicon.ico" />
 	<link rel="stylesheet" href="styles/balancer.css" />
 	<link rel="stylesheet" href="styles/balancer-graph.css" />
 	<link rel="stylesheet" href="styles/balancer-log.css" />
@@ -53,10 +53,10 @@
 			</form>
 			<form class="balancer-log-activity">
 				<label>
-						<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
-						<span class="balancer-range"><input name="activity" type="range" value="1" min="1" max="7"/></span>
-						<span class="balancer-preset balancer-preset-intense">Intense</span>
-					</label>
+					<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
+					<span class="balancer-range"><input name="activity" type="range" value="1" min="1" max="7"/></span>
+					<span class="balancer-preset balancer-preset-intense">Intense</span>
+				</label>
 			</form>
 			<form class="balancer-log-meal">
 				<p><button class="balancer-preset-menu" name="icon">Icon</button></p>
@@ -279,14 +279,16 @@
 		<article class="balancer-about">
 			<h2>About This App</h2>
 			<figure>
-				<img alt="" src="./icons/logo.svg"/>
-				<figcaption><strong>Counter Balancer</strong><br>Version 1.0.0</figcaption>
+				<img alt="" src="./icons/logo.svg" />
+				<figcaption><strong>Counter Balancer</strong><br>Version 1.0.1</figcaption>
 			</figure>
 			<p>Keep track of your energy intake, without the annoying calculations.</p>
 			<p>This app was made to visualise rough estimates of energy intake and expenditure throughout the day. Add presets for your own eating habits and keep track of your daily calorie limit in a graph.</p>
 			<p>Please send suggestions and bug reports to <a href="mailto:info@sydneytrainwalks.com">info@sydneytrainwalks.com</a>.</p>
 			<h2>Disclaimer</h2>
 			<p>Do not use this app for any medical reason whatsoever. It is strictly meant for rough estimates. Please consult a medical professional before starting a diet.</p>
+			<h2>Copyright</h2>
+			
 		</article>
 
 		<nav class="balancer-nav">
@@ -341,18 +343,283 @@
 				// collection of activity and diet events
 				timeline: {},
 				// collection of preset diet items
-				// TODO: fill in reasonable selection of presets
-				presets: [
-					{
-						icon: "burger_1",
-						description: "Big Mac",
-						value: 2100
-					}, {
-						icon: "burger_2",
-						description: "Whopper",
-						value: 2800
-					}
-				],
+				presets: [{
+					"icon": "apple_2",
+					"description": "Apple",
+					"value": 400
+				}, {
+					"icon": "champagne",
+					"description": "BBQ sauce (tbsp)",
+					"value": 200
+				}, {
+					"icon": "pasta_1",
+					"description": "Bacon (slice)",
+					"value": 180
+				}, {
+					"icon": "burger_2",
+					"description": "Bacon Cheeseburger",
+					"value": 3200
+				}, {
+					"icon": "preserves_2",
+					"description": "Baked Beans (200g)",
+					"value": 700
+				}, {
+					"icon": "banana",
+					"description": "Banana",
+					"value": 500
+				}, {
+					"icon": "bread_2",
+					"description": "Banana bread (slice)",
+					"value": 800
+				}, {
+					"icon": "pasta_2",
+					"description": "Beef jerky (100g)",
+					"value": 1000
+				}, {
+					"icon": "sausage_1",
+					"description": "Biscuit",
+					"value": 300
+				}, {
+					"icon": "bread_1",
+					"description": "Bread roll (100g)",
+					"value": 1000
+				}, {
+					"icon": "bread_2",
+					"description": "Bread slice (30g)",
+					"value": 300
+				}, {
+					"icon": "cookies",
+					"description": "Brownie (25g)",
+					"value": 500
+				}, {
+					"icon": "pan_2",
+					"description": "Butter (1tbsp)",
+					"value": 400
+				}, {
+					"icon": "cheese_2",
+					"description": "Cheese slice (25g)",
+					"value": 500
+				}, {
+					"icon": "burger_1",
+					"description": "Chicken burger",
+					"value": 2000
+				}, {
+					"icon": "hot_dog",
+					"description": "Chicken schnitzel roll",
+					"value": 3000
+				}, {
+					"icon": "chips",
+					"description": "Chips (100g)",
+					"value": 2000
+				}, {
+					"icon": "wafer_1",
+					"description": "Crisp bread",
+					"value": 150
+				}, {
+					"icon": "egg",
+					"description": "Egg",
+					"value": 300
+				}, {
+					"icon": "cheese_1",
+					"description": "Feta (65g)",
+					"value": 500
+				}, {
+					"icon": "fish",
+					"description": "Fish and chips",
+					"value": 3500
+				}, {
+					"icon": "french_fries",
+					"description": "French fries (side)",
+					"value": 1500
+				}, {
+					"icon": "take-out_coffee",
+					"description": "Frozen yoghurt (250g)",
+					"value": 1600
+				}, {
+					"icon": "raspberry",
+					"description": "Fruit salad (250g)",
+					"value": 500
+				}, {
+					"icon": "grapes",
+					"description": "Grapes (350g bunch)",
+					"value": 1000
+				}, {
+					"icon": "cabbage",
+					"description": "Greek salad",
+					"value": 1200
+				}, {
+					"icon": "chicken",
+					"description": "Grilled chicken (100g)",
+					"value": 500
+				}, {
+					"icon": "fishbone",
+					"description": "Grilled fish",
+					"value": 800
+				}, {
+					"icon": "ham",
+					"description": "Ham (100g)",
+					"value": 500
+				}, {
+					"icon": "burger_1",
+					"description": "Hamburger",
+					"value": 2400
+				}, {
+					"icon": "hot_dog",
+					"description": "Hot dog",
+					"value": 1200
+				}, {
+					"icon": "ice_cream_2",
+					"description": "Icecream cone",
+					"value": 1200
+				}, {
+					"icon": "jam_2",
+					"description": "Jam (tbsp)",
+					"value": 200
+				}, {
+					"icon": "cucumber",
+					"description": "Lebansese cucumber",
+					"value": 100
+				}, {
+					"icon": "honey",
+					"description": "Lollies (15g)",
+					"value": 340
+				}, {
+					"icon": "glass_water",
+					"description": "Milk (glass)",
+					"value": 800
+				}, {
+					"icon": "cake_1",
+					"description": "Muffin",
+					"value": 2000
+				}, {
+					"icon": "mushroom_1",
+					"description": "Mushrooms (100g)",
+					"value": 100
+				}, {
+					"icon": "chips",
+					"description": "Nachos (muchos)",
+					"value": 4500
+				}, {
+					"icon": "olive_1",
+					"description": "Olive oil (tbsp)",
+					"value": 500
+				}, {
+					"icon": "onion",
+					"description": "Onion",
+					"value": 150
+				}, {
+					"icon": "pasta_2",
+					"description": "Pasta (100g uncooked)",
+					"value": 1500
+				}, {
+					"icon": "pan_1",
+					"description": "Pasta bolognese",
+					"value": 3200
+				}, {
+					"icon": "mushrooms",
+					"description": "Pasta sauce (100g)",
+					"value": 300
+				}, {
+					"icon": "sausage_2",
+					"description": "Pastrami (80g)",
+					"value": 300
+				}, {
+					"icon": "peach",
+					"description": "Peach",
+					"value": 300
+				}, {
+					"icon": "preserves_1",
+					"description": "Peanut butter (1tbsp)",
+					"value": 400
+				}, {
+					"icon": "hot_dog",
+					"description": "Pide",
+					"value": 2000
+				}, {
+					"icon": "sushi_1",
+					"description": "Pie",
+					"value": 2000
+				}, {
+					"icon": "pineapple",
+					"description": "Pinapple chunks (200g)",
+					"value": 400
+				}, {
+					"icon": "pizza",
+					"description": "Pizza (Domino's)",
+					"value": 4500
+				}, {
+					"icon": "plum",
+					"description": "Plum",
+					"value": 200
+				}, {
+					"icon": "corn",
+					"description": "Popcorn (100g)",
+					"value": 2000
+				}, {
+					"icon": "ice_cream_1",
+					"description": "Popsicle",
+					"value": 400
+				}, {
+					"icon": "potato",
+					"description": "Potato salad (100g)",
+					"value": 550
+				}, {
+					"icon": "rice",
+					"description": "Rice (100g uncooked)",
+					"value": 1500
+				}, {
+					"icon": "chicken_leg",
+					"description": "Roast beef (100g)",
+					"value": 600
+				}, {
+					"icon": "roll",
+					"description": "Scone",
+					"value": 1200
+				}, {
+					"icon": "cabbage",
+					"description": "Side salad",
+					"value": 600
+				}, {
+					"icon": "pan_1",
+					"description": "Soup (500g)",
+					"value": 800
+				}, {
+					"icon": "steak_t-bone",
+					"description": "Steak (250g)",
+					"value": 3000
+				}, {
+					"icon": "bread_baguette",
+					"description": "Subway roast beef (footlong)",
+					"value": 3000
+				}, {
+					"icon": "plate_1",
+					"description": "Thai noodle meal",
+					"value": 2400
+				}, {
+					"icon": "plate_1",
+					"description": "Thai stir fry meal",
+					"value": 1500
+				}, {
+					"icon": "tomato_1",
+					"description": "Tomato",
+					"value": 100
+				}, {
+					"icon": "wafer_3",
+					"description": "Tortilla wrap (25g)",
+					"value": 300
+				}, {
+					"icon": "preserves_3",
+					"description": "Tuna (70g)",
+					"value": 350
+				}, {
+					"icon": "chicken",
+					"description": "Turkey breast (100g)",
+					"value": 400
+				}, {
+					"icon": "hot_dog",
+					"description": "Vietnamese chicken roll",
+					"value": 1500
+				}],
 				// minimum metabolic multiplier
 				minActivity: 1,
 				// maximum metabolic multiplier
