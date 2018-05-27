@@ -13,7 +13,7 @@
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
-@media (orientation: landscape) {
+@media (min-width:640px) AND (orientation: landscape) {
 	.balancer-graph {
 		bottom: 4.666666666666667rem;
 		right: 50%;
