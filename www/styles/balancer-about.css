@@ -16,7 +16,7 @@
 	display: flex;
 }
 
-@media (min-width:640px) AND (orientation: landscape) {
+@media (min-width:568px) AND (orientation:landscape) {
 	.balancer-about {
 		top: 0;
 		left: 50%;

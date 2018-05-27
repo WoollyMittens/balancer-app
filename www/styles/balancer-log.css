@@ -14,7 +14,7 @@
 	display: flex;
 }
 
-@media (min-width:640px) AND (orientation: landscape) {
+@media (min-width:568px) AND (orientation:landscape) {
 	.balancer-log {
 		top: 0;
 		left: 50%;
@@ -69,7 +69,7 @@
 	background-image: url("../icons/run_exit_2 inv.svg");
 }
 
-@media (min-width:640px) AND (orientation: landscape) {
+@media (min-width:568px) AND (orientation:landscape) {
 	.balancer-log-add-history,
 	.balancer-log-add-meal,
 	.balancer-log-add-activity {
@@ -88,7 +88,7 @@
 	min-height: 5.333333333333333rem;
 }
 
-@media (min-width:640px) AND (orientation: landscape) {
+@media (min-width:568px) AND (orientation:landscape) {
 	.balancer-log-time {
 		padding-bottom: 2.667rem;
     min-height: 8rem;
