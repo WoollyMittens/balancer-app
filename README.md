@@ -1,6 +1,6 @@
 # Counter Balancer
 
-![Project logo](https://github.com/adam-p/balancer-app/raw/master/www/icons/logo.svg "Project logo")
+![Project logo](https://github.com/WoollyMittens/balancer-app/raw/master/www/icons/logo.svg "Project logo")
 
 Version 1.0.2
 
