@@ -10,6 +10,12 @@ This app was made to visualise rough estimates of energy intake and expenditure 
 
 Please add your [suggestions and bug reports on GitHub](https://github.com/WoollyMittens/balancer-app/issues), or send them to [info@sydneytrainwalks.com](mailto:info@sydneytrainwalks.com).
 
+## Instructions
+
+This project uses Cordova from https://cordova.apache.org/
+
+To preview the app, open the `index.html` file in a browser.
+
 ## Disclaimer
 
 Do not use this app for any medical reason whatsoever. It is strictly meant for rough estimates. Please consult a medical professional before starting a diet.
