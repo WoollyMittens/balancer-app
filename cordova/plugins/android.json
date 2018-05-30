@@ -7,10 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-headercolor": {
+      "PACKAGE_NAME": "com.woollmittens.counterbalancer"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.woollmittens.counterbalancer"
     }
   },
