@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="10005" id="com.woollmittens.counterbalancer" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="10006" id="com.woollmittens.counterbalancer" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Counter Balancer</name>
     <description>
         A work in progress concept app for counting calories and balancing exercise.
@@ -21,11 +21,11 @@
     <allow-navigation href="data:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <icon density="mdpi" src="assets/icons/icon-48.png" />
-        <icon density="hdpi" src="assets/icons/icon-72.png" />
-        <icon density="xhdpi" src="assets/icons/icon-96.png" />
-        <icon density="xxhdpi" src="assets/icons/icon-144.png" />
-        <icon density="xxxhdpi" src="assets/icons/icon-192.png" />
+        <icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
         <preference name="HeaderColor" value="#ffffff" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" />
