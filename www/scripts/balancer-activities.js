@@ -32,7 +32,7 @@
 
 		this.onChangeActivity = function(evt) {
 			// set the activity level for this time
-			parent.setTimeline(parent.getTimeStamp(), {activity: parseInt(this.activityInput.value)});
+			parent.setTimeline(parent.getTimeStamp(), {activity: this.activityInput.value});
 		};
 
 		this.onPresetActivity = function(value) {
