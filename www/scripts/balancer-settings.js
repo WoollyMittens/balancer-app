@@ -24,6 +24,7 @@
 		this.heightUnits = this.element.querySelector("select[name=heightUnits]");
 		this.energyUnits = this.element.querySelector("select[name=energyUnits]");
 		this.gender = this.element.querySelector("select[name=gender]");
+		this.adjustment = this.element.querySelector("input[name=adjustment]");
 		this.timespan = this.element.querySelector("select[name=timespan]");
 		this.backup = this.element.querySelector("textarea[name=backup]");
 		this.reset = this.element.querySelector("button[name=reset]");
@@ -41,6 +42,7 @@
 			this.heightFeet.value = parseInt(feetHeight);
 			this.heightInches.value = ((feetHeight - parseInt(feetHeight)) * 12).toFixed(0);
 			this.gender.value = model.gender;
+			this.adjustment.value = model.adjustment;
 			this.timespan.value = model.timespan;
 			// display the configured units
 			this.heightUnits.selectedIndex = model.heightUnits;
@@ -147,6 +149,7 @@
 		this.heightFeet.addEventListener("change", this.onImperialChanged.bind(this, "heightFeet"));
 		this.heightInches.addEventListener("change", this.onImperialChanged.bind(this, "heightInches"));
 		this.gender.addEventListener("change", this.onValueChanged.bind(this, "gender"));
+		this.adjustment.addEventListener("change", this.onValueChanged.bind(this, "adjustment"));
 		this.timespan.addEventListener("change", this.onValueChanged.bind(this, "timespan"));
 		this.backup.addEventListener("change", this.onRestoreBackup.bind(this, "backup"));
 		this.reset.addEventListener("click", this.onResetHistory.bind(this));

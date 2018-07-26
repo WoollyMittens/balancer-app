@@ -54,7 +54,7 @@
 			<form class="balancer-log-activity">
 				<label>
 					<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
-					<span class="balancer-range"><input name="activity" type="range" value="1" step="0.1" min="1" max="7"/></span>
+					<span class="balancer-range"><input name="activity" type="range" value="1" step="0.01" min="1" max="7"/></span>
 					<span class="balancer-preset balancer-preset-intense">Intense</span>
 				</label>
 			</form>
@@ -266,7 +266,10 @@
 				<label><b>Age</b> <input name="age" type="number"/> <i>years</i></label>
 				<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
 			</div>
-			<label><b>Energy units</b> <select name="energyUnits"><option value="0">Kilojoules</option><option value="1">Kilocalories</option></select></label>
+			<div class="balancer-settings-row">
+				<label><b>Tweak metabolic rate</b> <input name="adjustment" type="number" value="100" step="1"/> <i>%</i></label>
+				<label><b>Energy units</b> <select name="energyUnits"><option value="0">Kilojoules</option><option value="1">Kilocalories</option></select></label>
+			</div>
 			<label><b>Show</b> <select name="timespan"><option value="0">Today</option><option value="7">Up to a week</option><option value="31">Up to a month</option><option value="999">Everything</option></select></label>
 			<label><b>Backup</b> <textarea name="backup"></textarea></label>
 			<footer class="balancer-reset">
@@ -280,7 +283,7 @@
 			<h2>About This App</h2>
 			<figure>
 				<img alt="" src="./icons/logo.svg" />
-				<figcaption><strong>Counter Balancer</strong><br>Version 1.0.2</figcaption>
+				<figcaption><strong>Counter Balancer</strong><br>Version 1.0.4</figcaption>
 			</figure>
 			<p>Keep track of your energy intake, without the annoying calculations.</p>
 			<p>This app was made to visualise rough estimates of energy intake and expenditure throughout the day. Add presets for your own eating habits and keep track of your daily calorie limit in a graph.</p>
@@ -626,6 +629,8 @@
 				maxActivity: 7,
 				// graph scale day/week/month/year
 				scale: 0,
+				// tweak factor to the base metabilic rate
+				adjustment: 100,
 				// max graph length in days
 				timespan: 0,
 				// start day

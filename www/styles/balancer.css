@@ -110,6 +110,10 @@ a {
 	appearance: none;
 }
 
+#balancer input[type=range] {
+	margin: 0.5rem 0 0 0;
+}
+
 #balancer input[type=text]:focus,
 #balancer input[type=number]:focus,
 #balancer input[type=date]:focus,

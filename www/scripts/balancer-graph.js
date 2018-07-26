@@ -133,7 +133,7 @@
 			// select which version of the calculation to use
 			var genderOffset = (model.gender === 0) ? -161 : 5;
 			// calculate the base metabolic rate (kJ/day)
-			return 4.184 * (model.weight * 10 + model.height * 6.25 + model.age * 5 + genderOffset); // (1)
+			return 4.184 * (model.weight * 10 + model.height * 6.25 + model.age * 5 + genderOffset) * model.adjustment / 100; // (1)
 		};
 
 		this.onCycleActivity = function(value, date, evt) {
