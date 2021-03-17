@@ -72,7 +72,7 @@
 					use: energyUse
 				});
 				// increment the hours
-				startDate.setHours(startDate.getHours() + 1);
+				startDate = new Date(startDate.getTime() + (1000 * 60 * 60));
 			}
 			// set the projected weight loss/gain based on the daily balance
 			this.projection.innerHTML = (startBalance / model.density).toFixed(2) + " kg";

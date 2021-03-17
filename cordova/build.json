@@ -1,0 +1,18 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "build.keystore",
+      "storePassword": "h4r4b1b1",
+      "alias": "stw",
+      "password": "h4r4b1b1",
+      "keystoreType": "jks"
+    },
+    "release": {
+      "keystore": "build.keystore",
+      "storePassword": "h4r4b1b1",
+      "alias": "stw",
+      "password": "h4r4b1b1",
+      "keystoreType": "jks"
+    }
+  }
+}

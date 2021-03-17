@@ -42,7 +42,8 @@
 			var startDate = new Date(new Date(new Date(model.start).setHours(0)).setMinutes(1));
 			var endDate = new Date(new Date(new Date(model.end).setHours(23)).setMinutes(59));
 			// from the start to the end date
-			while(startDate < endDate) {
+			var counter = 0;
+			while(startDate < endDate && counter < 50) {
 				// get the current day's diet entries
 				currentMeals = parent.getTimeline(endDate);
 				// add a list entry for each diet entry
@@ -66,7 +67,8 @@
 					});
 				}
 				// increment the hours
-				endDate.setHours(endDate.getHours() - 1);
+				endDate = new Date(endDate.getTime() - (1000 * 60 * 60));
+				counter += 1;
 			}
 			// pass back the prepared hisory items
 			return historyItems;
