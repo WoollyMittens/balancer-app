@@ -1,0 +1,201 @@
+html {
+	font-size: 12px;
+	font-family: sans-serif;
+}
+
+body {
+	overflow: hidden;
+	font-size: 1.167rem;
+	margin: 0;
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 2rem;
+	margin: 0 0 2rem 0;
+	font-weight: normal;
+}
+
+h2 {
+	font-size: 1.667rem;
+	margin: 0 0 2rem 0;
+	font-weight: bold;
+}
+
+h3, legend {
+	font-size: 1.333rem;
+	margin: 0 0 2rem 0;
+	font-weight: normal;
+}
+
+p {
+	margin: 0 0 2rem 0;
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+a {
+	color: #1976D2;
+}
+
+#balancer {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+	font-size: 1.167rem;
+	overflow: hidden;
+}
+
+#balancer *:focus {
+    outline: none;
+}
+
+#balancer *,
+#balancer *:after,
+#balancer *:before {
+	box-sizing: border-box;
+}
+
+#balancer input,
+#balancer button {
+	font-family: sans-serif;
+}
+
+#balancer button {
+	cursor: pointer;
+}
+
+#balancer .balancer-preset,
+#balancer button[name=icon] {
+	border: none;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 3rem;
+	height: 3rem;
+	margin: 0.5rem;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 4rem;
+}
+
+#balancer label:hover b {
+	color: #1976D2;
+}
+
+#balancer input[type=text],
+#balancer input[type=number],
+#balancer input[type=date],
+#balancer input[type=time],
+#balancer textarea,
+#balancer select {
+	border-radius: 0;
+	border: none;
+	border-bottom: solid 1px #CCCCCC;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: auto 70%;
+	margin: 0;
+	padding: 0;
+	height: 2.333rem;
+	font-size: 1.167rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#balancer input[type=range] {
+	margin: 0.5rem 0 0 0;
+}
+
+#balancer input[type=text]:focus,
+#balancer input[type=number]:focus,
+#balancer input[type=date]:focus,
+#balancer input[type=time]:focus,
+#balancer textarea:focus,
+#balancer select:focus {
+	border-bottom: solid 2px #1976D2;
+}
+
+#balancer input[type=date]:focus,
+#balancer input[type=time]:focus,
+#balancer select:focus {
+	transform: translateY(1px);
+}
+
+#balancer textarea {
+	height: 6rem;
+}
+
+#balancer select {
+	background-image: url("../icons/button_backward_2.svg");
+}
+
+#balancer button[disabled] {
+	cursor: default;
+	opacity: 0.5;
+}
+
+#balancer button[name=reset],
+#balancer button[name=confirm] {
+	height: 3rem;
+	background-color: #1976D2;
+	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
+	border: none;
+	padding: 0 1.333rem;
+	margin: 0.667rem 0 0;
+	font-size: 1.167rem;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#balancer button[name=remove],
+#balancer button[name=add] {
+	border: none;
+	background-color: Transparent;
+	padding: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 1.5rem;
+	height: 1.5rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 3rem;
+}
+
+#balancer button[name=remove] {
+	background-image: url("../icons/button_delete_2.svg");
+}
+
+#balancer button[name=add] {
+	background-image: url("../icons/button_new_2.svg");
+	width: 3rem;
+	height: 3rem;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(-50%, -125%);
+  }
+
+  100% {
+    transform: translate(-50%, -110%);
+  }
+}
+
+@keyframes throb {
+  0% {
+    transform: scale(1.1, 1.1);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}

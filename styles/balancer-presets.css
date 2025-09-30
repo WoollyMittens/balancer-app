@@ -1,0 +1,330 @@
+.balancer-presets {
+	background-color: #FFF;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	bottom: 4.666666666666667rem;
+	left: 0;
+	transform: translate(100%, 0%);
+	transition: transform ease 300ms;
+	flex-direction: column;
+	display: flex;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-presets {
+		top: 0;
+		left: 50%;
+	}
+}
+
+.balancer-show-presets .balancer-presets {
+	transform: translate(0%, 0%);
+}
+
+.balancer-presets-meal {
+	display: flex;
+	flex: 0 1 auto;
+	align-items: center;
+	padding: 0 0.5rem;
+  min-height: 5.333333333333333rem;
+	border-bottom: solid 1px #eee;
+	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.balancer-presets-meal label,
+.balancer-presets-meal p {
+	flex: 0 1 auto;
+	padding: 0 0.5rem;
+	margin: 0;
+	white-space: nowrap;
+	align-items: center;
+}
+
+.balancer-presets-meal label {}
+
+.balancer-presets-meal label:nth-child(2) {
+	flex: 1 1 auto;
+}
+
+.balancer-presets-meal label span {
+	display: none;
+}
+
+.balancer-presets-meal label input {
+	font-size: 1rem;
+	margin-top: 0 !important;
+}
+
+.balancer-presets-meal label input[type=text] {
+	width: 100%;
+}
+
+.balancer-presets-meal label input[type=number] {
+	width: 4em;
+}
+
+.balancer-presets-meal label em {
+	font-style: normal;
+}
+
+.balancer-presets-meal p {}
+
+.balancer-presets-meal p button {}
+
+.balancer-presets-meal p button[name=icon] {}
+
+.balancer-presets-meal p button[name=add] {
+	animation-duration: 500ms;
+	animation-name: throb;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	transform-origin: center;
+}
+
+.balancer-presets-meal p button[disabled] {
+	animation-name: none;
+}
+
+.balancer-presets-picker {
+	background-color: #fff;
+	box-shadow: 0 -0.25rem 0.5rem rgba(0,0,0,0.1);
+	padding: 1rem;
+	margin: 0;
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+	display: flex;
+	list-style: none;
+	justify-content: space-around;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	transform: translate(0%, 100%);
+	transition: transform ease 500ms;
+}
+
+.balancer-presets-picker-open {
+	transform: translate(0%, 0%);
+}
+
+.balancer-presets-picker li {
+	display: flex;
+	flex: 0 1 auto;
+	min-width: 5rem;
+}
+
+#balancer .balancer-presets-picker li button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.balancer-presets-scroll {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	flex: 1 1 auto;
+}
+
+.balancer-presets-meals {
+	display: block;
+	margin: 0;
+}
+
+.balancer-presets-meals tr {
+	vertical-align: middle;
+}
+
+.balancer-presets-meals th,
+.balancer-presets-meals td {
+	padding: 0 0.5rem;
+	white-space: nowrap;
+	border-bottom: solid 1px #eee;
+}
+
+.balancer-presets-meals th + td {
+	width: 100%;
+	white-space: normal;
+}
+
+.balancer-presets-meals th span {
+	display: block;
+}
+
+.balancer-presets-meals td button {}
+
+.balancer-preset-menu { background-image: url("../icons/menu.svg"); }
+.balancer-preset-sedentary { background-image: url("../icons/man.svg"); }
+.balancer-preset-moderate { background-image: url("../icons/run_exit_2.svg"); }
+.balancer-preset-intense { background-image: url("../icons/run_evacuation.svg"); }
+.balancer-preset-apple_1 { background-image: url("../icons/apple_1.svg"); }
+.balancer-preset-apple_2 { background-image: url("../icons/apple_2.svg"); }
+.balancer-preset-asparagus { background-image: url("../icons/asparagus.svg"); }
+.balancer-preset-banana { background-image: url("../icons/banana.svg"); }
+.balancer-preset-barbecue { background-image: url("../icons/barbecue.svg"); }
+.balancer-preset-beans { background-image: url("../icons/beans.svg"); }
+.balancer-preset-beer { background-image: url("../icons/beer.svg"); }
+.balancer-preset-bone { background-image: url("../icons/bone.svg"); }
+.balancer-preset-bottle_1 { background-image: url("../icons/bottle_1.svg"); }
+.balancer-preset-bottle_2 { background-image: url("../icons/bottle_2.svg"); }
+.balancer-preset-bottle_3 { background-image: url("../icons/bottle_3.svg"); }
+.balancer-preset-bottle_plastic { background-image: url("../icons/bottle_plastic.svg"); }
+.balancer-preset-bread_1 { background-image: url("../icons/bread_1.svg"); }
+.balancer-preset-bread_2 { background-image: url("../icons/bread_2.svg"); }
+.balancer-preset-bread_baguette { background-image: url("../icons/bread_baguette.svg"); }
+.balancer-preset-burger_1 { background-image: url("../icons/burger_1.svg"); }
+.balancer-preset-burger_2 { background-image: url("../icons/burger_2.svg"); }
+.balancer-preset-cabbage { background-image: url("../icons/cabbage.svg"); }
+.balancer-preset-cake_1 { background-image: url("../icons/cake_1.svg"); }
+.balancer-preset-cake_2 { background-image: url("../icons/cake_2.svg"); }
+.balancer-preset-cake_wedding { background-image: url("../icons/cake_wedding.svg"); }
+.balancer-preset-candy_1 { background-image: url("../icons/candy_1.svg"); }
+.balancer-preset-candy_2 { background-image: url("../icons/candy_2.svg"); }
+.balancer-preset-candy_3 { background-image: url("../icons/candy_3.svg"); }
+.balancer-preset-candy_lolipop { background-image: url("../icons/candy_lolipop.svg"); }
+.balancer-preset-carrot { background-image: url("../icons/carrot.svg"); }
+.balancer-preset-cauliflower { background-image: url("../icons/cauliflower.svg"); }
+.balancer-preset-champagne { background-image: url("../icons/champagne.svg"); }
+.balancer-preset-cheese_1 { background-image: url("../icons/cheese_1.svg"); }
+.balancer-preset-cheese_2 { background-image: url("../icons/cheese_2.svg"); }
+.balancer-preset-cherry { background-image: url("../icons/cherry.svg"); }
+.balancer-preset-chicken { background-image: url("../icons/chicken.svg"); }
+.balancer-preset-chicken_leg { background-image: url("../icons/chicken_leg.svg"); }
+.balancer-preset-chips { background-image: url("../icons/chips.svg"); }
+.balancer-preset-chocolate_1 { background-image: url("../icons/chocolate_1.svg"); }
+.balancer-preset-chocolate_2 { background-image: url("../icons/chocolate_2.svg"); }
+.balancer-preset-citrus { background-image: url("../icons/citrus.svg"); }
+.balancer-preset-coffee_bean { background-image: url("../icons/coffee_bean.svg"); }
+.balancer-preset-cola_1 { background-image: url("../icons/cola_1.svg"); }
+.balancer-preset-cola_2 { background-image: url("../icons/cola_2.svg"); }
+.balancer-preset-condensed_milk { background-image: url("../icons/condensed_milk.svg"); }
+.balancer-preset-cookies { background-image: url("../icons/cookies.svg"); }
+.balancer-preset-corn { background-image: url("../icons/corn.svg"); }
+.balancer-preset-croissant { background-image: url("../icons/croissant.svg"); }
+.balancer-preset-cucumber { background-image: url("../icons/cucumber.svg"); }
+.balancer-preset-cucumbers { background-image: url("../icons/cucumbers.svg"); }
+.balancer-preset-cup_1 { background-image: url("../icons/cup_1.svg"); }
+.balancer-preset-cup_2 { background-image: url("../icons/cup_2.svg"); }
+.balancer-preset-cup_3 { background-image: url("../icons/cup_3.svg"); }
+.balancer-preset-cup_hot { background-image: url("../icons/cup_hot.svg"); }
+.balancer-preset-donut_1 { background-image: url("../icons/donut_1.svg"); }
+.balancer-preset-donut_2 { background-image: url("../icons/donut_2.svg"); }
+.balancer-preset-egg { background-image: url("../icons/egg.svg"); }
+.balancer-preset-eggplant { background-image: url("../icons/eggplant.svg"); }
+.balancer-preset-fish { background-image: url("../icons/fish.svg"); }
+.balancer-preset-fishbone { background-image: url("../icons/fishbone.svg"); }
+.balancer-preset-fork_1 { background-image: url("../icons/fork_1.svg"); }
+.balancer-preset-fork_2 { background-image: url("../icons/fork_2.svg"); }
+.balancer-preset-french_fries { background-image: url("../icons/french_fries.svg"); }
+.balancer-preset-garlic { background-image: url("../icons/garlic.svg"); }
+.balancer-preset-glass { background-image: url("../icons/glass.svg"); }
+.balancer-preset-glass_water { background-image: url("../icons/glass_water.svg"); }
+.balancer-preset-goblet_1 { background-image: url("../icons/goblet_1.svg"); }
+.balancer-preset-goblet_2 { background-image: url("../icons/goblet_2.svg"); }
+.balancer-preset-goblet_3 { background-image: url("../icons/goblet_3.svg"); }
+.balancer-preset-goblet_4 { background-image: url("../icons/goblet_4.svg"); }
+.balancer-preset-goblet_5 { background-image: url("../icons/goblet_5.svg"); }
+.balancer-preset-goblet_6 { background-image: url("../icons/goblet_6.svg"); }
+.balancer-preset-goblet_7 { background-image: url("../icons/goblet_7.svg"); }
+.balancer-preset-goblet_wineglass { background-image: url("../icons/goblet_wineglass.svg"); }
+.balancer-preset-grain { background-image: url("../icons/grain.svg"); }
+.balancer-preset-grapes { background-image: url("../icons/grapes.svg"); }
+.balancer-preset-grass { background-image: url("../icons/grass.svg"); }
+.balancer-preset-ham { background-image: url("../icons/ham.svg"); }
+.balancer-preset-honey { background-image: url("../icons/honey.svg"); }
+.balancer-preset-hot_dog { background-image: url("../icons/hot_dog.svg"); }
+.balancer-preset-ice_cream_1 { background-image: url("../icons/ice_cream_1.svg"); }
+.balancer-preset-ice_cream_2 { background-image: url("../icons/ice_cream_2.svg"); }
+.balancer-preset-jam_1 { background-image: url("../icons/jam_1.svg"); }
+.balancer-preset-jam_2 { background-image: url("../icons/jam_2.svg"); }
+.balancer-preset-leaves { background-image: url("../icons/leaves.svg"); }
+.balancer-preset-lemon_1 { background-image: url("../icons/lemon_1.svg"); }
+.balancer-preset-lemon_2 { background-image: url("../icons/lemon_2.svg"); }
+.balancer-preset-lemon_slice_1 { background-image: url("../icons/lemon_slice_1.svg"); }
+.balancer-preset-lemon_slice_2 { background-image: url("../icons/lemon_slice_2.svg"); }
+.balancer-preset-mandarine { background-image: url("../icons/mandarine.svg"); }
+.balancer-preset-melon_1 { background-image: url("../icons/melon_1.svg"); }
+.balancer-preset-melon_2 { background-image: url("../icons/melon_2.svg"); }
+.balancer-preset-milk { background-image: url("../icons/milk.svg"); }
+.balancer-preset-mushroom_1 { background-image: url("../icons/mushroom_1.svg"); }
+.balancer-preset-mushroom_2 { background-image: url("../icons/mushroom_2.svg"); }
+.balancer-preset-mushrooms { background-image: url("../icons/mushrooms.svg"); }
+.balancer-preset-nut { background-image: url("../icons/nut.svg"); }
+.balancer-preset-olive_1 { background-image: url("../icons/olive_1.svg"); }
+.balancer-preset-olive_2 { background-image: url("../icons/olive_2.svg"); }
+.balancer-preset-omelette { background-image: url("../icons/omelette.svg"); }
+.balancer-preset-onion { background-image: url("../icons/onion.svg"); }
+.balancer-preset-orange { background-image: url("../icons/orange.svg"); }
+.balancer-preset-package { background-image: url("../icons/package.svg"); }
+.balancer-preset-pan_1 { background-image: url("../icons/pan_1.svg"); }
+.balancer-preset-pan_2 { background-image: url("../icons/pan_2.svg"); }
+.balancer-preset-pan_3 { background-image: url("../icons/pan_3.svg"); }
+.balancer-preset-pan_4 { background-image: url("../icons/pan_4.svg"); }
+.balancer-preset-pasta_1 { background-image: url("../icons/pasta_1.svg"); }
+.balancer-preset-pasta_2 { background-image: url("../icons/pasta_2.svg"); }
+.balancer-preset-pasta_3 { background-image: url("../icons/pasta_3.svg"); }
+.balancer-preset-pattinson { background-image: url("../icons/pattinson.svg"); }
+.balancer-preset-peach { background-image: url("../icons/peach.svg"); }
+.balancer-preset-pear { background-image: url("../icons/pear.svg"); }
+.balancer-preset-peas_1 { background-image: url("../icons/peas_1.svg"); }
+.balancer-preset-peas_2 { background-image: url("../icons/peas_2.svg"); }
+.balancer-preset-pepper { background-image: url("../icons/pepper.svg"); }
+.balancer-preset-pepper_chili { background-image: url("../icons/pepper_chili.svg"); }
+.balancer-preset-persimmon { background-image: url("../icons/persimmon.svg"); }
+.balancer-preset-pineapple { background-image: url("../icons/pineapple.svg"); }
+.balancer-preset-pizza { background-image: url("../icons/pizza.svg"); }
+.balancer-preset-plate_1 { background-image: url("../icons/plate_1.svg"); }
+.balancer-preset-plate_2 { background-image: url("../icons/plate_2.svg"); }
+.balancer-preset-plum { background-image: url("../icons/plum.svg"); }
+.balancer-preset-pomegranate_1 { background-image: url("../icons/pomegranate_1.svg"); }
+.balancer-preset-pomegranate_2 { background-image: url("../icons/pomegranate_2.svg"); }
+.balancer-preset-pomelo { background-image: url("../icons/pomelo.svg"); }
+.balancer-preset-potato { background-image: url("../icons/potato.svg"); }
+.balancer-preset-potato_slices { background-image: url("../icons/potato_slices.svg"); }
+.balancer-preset-preserves_1 { background-image: url("../icons/preserves_1.svg"); }
+.balancer-preset-preserves_2 { background-image: url("../icons/preserves_2.svg"); }
+.balancer-preset-preserves_3 { background-image: url("../icons/preserves_3.svg"); }
+.balancer-preset-pretzel { background-image: url("../icons/pretzel.svg"); }
+.balancer-preset-pumpkin_1 { background-image: url("../icons/pumpkin_1.svg"); }
+.balancer-preset-pumpkin_2 { background-image: url("../icons/pumpkin_2.svg"); }
+.balancer-preset-radish { background-image: url("../icons/radish.svg"); }
+.balancer-preset-raspberry { background-image: url("../icons/raspberry.svg"); }
+.balancer-preset-rice { background-image: url("../icons/rice.svg"); }
+.balancer-preset-roll { background-image: url("../icons/roll.svg"); }
+.balancer-preset-rolls_1 { background-image: url("../icons/rolls_1.svg"); }
+.balancer-preset-rolls_2 { background-image: url("../icons/rolls_2.svg"); }
+.balancer-preset-rolls_3 { background-image: url("../icons/rolls_3.svg"); }
+.balancer-preset-salad { background-image: url("../icons/salad.svg"); }
+.balancer-preset-salt { background-image: url("../icons/salt.svg"); }
+.balancer-preset-sausage_1 { background-image: url("../icons/sausage_1.svg"); }
+.balancer-preset-sausage_2 { background-image: url("../icons/sausage_2.svg"); }
+.balancer-preset-sausage_3 { background-image: url("../icons/sausage_3.svg"); }
+.balancer-preset-sausage_4 { background-image: url("../icons/sausage_4.svg"); }
+.balancer-preset-sausage_5 { background-image: url("../icons/sausage_5.svg"); }
+.balancer-preset-steak { background-image: url("../icons/steak.svg"); }
+.balancer-preset-steak_t-bone { background-image: url("../icons/steak_t-bone.svg"); }
+.balancer-preset-strawberry { background-image: url("../icons/strawberry.svg"); }
+.balancer-preset-sushi_1 { background-image: url("../icons/sushi_1.svg"); }
+.balancer-preset-sushi_2 { background-image: url("../icons/sushi_2.svg"); }
+.balancer-preset-take-out_coffee { background-image: url("../icons/take-out_coffee.svg"); }
+.balancer-preset-tea { background-image: url("../icons/tea.svg"); }
+.balancer-preset-tea_bag_1 { background-image: url("../icons/tea_bag_1.svg"); }
+.balancer-preset-tea_bag_2 { background-image: url("../icons/tea_bag_2.svg"); }
+.balancer-preset-teapot { background-image: url("../icons/teapot.svg"); }
+.balancer-preset-tomato_1 { background-image: url("../icons/tomato_1.svg"); }
+.balancer-preset-tomato_2 { background-image: url("../icons/tomato_2.svg"); }
+.balancer-preset-truffle { background-image: url("../icons/truffle.svg"); }
+.balancer-preset-wafer_1 { background-image: url("../icons/wafer_1.svg"); }
+.balancer-preset-wafer_2 { background-image: url("../icons/wafer_2.svg"); }
+.balancer-preset-wafer_3 { background-image: url("../icons/wafer_3.svg"); }
+.balancer-preset-waffle_horn { background-image: url("../icons/waffle_horn.svg"); }
+.balancer-preset-watermelon_1 { background-image: url("../icons/watermelon_1.svg"); }
+.balancer-preset-watermelon_2 { background-image: url("../icons/watermelon_2.svg"); }
+.balancer-preset-wheat { background-image: url("../icons/wheat.svg"); }
+.balancer-preset-wine_1 { background-image: url("../icons/wine_1.svg"); }
+.balancer-preset-wine_2 { background-image: url("../icons/wine_2.svg"); }

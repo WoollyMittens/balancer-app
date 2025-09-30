@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+	<title>Energy Balance Prototype</title>
+
+	<link rel="icon" href="./icons/favicon.ico" />
+	<link rel="stylesheet" href="styles/balancer.css" />
+	<link rel="stylesheet" href="styles/balancer-graph.css" />
+	<link rel="stylesheet" href="styles/balancer-log.css" />
+	<link rel="stylesheet" href="styles/balancer-history.css" />
+	<link rel="stylesheet" href="styles/balancer-activities.css" />
+	<link rel="stylesheet" href="styles/balancer-meals.css" />
+	<link rel="stylesheet" href="styles/balancer-settings.css" />
+	<link rel="stylesheet" href="styles/balancer-presets.css" />
+	<link rel="stylesheet" href="styles/balancer-about.css" />
+	<link rel="stylesheet" href="styles/balancer-nav.css" />
+</head>
+
+<body>
+
+	<section id="balancer" class="balancer-show-log">
+
+		<figure class="balancer-graph">
+			<div class="balancer-graph-scroll"></div>
+			<figcaption>
+				<span class="balancer-scale-max">8700</span>
+				<span class="balancer-scale-min">-8700</span>
+				<div class="balancer-scale-activity">
+					<b>Activity</b>
+					<span class="balancer-activity-sedentary">Sedentary</span>
+					<span class="balancer-activity-moderate">Moderate</span>
+					<span class="balancer-activity-strenuous">Strenuous</span>
+				</div>
+				<div class="balancer-projection"></div>
+			</figcaption>
+		</figure>
+
+		<section class="balancer-log balancer-log-show-history">
+			<button class="balancer-log-add-history">Log</button>
+			<button class="balancer-log-add-meal">Food</button>
+			<button class="balancer-log-add-activity">Sport</button>
+			<form class="balancer-log-time">
+				<label><span>Time </span><input name="time" type="time"/></label>
+				<label><span>Date </span><input name="date" type="date"/></label>
+			</form>
+			<form class="balancer-log-activity">
+				<label>
+					<span class="balancer-preset balancer-preset-sedentary">Sedentary</span>
+					<span class="balancer-range"><input name="activity" type="range" value="1" step="0.01" min="1" max="7"/></span>
+					<span class="balancer-preset balancer-preset-intense">Intense</span>
+				</label>
+			</form>
+			<form class="balancer-log-meal">
+				<p><button class="balancer-preset-menu" name="icon">Icon</button></p>
+				<label><span>Name </span><input name="label" type="text" value="" placeholder="Description"/></label>
+				<label><span>Energy </span><input name="value" type="number" value="" placeholder="---"/> <em class="balancer-log-unit">kJ</em></label>
+				<p><button name="add">Add</button></p>
+			</form>
+			<ul class="balancer-log-meals"></ul>
+			<div class="balancer-log-history">
+				<table></table>
+			</div>
+		</section>
+
+		<section class="balancer-presets">
+			<form class="balancer-presets-meal">
+				<p><button class="balancer-preset-plate_1" name="icon">Icon</button></p>
+				<label><span>Description</span><input name="description" type="text" placeholder="Description"/></label>
+				<label><span>Value</span><input name="value" type="number" placeholder="---"/> <em class="balancer-presets-unit">kJ</em></label>
+				<p><button name="add" disabled>Add</button></p>
+			</form>
+			<ul class="balancer-presets-picker">
+				<li><button name="icon" class="balancer-preset-apple_1"></button></li>
+				<li><button name="icon" class="balancer-preset-apple_2"></button></li>
+				<li><button name="icon" class="balancer-preset-asparagus"></button></li>
+				<li><button name="icon" class="balancer-preset-banana"></button></li>
+				<li><button name="icon" class="balancer-preset-barbecue"></button></li>
+				<li><button name="icon" class="balancer-preset-beans"></button></li>
+				<li><button name="icon" class="balancer-preset-beer"></button></li>
+				<li><button name="icon" class="balancer-preset-bone"></button></li>
+				<li><button name="icon" class="balancer-preset-bottle_1"></button></li>
+				<li><button name="icon" class="balancer-preset-bottle_2"></button></li>
+				<li><button name="icon" class="balancer-preset-bottle_3"></button></li>
+				<li><button name="icon" class="balancer-preset-bottle_plastic"></button></li>
+				<li><button name="icon" class="balancer-preset-bread_1"></button></li>
+				<li><button name="icon" class="balancer-preset-bread_2"></button></li>
+				<li><button name="icon" class="balancer-preset-bread_baguette"></button></li>
+				<li><button name="icon" class="balancer-preset-burger_1"></button></li>
+				<li><button name="icon" class="balancer-preset-burger_2"></button></li>
+				<li><button name="icon" class="balancer-preset-cabbage"></button></li>
+				<li><button name="icon" class="balancer-preset-cake_1"></button></li>
+				<li><button name="icon" class="balancer-preset-cake_2"></button></li>
+				<li><button name="icon" class="balancer-preset-cake_wedding"></button></li>
+				<li><button name="icon" class="balancer-preset-candy_1"></button></li>
+				<li><button name="icon" class="balancer-preset-candy_2"></button></li>
+				<li><button name="icon" class="balancer-preset-candy_3"></button></li>
+				<li><button name="icon" class="balancer-preset-candy_lolipop"></button></li>
+				<li><button name="icon" class="balancer-preset-carrot"></button></li>
+				<li><button name="icon" class="balancer-preset-cauliflower"></button></li>
+				<li><button name="icon" class="balancer-preset-champagne"></button></li>
+				<li><button name="icon" class="balancer-preset-cheese_1"></button></li>
+				<li><button name="icon" class="balancer-preset-cheese_2"></button></li>
+				<li><button name="icon" class="balancer-preset-cherry"></button></li>
+				<li><button name="icon" class="balancer-preset-chicken"></button></li>
+				<li><button name="icon" class="balancer-preset-chicken_leg"></button></li>
+				<li><button name="icon" class="balancer-preset-chips"></button></li>
+				<li><button name="icon" class="balancer-preset-chocolate_1"></button></li>
+				<li><button name="icon" class="balancer-preset-chocolate_2"></button></li>
+				<li><button name="icon" class="balancer-preset-citrus"></button></li>
+				<li><button name="icon" class="balancer-preset-coffee_bean"></button></li>
+				<li><button name="icon" class="balancer-preset-cola_1"></button></li>
+				<li><button name="icon" class="balancer-preset-cola_2"></button></li>
+				<li><button name="icon" class="balancer-preset-condensed_milk"></button></li>
+				<li><button name="icon" class="balancer-preset-cookies"></button></li>
+				<li><button name="icon" class="balancer-preset-corn"></button></li>
+				<li><button name="icon" class="balancer-preset-croissant"></button></li>
+				<li><button name="icon" class="balancer-preset-cucumber"></button></li>
+				<li><button name="icon" class="balancer-preset-cucumbers"></button></li>
+				<li><button name="icon" class="balancer-preset-cup_1"></button></li>
+				<li><button name="icon" class="balancer-preset-cup_2"></button></li>
+				<li><button name="icon" class="balancer-preset-cup_3"></button></li>
+				<li><button name="icon" class="balancer-preset-cup_hot"></button></li>
+				<li><button name="icon" class="balancer-preset-donut_1"></button></li>
+				<li><button name="icon" class="balancer-preset-donut_2"></button></li>
+				<li><button name="icon" class="balancer-preset-egg"></button></li>
+				<li><button name="icon" class="balancer-preset-eggplant"></button></li>
+				<li><button name="icon" class="balancer-preset-fish"></button></li>
+				<li><button name="icon" class="balancer-preset-fishbone"></button></li>
+				<li><button name="icon" class="balancer-preset-fork_2"></button></li>
+				<li><button name="icon" class="balancer-preset-french_fries"></button></li>
+				<li><button name="icon" class="balancer-preset-garlic"></button></li>
+				<li><button name="icon" class="balancer-preset-glass"></button></li>
+				<li><button name="icon" class="balancer-preset-glass_water"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_1"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_2"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_3"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_4"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_5"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_6"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_7"></button></li>
+				<li><button name="icon" class="balancer-preset-goblet_wineglass"></button></li>
+				<li><button name="icon" class="balancer-preset-grain"></button></li>
+				<li><button name="icon" class="balancer-preset-grapes"></button></li>
+				<li><button name="icon" class="balancer-preset-grass"></button></li>
+				<li><button name="icon" class="balancer-preset-ham"></button></li>
+				<li><button name="icon" class="balancer-preset-honey"></button></li>
+				<li><button name="icon" class="balancer-preset-hot_dog"></button></li>
+				<li><button name="icon" class="balancer-preset-ice_cream_1"></button></li>
+				<li><button name="icon" class="balancer-preset-ice_cream_2"></button></li>
+				<li><button name="icon" class="balancer-preset-jam_1"></button></li>
+				<li><button name="icon" class="balancer-preset-jam_2"></button></li>
+				<li><button name="icon" class="balancer-preset-leaves"></button></li>
+				<li><button name="icon" class="balancer-preset-lemon_1"></button></li>
+				<li><button name="icon" class="balancer-preset-lemon_2"></button></li>
+				<li><button name="icon" class="balancer-preset-lemon_slice_1"></button></li>
+				<li><button name="icon" class="balancer-preset-lemon_slice_2"></button></li>
+				<li><button name="icon" class="balancer-preset-mandarine"></button></li>
+				<li><button name="icon" class="balancer-preset-melon_1"></button></li>
+				<li><button name="icon" class="balancer-preset-melon_2"></button></li>
+				<li><button name="icon" class="balancer-preset-milk"></button></li>
+				<li><button name="icon" class="balancer-preset-mushroom_1"></button></li>
+				<li><button name="icon" class="balancer-preset-mushroom_2"></button></li>
+				<li><button name="icon" class="balancer-preset-mushrooms"></button></li>
+				<li><button name="icon" class="balancer-preset-nut"></button></li>
+				<li><button name="icon" class="balancer-preset-olive_1"></button></li>
+				<li><button name="icon" class="balancer-preset-olive_2"></button></li>
+				<li><button name="icon" class="balancer-preset-omelette"></button></li>
+				<li><button name="icon" class="balancer-preset-onion"></button></li>
+				<li><button name="icon" class="balancer-preset-orange"></button></li>
+				<li><button name="icon" class="balancer-preset-package"></button></li>
+				<li><button name="icon" class="balancer-preset-pan_1"></button></li>
+				<li><button name="icon" class="balancer-preset-pan_2"></button></li>
+				<li><button name="icon" class="balancer-preset-pan_3"></button></li>
+				<li><button name="icon" class="balancer-preset-pan_4"></button></li>
+				<li><button name="icon" class="balancer-preset-pasta_1"></button></li>
+				<li><button name="icon" class="balancer-preset-pasta_2"></button></li>
+				<li><button name="icon" class="balancer-preset-pasta_3"></button></li>
+				<li><button name="icon" class="balancer-preset-pattinson"></button></li>
+				<li><button name="icon" class="balancer-preset-peach"></button></li>
+				<li><button name="icon" class="balancer-preset-pear"></button></li>
+				<li><button name="icon" class="balancer-preset-peas_1"></button></li>
+				<li><button name="icon" class="balancer-preset-peas_2"></button></li>
+				<li><button name="icon" class="balancer-preset-pepper"></button></li>
+				<li><button name="icon" class="balancer-preset-pepper_chili"></button></li>
+				<li><button name="icon" class="balancer-preset-persimmon"></button></li>
+				<li><button name="icon" class="balancer-preset-pineapple"></button></li>
+				<li><button name="icon" class="balancer-preset-pizza"></button></li>
+				<li><button name="icon" class="balancer-preset-plate_1"></button></li>
+				<li><button name="icon" class="balancer-preset-plate_2"></button></li>
+				<li><button name="icon" class="balancer-preset-plum"></button></li>
+				<li><button name="icon" class="balancer-preset-pomegranate_1"></button></li>
+				<li><button name="icon" class="balancer-preset-pomegranate_2"></button></li>
+				<li><button name="icon" class="balancer-preset-pomelo"></button></li>
+				<li><button name="icon" class="balancer-preset-potato"></button></li>
+				<li><button name="icon" class="balancer-preset-potato_slices"></button></li>
+				<li><button name="icon" class="balancer-preset-preserves_1"></button></li>
+				<li><button name="icon" class="balancer-preset-preserves_2"></button></li>
+				<li><button name="icon" class="balancer-preset-preserves_3"></button></li>
+				<li><button name="icon" class="balancer-preset-pretzel"></button></li>
+				<li><button name="icon" class="balancer-preset-pumpkin_1"></button></li>
+				<li><button name="icon" class="balancer-preset-pumpkin_2"></button></li>
+				<li><button name="icon" class="balancer-preset-radish"></button></li>
+				<li><button name="icon" class="balancer-preset-raspberry"></button></li>
+				<li><button name="icon" class="balancer-preset-rice"></button></li>
+				<li><button name="icon" class="balancer-preset-roll"></button></li>
+				<li><button name="icon" class="balancer-preset-rolls_1"></button></li>
+				<li><button name="icon" class="balancer-preset-rolls_2"></button></li>
+				<li><button name="icon" class="balancer-preset-rolls_3"></button></li>
+				<li><button name="icon" class="balancer-preset-salad"></button></li>
+				<li><button name="icon" class="balancer-preset-salt"></button></li>
+				<li><button name="icon" class="balancer-preset-sausage_1"></button></li>
+				<li><button name="icon" class="balancer-preset-sausage_2"></button></li>
+				<li><button name="icon" class="balancer-preset-sausage_3"></button></li>
+				<li><button name="icon" class="balancer-preset-sausage_4"></button></li>
+				<li><button name="icon" class="balancer-preset-sausage_5"></button></li>
+				<li><button name="icon" class="balancer-preset-steak"></button></li>
+				<li><button name="icon" class="balancer-preset-steak_t-bone"></button></li>
+				<li><button name="icon" class="balancer-preset-strawberry"></button></li>
+				<li><button name="icon" class="balancer-preset-sushi_1"></button></li>
+				<li><button name="icon" class="balancer-preset-sushi_2"></button></li>
+				<li><button name="icon" class="balancer-preset-take-out_coffee"></button></li>
+				<li><button name="icon" class="balancer-preset-tea"></button></li>
+				<li><button name="icon" class="balancer-preset-tea_bag_1"></button></li>
+				<li><button name="icon" class="balancer-preset-tea_bag_2"></button></li>
+				<li><button name="icon" class="balancer-preset-teapot"></button></li>
+				<li><button name="icon" class="balancer-preset-tomato_1"></button></li>
+				<li><button name="icon" class="balancer-preset-tomato_2"></button></li>
+				<li><button name="icon" class="balancer-preset-truffle"></button></li>
+				<li><button name="icon" class="balancer-preset-wafer_1"></button></li>
+				<li><button name="icon" class="balancer-preset-wafer_2"></button></li>
+				<li><button name="icon" class="balancer-preset-wafer_3"></button></li>
+				<li><button name="icon" class="balancer-preset-waffle_horn"></button></li>
+				<li><button name="icon" class="balancer-preset-watermelon_1"></button></li>
+				<li><button name="icon" class="balancer-preset-watermelon_2"></button></li>
+				<li><button name="icon" class="balancer-preset-wheat"></button></li>
+				<li><button name="icon" class="balancer-preset-wine_1"></button></li>
+				<li><button name="icon" class="balancer-preset-wine_2"></button></li>
+			</ul>
+			<div class="balancer-presets-scroll">
+				<table class="balancer-presets-meals"></table>
+			</div>
+		</section>
+
+		<form class="balancer-settings">
+			<div class="balancer-settings-row">
+				<label class="balancer-settings-centimeters"><b>Height</b> <input name="height" type="number"/> <i>centimeters</i></label>
+				<label class="balancer-settings-feet"><b>Height</b> <input name="heightFeet" type="number"/> <i>feet</i></label>
+				<label class="balancer-settings-inches"><b>Height</b> <input name="heightInches" type="number"/> <i>inches</i></label>
+				<label class="balancer-settings-units"><b>Units</b> <select name="heightUnits"><option value="balancer-settings-height-centimeters">Centimeters</option><option value="balancer-settings-height-feet,balancer-settings-height-inches">Feet/inches</option></select></label>
+			</div>
+			<div class="balancer-settings-row">
+				<label class="balancer-settings-kilos"><b>Weight</b> <input name="weight" type="number"/> <i>kilos</i></label>
+				<label class="balancer-settings-pounds"><b>Weight</b> <input name="weightPounds" type="number"/> <i>pounds</i></label>
+				<label class="balancer-settings-stone"><b>Weight</b> <input name="weightStone" type="number"/> <i>stone</i></label>
+				<label class="balancer-settings-units"><b>Units</b> <select name="weightUnits"><option value="balancer-settings-weight-kilos">Kilos</option><option value="balancer-settings-weight-pounds">Pounds</option><option value="balancer-settings-weight-stone">Stone</option></select></label>
+			</div>
+			<div class="balancer-settings-row">
+				<label><b>Age</b> <input name="age" type="number"/> <i>years</i></label>
+				<label><b>Gender</b> <select name="gender"><option value="0">Female</option><option value="1">Male</option></select></label>
+			</div>
+			<div class="balancer-settings-row">
+				<label><b>Tweak metabolic rate</b> <input name="adjustment" type="number" value="100" step="1"/> <i>%</i></label>
+				<label><b>Energy units</b> <select name="energyUnits"><option value="0">Kilojoules</option><option value="1">Kilocalories</option></select></label>
+			</div>
+			<label><b>Show</b> <select name="timespan"><option value="0">Today</option><option value="7">Up to a week</option><option value="31">Up to a month</option><option value="999">Everything</option></select></label>
+			<label><b>Backup</b> <textarea name="backup"></textarea></label>
+			<footer class="balancer-reset">
+				<b>History</b>
+				<div><button name="reset">Reset</button></div>
+				<div><button name="confirm" disabled>Confirm</button></div>
+			</footer>
+		</form>
+
+		<article class="balancer-about">
+			<h2>About This App</h2>
+			<figure>
+				<img alt="" src="./icons/logo.svg" />
+				<figcaption><strong>Counter Balancer</strong><br>Version 1.0.14</figcaption>
+			</figure>
+			<p>Keep track of your energy intake, without the annoying calculations.</p>
+			<p>This app was made to visualise rough estimates of energy intake and expenditure throughout the day. Add presets for your own eating habits and keep track of your daily calorie limit in a graph.</p>
+			<p>Please add your <a href="https://github.com/WoollyMittens/balancer-app/issues">suggestions and bug reports on GitHub</a>, or send them to <a href="mailto:info@sydneytrainwalks.com">info@sydneytrainwalks.com</a>.</p>
+			<h2>Disclaimer</h2>
+			<p>Do not use this app for any medical reason whatsoever. It is strictly meant for rough estimates. Please consult a medical professional before starting a diet.</p>
+			<h2>Copyright</h2>
+			<p>&copy; Maurice van Creij, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a></p>
+		</article>
+
+		<nav class="balancer-nav">
+			<button class="balancer-nav-log">Log</button>
+			<button class="balancer-nav-presets">Presets</button>
+			<button class="balancer-nav-settings">Settings</button>
+			<button class="balancer-nav-about">About</button>
+		</nav>
+
+	</section>
+
+	<script src="cordova.js"></script>
+	<script src="scripts/balancer.js"></script>
+	<script src="scripts/balancer-graph.js"></script>
+	<script src="scripts/balancer-log.js"></script>
+	<script src="scripts/balancer-history.js"></script>
+	<script src="scripts/balancer-activities.js"></script>
+	<script src="scripts/balancer-meals.js"></script>
+	<script src="scripts/balancer-settings.js"></script>
+	<script src="scripts/balancer-presets.js"></script>
+	<script src="scripts/balancer-about.js"></script>
+	<script src="scripts/balancer-nav.js"></script>
+	<script>
+		// polyfill cordova
+		if (!window.cordova) {
+			var onDeviceReady = new Event("deviceready");
+			window.requestAnimationFrame(function() {
+				document.dispatchEvent(onDeviceReady);
+			});
+		};
+
+		// wait for the device to become ready
+		document.addEventListener('deviceready', function() {
+			// start a new instance of the class
+			var balancer = new Balancer().init({
+				// root DOM object
+				root: document.getElementById("balancer"),
+				// energy density of body fat (kJ/kg)
+				density: 37000,
+				// female or male (index)
+				gender: 1,
+				// (cm)
+				height: 187,
+				// (kg)
+				weight: 82,
+				// (years)
+				age: 42,
+				// units
+				heightUnits: 0,
+				weightUnits: 0,
+				energyUnits: 0,
+				// collection of activity and diet events
+				timeline: {},
+				// collection of preset diet items
+				presets: [{
+					"icon": "apple_2",
+					"description": "Apple",
+					"value": 400
+				}, {
+					"icon": "champagne",
+					"description": "BBQ sauce (tbsp)",
+					"value": 200
+				}, {
+					"icon": "pasta_1",
+					"description": "Bacon (slice)",
+					"value": 180
+				}, {
+					"icon": "burger_2",
+					"description": "Bacon Cheeseburger",
+					"value": 3200
+				}, {
+					"icon": "preserves_2",
+					"description": "Baked Beans (200g)",
+					"value": 700
+				}, {
+					"icon": "banana",
+					"description": "Banana",
+					"value": 500
+				}, {
+					"icon": "bread_2",
+					"description": "Banana bread (slice)",
+					"value": 800
+				}, {
+					"icon": "pasta_2",
+					"description": "Beef jerky (100g)",
+					"value": 1000
+				}, {
+					"icon": "sausage_1",
+					"description": "Biscuit",
+					"value": 300
+				}, {
+					"icon": "bread_1",
+					"description": "Bread roll (100g)",
+					"value": 1000
+				}, {
+					"icon": "bread_2",
+					"description": "Bread slice (30g)",
+					"value": 300
+				}, {
+					"icon": "cookies",
+					"description": "Brownie (25g)",
+					"value": 500
+				}, {
+					"icon": "pan_2",
+					"description": "Butter (1tbsp)",
+					"value": 400
+				}, {
+					"icon": "cheese_2",
+					"description": "Cheese slice (25g)",
+					"value": 500
+				}, {
+					"icon": "burger_1",
+					"description": "Chicken burger",
+					"value": 2000
+				}, {
+					"icon": "hot_dog",
+					"description": "Chicken schnitzel roll",
+					"value": 3000
+				}, {
+					"icon": "chips",
+					"description": "Chips (100g)",
+					"value": 2000
+				}, {
+					"icon": "wafer_1",
+					"description": "Crisp bread",
+					"value": 150
+				}, {
+					"icon": "egg",
+					"description": "Egg",
+					"value": 300
+				}, {
+					"icon": "cheese_1",
+					"description": "Feta (65g)",
+					"value": 500
+				}, {
+					"icon": "fish",
+					"description": "Fish and chips",
+					"value": 3500
+				}, {
+					"icon": "french_fries",
+					"description": "French fries (side)",
+					"value": 1500
+				}, {
+					"icon": "take-out_coffee",
+					"description": "Frozen yoghurt (250g)",
+					"value": 1600
+				}, {
+					"icon": "raspberry",
+					"description": "Fruit salad (250g)",
+					"value": 500
+				}, {
+					"icon": "grapes",
+					"description": "Grapes (350g bunch)",
+					"value": 1000
+				}, {
+					"icon": "cabbage",
+					"description": "Greek salad",
+					"value": 1200
+				}, {
+					"icon": "chicken",
+					"description": "Grilled chicken (100g)",
+					"value": 500
+				}, {
+					"icon": "fishbone",
+					"description": "Grilled fish",
+					"value": 800
+				}, {
+					"icon": "ham",
+					"description": "Ham (100g)",
+					"value": 500
+				}, {
+					"icon": "burger_1",
+					"description": "Hamburger",
+					"value": 2400
+				}, {
+					"icon": "hot_dog",
+					"description": "Hot dog",
+					"value": 1200
+				}, {
+					"icon": "ice_cream_2",
+					"description": "Icecream cone",
+					"value": 1200
+				}, {
+					"icon": "jam_2",
+					"description": "Jam (tbsp)",
+					"value": 200
+				}, {
+					"icon": "cucumber",
+					"description": "Lebansese cucumber",
+					"value": 100
+				}, {
+					"icon": "honey",
+					"description": "Lollies (15g)",
+					"value": 340
+				}, {
+					"icon": "glass_water",
+					"description": "Milk (glass)",
+					"value": 800
+				}, {
+					"icon": "cake_1",
+					"description": "Muffin",
+					"value": 2000
+				}, {
+					"icon": "mushroom_1",
+					"description": "Mushrooms (100g)",
+					"value": 100
+				}, {
+					"icon": "chips",
+					"description": "Nachos (muchos)",
+					"value": 4500
+				}, {
+					"icon": "olive_1",
+					"description": "Olive oil (tbsp)",
+					"value": 500
+				}, {
+					"icon": "onion",
+					"description": "Onion",
+					"value": 150
+				}, {
+					"icon": "pasta_2",
+					"description": "Pasta (100g uncooked)",
+					"value": 1500
+				}, {
+					"icon": "pan_1",
+					"description": "Pasta bolognese",
+					"value": 3200
+				}, {
+					"icon": "mushrooms",
+					"description": "Pasta sauce (100g)",
+					"value": 300
+				}, {
+					"icon": "sausage_2",
+					"description": "Pastrami (80g)",
+					"value": 300
+				}, {
+					"icon": "peach",
+					"description": "Peach",
+					"value": 300
+				}, {
+					"icon": "preserves_1",
+					"description": "Peanut butter (1tbsp)",
+					"value": 400
+				}, {
+					"icon": "hot_dog",
+					"description": "Pide",
+					"value": 2000
+				}, {
+					"icon": "sushi_1",
+					"description": "Pie",
+					"value": 2000
+				}, {
+					"icon": "pineapple",
+					"description": "Pinapple chunks (200g)",
+					"value": 400
+				}, {
+					"icon": "pizza",
+					"description": "Pizza (Domino's)",
+					"value": 4500
+				}, {
+					"icon": "plum",
+					"description": "Plum",
+					"value": 200
+				}, {
+					"icon": "corn",
+					"description": "Popcorn (100g)",
+					"value": 2000
+				}, {
+					"icon": "ice_cream_1",
+					"description": "Popsicle",
+					"value": 400
+				}, {
+					"icon": "potato",
+					"description": "Potato salad (100g)",
+					"value": 550
+				}, {
+					"icon": "rice",
+					"description": "Rice (100g uncooked)",
+					"value": 1500
+				}, {
+					"icon": "chicken_leg",
+					"description": "Roast beef (100g)",
+					"value": 600
+				}, {
+					"icon": "roll",
+					"description": "Scone",
+					"value": 1200
+				}, {
+					"icon": "cabbage",
+					"description": "Side salad",
+					"value": 600
+				}, {
+					"icon": "pan_1",
+					"description": "Soup (500g)",
+					"value": 800
+				}, {
+					"icon": "steak_t-bone",
+					"description": "Steak (250g)",
+					"value": 3000
+				}, {
+					"icon": "bread_baguette",
+					"description": "Subway roast beef (footlong)",
+					"value": 3000
+				}, {
+					"icon": "plate_1",
+					"description": "Thai noodle meal",
+					"value": 2400
+				}, {
+					"icon": "plate_1",
+					"description": "Thai stir fry meal",
+					"value": 1500
+				}, {
+					"icon": "tomato_1",
+					"description": "Tomato",
+					"value": 100
+				}, {
+					"icon": "wafer_3",
+					"description": "Tortilla wrap (25g)",
+					"value": 300
+				}, {
+					"icon": "preserves_3",
+					"description": "Tuna (70g)",
+					"value": 350
+				}, {
+					"icon": "chicken",
+					"description": "Turkey breast (100g)",
+					"value": 400
+				}, {
+					"icon": "hot_dog",
+					"description": "Vietnamese chicken roll",
+					"value": 1500
+				}],
+				// minimum metabolic multiplier
+				minActivity: 1,
+				// maximum metabolic multiplier
+				maxActivity: 7,
+				// graph scale day/week/month/year
+				scale: 0,
+				// tweak factor to the base metabilic rate
+				adjustment: 100,
+				// max graph length in days
+				timespan: 0,
+				// start day
+				start: new Date(),
+				// focussed day
+				focus: null,
+				// end day
+				end: new Date(),
+				// logging mode
+				log: "meal"
+			});
+		}, false);
+	</script>
+</body>
+
+</html>

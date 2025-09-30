@@ -1,0 +1,43 @@
+.balancer-log-activity {
+	display: flex;
+	flex: 0 1 auto;
+	align-items: center;
+	padding: 0 0.5rem;
+	border-bottom: solid 1px #eee;
+	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+	min-height: 5.333333333333333rem;
+}
+
+.balancer-log-show-meal .balancer-log-activity,
+.balancer-log-show-history .balancer-log-activity {
+	display: none;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-log-activity {
+		padding-bottom: 2.667rem;
+    min-height: 8rem;
+	}
+}
+
+.balancer-log-activity label {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.balancer-log-activity label .balancer-preset {
+	flex: 0 1 auto;
+}
+
+.balancer-log-activity label .balancer-range {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: center;
+}
+
+.balancer-log-activity label input[type=range] {
+	width: 100%;
+}

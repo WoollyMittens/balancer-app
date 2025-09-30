@@ -1,0 +1,95 @@
+.balancer-settings {
+	background-color: #FFF;
+	margin: 0;
+	padding: 0 1rem 1.5rem;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	bottom: 4.666666666666667rem;
+	left: 0;
+	transform: translate(100%, 0%);
+	transition: transform ease 300ms;
+	flex-direction: column;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	display: flex;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-settings {
+		top: 0;
+		left: 50%;
+	}
+}
+
+.balancer-show-settings .balancer-settings {
+	transform: translate(0%, 0%);
+}
+
+.balancer-settings label {
+	display: block;
+	position: relative;
+}
+
+.balancer-settings label {
+	padding: 1.333rem 0 0;
+}
+.balancer-settings label b {
+	display: block;
+	font-weight: normal;
+	font-size: 0.857em;
+}
+.balancer-settings label textarea,
+.balancer-settings label select,
+.balancer-settings label input {
+	font-size: 1rem;
+	width: 100%;
+}
+
+.balancer-settings label select {
+	min-width: 10.5rem;
+}
+
+.balancer-settings label i {
+	display: block;
+	font-size: 0.857em;
+	padding: 0.667rem 0 0;
+	font-style: normal;
+	color: #999;
+}
+
+.balancer-settings-row {
+	border: none;
+	padding: 0;
+	display: flex;
+	min-height: 7rem;
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
+}
+
+.balancer-settings-row label {
+	display: block;
+	flex: 1 1 auto;
+	padding: 1.333rem 0.5rem 0;
+}
+
+.balancer-reset {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1.333rem 0 0;
+	justify-content: space-between;
+	min-height: 6.5rem;
+}
+.balancer-reset b {
+	flex: 1 1 auto;
+	width: 100%;
+	font-weight: normal;
+	font-size: 0.857em;
+}
+.balancer-reset div {
+	flex: 1 1 auto;
+	max-width: 48%;
+}
+.balancer-reset div button {
+	width: 100%;
+}

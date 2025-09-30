@@ -1,0 +1,50 @@
+.balancer-about {
+	background-color: #FFF;
+	margin: 0;
+	padding: 1rem;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	bottom: 4.666666666666667rem;
+	left: 0;
+	font-size: 0.857em;
+	transform: translate(100%, 0%);
+	transition: transform ease 300ms;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	flex-direction: column;
+	display: flex;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-about {
+		top: 0;
+		left: 50%;
+	}
+}
+
+.balancer-show-about .balancer-about {
+	transform: translate(0%, 0%);
+}
+
+.balancer-about h2 + figure {
+	margin-top: -2rem;
+}
+
+.balancer-about figure {
+	margin: 0;
+	display: flex;
+	min-height: 7rem;
+	align-items: center;
+}
+
+.balancer-about figure img {
+	flex: 0 1 auto;
+	width: auto;
+	height: 7rem;
+}
+
+.balancer-about figure figcaption {
+	flex: 1 1 auto;
+	padding-left: 1rem;
+}

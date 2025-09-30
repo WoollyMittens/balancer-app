@@ -1,0 +1,7 @@
+.sass-cache
+cordova/platforms
+cordova/plugins
+node_modules
+inc/medium
+src/large
+_archive

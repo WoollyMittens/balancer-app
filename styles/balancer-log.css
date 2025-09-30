@@ -1,0 +1,123 @@
+.balancer-log {
+	background-color: #FFF;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	bottom: 4.666666666666667rem;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	z-index: 2;
+	transform: translate(100%, 0%);
+	transition: transform ease 300ms;
+	display: flex;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-log {
+		top: 0;
+		left: 50%;
+	}
+}
+
+.balancer-show-log .balancer-log {
+	transform: translate(0%, 0%);
+}
+
+.balancer-log-add-history,
+.balancer-log-add-meal,
+.balancer-log-add-activity {
+	position: absolute;
+	top: 0;
+	width: 4rem;
+	height: 4rem;
+	border: none;
+	border-radius: 50%;
+	background-color: #1976D2;
+	box-shadow : 1px 1px 1px rgba(0,0,0,0.5);
+	background-size: 65%;
+	background-position: center;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	text-indent: 4rem;
+	overflow: hidden;
+	z-index: 2;
+}
+
+.balancer-log-show-history .balancer-log-add-history,
+.balancer-log-show-meal .balancer-log-add-meal,
+.balancer-log-show-activity .balancer-log-add-activity {
+	background-color: #2196F3;
+}
+
+.balancer-log-add-history {
+	transform: translate(-7rem, -75%);
+	left: 50%;
+	background-image: url("../icons/time.svg");
+}
+
+.balancer-log-add-meal {
+	transform: translate(-50%, -75%);
+	left: 50%;
+	background-image: url("../icons/fork_1.svg");
+}
+
+.balancer-log-add-activity {
+	transform: translate(7rem, -75%);
+	right: 50%;
+	background-image: url("../icons/run_exit_2 inv.svg");
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-log-add-history,
+	.balancer-log-add-meal,
+	.balancer-log-add-activity {
+		top: 8rem;
+	}
+}
+
+.balancer-log-time {
+	display: flex;
+	justify-content: space-between;
+	flex: 0 1 auto;
+	align-items: center;
+	padding: 0 0.5rem;
+	border-bottom: solid 1px #eee;
+	box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+	min-height: 5.333333333333333rem;
+}
+
+@media (min-width:568px) AND (orientation:landscape) {
+	.balancer-log-time {
+		padding-bottom: 2.667rem;
+    min-height: 8rem;
+	}
+}
+
+.balancer-log-show-activity .balancer-log-time,
+.balancer-log-show-meal .balancer-log-time {
+	display: none;
+}
+
+.balancer-log-time label {
+	flex: 0 1 auto;
+	padding: 0 0.5rem;
+	font-weight: bold;
+}
+
+.balancer-log-time label {
+	padding-top: 0.333rem;
+}
+
+.balancer-log-time label span {
+	display: none;
+}
+
+.balancer-log-time label input {
+	font-size: 1rem;
+}
+
+.balancer-log-time label input[type=time] {}
+
+.balancer-log-time label input[type=date] {}

@@ -1,0 +1,63 @@
+.balancer-nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	position: absolute;
+	height: 4.666666666666667rem;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0.667rem 1rem;
+	z-index: 10;
+	background-color: #fff;
+	border-top: solid 1px #eee;
+	box-shadow: 0 -0.25rem 0.5rem rgba(0,0,0,0.1);
+	text-align: center;
+}
+
+.balancer-nav button {
+	border: none;
+	background-color: Transparent;
+	padding: 0;
+	flex: 0 1 auto;
+	color: #9e9e9e;
+	filter: grayscale(1);
+	text-align: center;
+	font-size: 1.167rem;
+}
+
+.balancer-show-log .balancer-nav-log,
+.balancer-show-presets .balancer-nav-presets,
+.balancer-show-settings .balancer-nav-settings,
+.balancer-show-about .balancer-nav-about {
+	color: #0D47A1;
+	filter: grayscale(0);
+}
+
+.balancer-nav button:before {
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	content: "";
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	margin: 0 auto 0.25rem;
+}
+
+.balancer-nav-log:before {
+	background-image: url("../icons/base.svg");
+}
+
+.balancer-nav-presets:before {
+	background-image: url("../icons/shopping_cart_1.svg");
+}
+
+.balancer-nav-settings:before {
+	background-image: url("../icons/options_1.svg");
+}
+
+.balancer-nav-about:before {
+	background-image: url("../icons/info_2.svg");
+}
