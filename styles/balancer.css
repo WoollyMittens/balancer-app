@@ -41,8 +41,8 @@ a {
 }
 
 #balancer {
-	position: relative;
-	height: 100vh;
+	position: absolute;
+	height: 100%;
 	width: 100%;
 	font-size: 1.167rem;
 	overflow: hidden;
